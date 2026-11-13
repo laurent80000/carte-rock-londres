@@ -76,8 +76,77 @@ async function ecrireCarnet(request, env) {
   return json(carnet);
 }
 
+/* ---------------------------------------------------------------- médias */
+// Photos choisies sur le Mac (outils/medias.py), rangées dans l'espace R2 MEDIAS :
+//   lieux/<lieu>/<photo>-v.jpg   vignette
+//   lieux/<lieu>/<photo>-a.jpg   image d'affichage
+//   selection.json               couverture et photos retenues pour chaque lieu
+const CLE_MEDIA = /^lieux\/[a-z0-9-]{1,120}\/[A-Za-z0-9-]{1,80}-[va]\.jpg$/;
+const TAILLE_MAX = 15 * 1024 * 1024;
+
+async function servirMedia(request, env, cle) {
+  if (!env.MEDIAS) return new Response('Espace photos non configuré', { status: 404 });
+  const objet = await env.MEDIAS.get(cle, { onlyIf: request.headers });
+  if (!objet) return new Response('Photo introuvable', { status: 404 });
+  const entetes = new Headers();
+  objet.writeHttpMetadata(entetes);
+  entetes.set('ETag', objet.httpEtag);
+  // Le nom d'un fichier ne change jamais de contenu : le téléphone peut le garder.
+  entetes.set('Cache-Control', 'private, max-age=31536000, immutable');
+  return new Response('body' in objet ? objet.body : null, { status: 'body' in objet ? 200 : 304, headers: entetes });
+}
+
+async function gererMedias(request, env, chemin) {
+  if (!env.MEDIAS) return json({ erreur: 'espace photos MEDIAS absent' }, 503);
+  if (chemin === 'selection') {
+    if (request.method === 'GET') {
+      const objet = await env.MEDIAS.get('selection.json');
+      return json(objet ? await objet.json() : { version: 1, lieux: {} });
+    }
+    if (request.method === 'PUT') {
+      let selection;
+      try { selection = await request.json(); } catch { return json({ erreur: 'JSON illisible' }, 400); }
+      if (!selection || typeof selection.lieux !== 'object') return json({ erreur: 'sélection attendue' }, 400);
+      selection.maj = new Date().toISOString();
+      await env.MEDIAS.put('selection.json', JSON.stringify(selection), { httpMetadata: { contentType: 'application/json' } });
+      return json(selection);
+    }
+    return json({ erreur: 'méthode non prévue' }, 405);
+  }
+  if (chemin === 'liste') {
+    const cles = [];
+    let suiteListe;
+    do {
+      const page = await env.MEDIAS.list({ prefix: 'lieux/', cursor: suiteListe });
+      cles.push(...page.objects.map((o) => o.key));
+      suiteListe = page.truncated ? page.cursor : undefined;
+    } while (suiteListe);
+    return json({ cles });
+  }
+  if (!CLE_MEDIA.test(chemin)) return json({ erreur: 'nom de fichier refusé' }, 400);
+  if (request.method === 'PUT') {
+    const taille = Number(request.headers.get('Content-Length'));
+    if (!taille || taille > TAILLE_MAX) return json({ erreur: 'taille refusée' }, 413);
+    await env.MEDIAS.put(chemin, request.body, { httpMetadata: { contentType: 'image/jpeg' } });
+    return json({ ok: chemin });
+  }
+  if (request.method === 'DELETE') {
+    await env.MEDIAS.delete(chemin);
+    return json({ supprime: chemin });
+  }
+  return json({ erreur: 'méthode non prévue' }, 405);
+}
+
 /* ---------------------------------------------------------------- accès */
 async function suite(request, env, url) {
+  if (url.pathname.startsWith('/medias/') && request.method === 'GET') {
+    return servirMedia(request, env, decodeURIComponent(url.pathname.slice('/medias/'.length)));
+  }
+  if (url.pathname.startsWith('/api/medias/')) {
+    const reponse = await gererMedias(request, env, decodeURIComponent(url.pathname.slice('/api/medias/'.length)));
+    reponse.headers.set('Cache-Control', 'no-store');
+    return reponse;
+  }
   if (url.pathname === '/api/carnet') {
     let reponse;
     if (request.method === 'GET') reponse = await lireCarnet(env);

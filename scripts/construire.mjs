@@ -43,6 +43,7 @@ for (const nom of readdirSync(dossier).filter((n) => n.endsWith('.json')).sort()
     lieu.sources = (f.sources ?? []).map((s) => choisir(s, ['type', 'reference', 'url', 'page']));
   } else {
     Object.assign(lieu, {
+      dossier: f.dossier_photo ?? null,
       verification: f.verification ?? null,
       coordonnees_validees: f.coordonnees.validees ?? false,
       publication: f.publication ?? null,

@@ -82,7 +82,13 @@ Décision du 13/11/2026, validée par Laurent. Le projet Cloudflare est un Worke
 - Limites vérifiées le 13/11/2026 dans la documentation Cloudflare : 20 000 fichiers par site, 25 Mio par fichier (d'où les tuiles individuelles plutôt qu'un fichier unique), 100 000 appels par jour, 1 000 écritures KV par jour.
 - Incident du 13/11/2026 : le premier déploiement, fait avant que le dépôt ne contienne wrangler.jsonc, a publié app/ sans protection pendant quelques dizaines de minutes. Les données des lieux n'y figuraient pas (le fichier n'était pas encore assemblé) et aucun fichier personnel n'a été servi.
 - scripts/recuperer_carnet.py reverse le carnet dans les fiches (statut "visite", champ "notes").
-- Les médias ne passeront pas par git : leur hébergement privé reste à décider à l'étape 4.
+- Photos : espace Cloudflare R2 lié au Worker sous le nom MEDIAS (décision du 13/11/2026, validée par Laurent ; offre gratuite de 10 Go). Servies par le Worker derrière le même mot de passe, sur /medias/lieux/<lieu>/<photo>-v.jpg (vignette, 480 px) et -a.jpg (affichage, 1600 px). La sélection (couverture et photos de chaque lieu) est dans selection.json, lue par la carte sur /api/medias/selection. La liaison R2 ne s'ajoute à wrangler.jsonc qu'une fois R2 activé sur le compte de Laurent.
+
+## Photos (outils/medias.py, lancé sur le Mac)
+
+Laurent télécharge outils/medias.py et le lance avec python3 (prérequis : pillow, et pillow-heif ou à défaut sips pour les .heic). Le script se connecte au site avec le mot de passe, lit ~/Pictures/Londres Rock/index.csv et les seuls fichiers de "01 Lieux rock" (vérification du chemin réel, rien n'est jamais écrit dans ce dossier), puis ouvre une page de sélection locale. Pour chaque lieu validé, il produit une vignette et une image d'affichage réenregistrées sans aucune métadonnée (ni GPS, ni date, ni appareil), les envoie, retire du site celles qui ne sont plus retenues et met à jour selection.json. Les aperçus de travail sont mis en cache dans ~/Library/Caches/carte-rock-londres. Les vidéos ne sont pas encore sélectionnables : leurs originaux sont sur iCloud.
+
+Constat du 13/11/2026 : les aperçus du dossier font 360 x 480 pixels. Ils suffisent pour les vignettes mais restent flous en plein écran ; une meilleure qualité demandera les originaux ou un export de Photos en pleine taille.
 
 ## Commandes
 

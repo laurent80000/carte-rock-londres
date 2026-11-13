@@ -109,6 +109,53 @@ function noter(lieu, type, texte) {
 }
 const dateHeure = (iso) => new Date(iso).toLocaleDateString('fr-BE', { day: 'numeric', month: 'long', year: 'numeric' });
 
+/* ---------------------------------------------------------------- photos */
+// Sélection faite sur le Mac (outils/medias.py) et rangée dans l'espace photos du site.
+let selectionPhotos = { lieux: {} };
+const urlMedia = (lieu, photo, taille) => `medias/lieux/${encodeURIComponent(lieu)}/${encodeURIComponent(photo)}-${taille}.jpg`;
+function photosDe(l) {
+  const s = selectionPhotos.lieux?.[l.id];
+  if (!s?.photos?.length) return [];
+  // La couverture passe en premier.
+  return [...s.photos].sort((a, b) => (b.id === s.couverture) - (a.id === s.couverture));
+}
+async function chargerSelection() {
+  try {
+    const r = await fetch('api/medias/selection', { cache: 'no-store' });
+    if (!r.ok) return;
+    selectionPhotos = await r.json();
+    if (etat.vue === 'fiche') ouvrirFiche(etat.lieuOuvert, { centrer: false, garder: true });
+  } catch { /* hors connexion : la fiche reste sans photos */ }
+}
+
+const visionneuse = document.createElement('div');
+visionneuse.className = 'visionneuse';
+visionneuse.hidden = true;
+visionneuse.innerHTML = '<div class="defile"></div><div class="legende"></div><button class="rond fermer-photo" aria-label="Fermer">&times;</button>';
+document.body.append(visionneuse);
+function ouvrirVisionneuse(l, depart) {
+  const photos = photosDe(l);
+  const defile = visionneuse.querySelector('.defile');
+  defile.innerHTML = photos.map((p) => `<figure><img src="${urlMedia(l.id, p.id, 'a')}" alt="" loading="lazy"></figure>`).join('');
+  const legende = () => {
+    const i = Math.round(defile.scrollLeft / defile.clientWidth);
+    const p = photos[i];
+    visionneuse.querySelector('.legende').textContent = `${i + 1} / ${photos.length}${p?.date ? ` · ${dateLongue(p.date)}` : ''}`;
+  };
+  defile.onscroll = legende;
+  visionneuse.hidden = false;
+  defile.scrollLeft = depart * defile.clientWidth;
+  legende();
+}
+visionneuse.querySelector('.fermer-photo').addEventListener('click', () => { visionneuse.hidden = true; });
+addEventListener('keydown', (e) => {
+  if (visionneuse.hidden) return;
+  const defile = visionneuse.querySelector('.defile');
+  if (e.key === 'Escape') visionneuse.hidden = true;
+  if (e.key === 'ArrowRight') defile.scrollBy({ left: defile.clientWidth, behavior: 'smooth' });
+  if (e.key === 'ArrowLeft') defile.scrollBy({ left: -defile.clientWidth, behavior: 'smooth' });
+});
+
 /* ----------------------------------------------------------------- carte */
 const sombre = matchMedia('(prefers-color-scheme: dark)').matches;
 const theme = sombre ? 'dark' : 'light';
@@ -309,8 +356,10 @@ function htmlFiche(l) {
   </div>`;
 
   h += '<h2>Photos et vidéos</h2>';
-  if (l.medias?.selection?.length) {
-    h += '<div class="galerie"></div>';
+  const photos = photosDe(l);
+  if (photos.length) {
+    h += `<div class="galerie">${photos.map((p, i) => `<button class="vignette" data-photo="${i}" aria-label="Agrandir la photo ${i + 1}">
+      <img src="${urlMedia(l.id, p.id, 'v')}" alt="" loading="lazy" width="${p.largeur_v ?? ''}" height="${p.hauteur_v ?? ''}"></button>`).join('')}</div>`;
   } else if (l.nb_photos || l.nb_videos) {
     const stock = [l.nb_photos && pluriel(l.nb_photos, 'photo'), l.nb_videos && pluriel(l.nb_videos, 'vidéo')].filter(Boolean).join(' et ');
     h += `<div class="galerie-vide">${stock} dans le dossier de ce lieu.<br>La sélection reste à faire.</div>`;
@@ -501,6 +550,7 @@ $('#contenu').addEventListener('click', (e) => {
   if (!cible) return;
   const d = cible.dataset;
   if (d.lieu) { $('#recherche').blur(); ouvrirFiche(d.lieu); return; }
+  if (d.photo) { ouvrirVisionneuse(etat.lieux.find((x) => x.id === etat.lieuOuvert), Number(d.photo)); return; }
   if (d.carnet) {
     const texte = $('#note')?.value.trim();
     if (d.carnet === 'note' && !texte) { $('#note').focus(); return; }
@@ -533,7 +583,7 @@ $('#contenu').addEventListener('click', (e) => {
 });
 
 addEventListener('resize', placerActions);
-addEventListener('keydown', (e) => { if (e.key === 'Escape' && etat.vue) fermer(); });
+addEventListener('keydown', (e) => { if (e.key === 'Escape' && etat.vue && visionneuse.hidden) fermer(); });
 
 /* ------------------------------------------------------------- démarrage */
 const donnees = await (await fetch('data/lieux.json', { cache: 'no-cache' })).json();
@@ -548,6 +598,7 @@ carnet.attente = memoire.lire('carnet-attente');
 recalculerCarnet();
 if (etat.mode === 'prive') {
   synchroniserCarnet();
+  chargerSelection();
   addEventListener('online', synchroniserCarnet);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) synchroniserCarnet(); });
 }
