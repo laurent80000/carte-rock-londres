@@ -13,6 +13,7 @@ import csv
 import json
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -31,9 +32,17 @@ def chercher(requete, cache):
         "q": requete, "format": "jsonv2", "limit": 1, "countrycodes": "gb",
         "viewbox": CADRE, "bounded": 1, "addressdetails": 1,
     })
-    time.sleep(1.1)
-    with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": AGENT}), timeout=30) as r:
-        resultat = json.load(r)
+    # Le service répond parfois en erreur passagère : on réessaie en espaçant les appels.
+    for essai in range(5):
+        time.sleep(1.1 + 5 * essai)
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": AGENT}), timeout=30) as r:
+                resultat = json.load(r)
+            break
+        except (urllib.error.URLError, TimeoutError) as erreur:
+            print(f"  nouvel essai après erreur : {erreur}")
+    else:
+        raise RuntimeError(f"géocodage impossible pour {requete}")
     cache[requete] = resultat[0] if resultat else None
     CACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
     return cache[requete]
