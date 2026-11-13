@@ -18,7 +18,6 @@ BIBLIOTHEQUES = [
     "maplibre-gl/dist/maplibre-gl-shared.mjs",
     "maplibre-gl/dist/maplibre-gl-worker.mjs",
     "maplibre-gl/dist/maplibre-gl.css",
-    "pmtiles/dist/pmtiles.js",
     "@protomaps/basemaps/dist/basemaps.js",
 ]
 

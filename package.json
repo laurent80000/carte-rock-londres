@@ -10,5 +10,8 @@
     "@protomaps/basemaps": "5.7.2",
     "maplibre-gl": "6.18.0",
     "pmtiles": "4.5.0"
+  },
+  "devDependencies": {
+    "wrangler": "4.161.0"
   }
 }

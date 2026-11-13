@@ -1,0 +1,10 @@
+/tuiles/*
+  Content-Type: application/x-protobuf
+  Cache-Control: public, max-age=2592000
+/polices/*
+  Cache-Control: public, max-age=2592000
+/pictos/*
+  Cache-Control: public, max-age=2592000
+/*
+  X-Robots-Tag: noindex, nofollow
+  Referrer-Policy: same-origin

@@ -57,25 +57,38 @@ Français, prose continue, sans listes à puces dans les historiques. Pas de tir
 ## Étapes
 
 1. Import des données et rapport : fait le 13/11/2026.
-2. Carte avec les 69 lieux rock : faite le 13/11/2026, essayée en local au format iPhone (thèmes clair et sombre) et sur ordinateur. Pas encore en ligne.
-3. Préparation et sélection des médias, exécutées sur le Mac.
-4. Mise en ligne privée, marquage "visité" et notes depuis le téléphone.
+2. Carte avec les 69 lieux rock : faite le 13/11/2026.
+3. Mise en ligne privée, marquage "visité" et notes depuis le téléphone : code prêt et essayé en local le 13/11/2026, en attente de la création du site chez Cloudflare par Laurent. Étape avancée avant les médias pour permettre l'essai sur iPhone.
+4. Préparation et sélection des médias, exécutées sur le Mac.
 5. Import des livres (un CSV par ouvrage) et de l'export Facebook.
 
 ## L'application (dossier app/)
 
-Site statique sans étape de compilation : index.html, style.css, app.js. MapLibre GL JS affiche un fond de carte Protomaps tiré d'OpenStreetMap, servi depuis un seul fichier app/tuiles/londres.pmtiles (Grand Londres, zooms 0 à 15, 141 Mo). Polices et pictogrammes sont copiés dans app/polices et app/pictos : la carte n'appelle aucun service extérieur, ce qui évite tout coût à l'usage. L'attribution "© OpenStreetMap" doit rester visible. Bibliothèques sous licence BSD (MapLibre, PMTiles, style Protomaps), données OpenStreetMap sous licence ODbL.
+Site statique sans étape de compilation : index.html, style.css, app.js. MapLibre GL JS affiche un fond de carte Protomaps tiré d'OpenStreetMap. Les tuiles (Grand Londres, zooms 0 à 15, 7791 fichiers, 242 Mo) sont dans app/tuiles/z/x/y.pbf et versionnées dans git, comme les polices et les pictogrammes : la carte n'appelle aucun service extérieur, donc aucun coût à l'usage. L'attribution "© OpenStreetMap" doit rester visible. Bibliothèques sous licence BSD (MapLibre, style Protomaps), données OpenStreetMap sous licence ODbL.
 
-L'application lit app/data/lieux.json, produit par scripts/construire.py à partir des fiches. En mode privé, la fiche montre aussi les notes de travail. L'option --public ne garde que les fiches dont la publication vaut "public" et retire les champs de travail.
-
-Le serveur de fichiers doit accepter les requêtes partielles (en-tête Range), indispensables au fichier .pmtiles. scripts/serveur.py le fait en local ; l'hébergeur retenu devra le faire aussi.
+L'application lit app/data/lieux.json, produit par scripts/construire.py à partir des fiches. En mode privé, la fiche montre aussi le carnet de terrain et les notes de travail. L'option --public ne garde que les fiches dont la publication vaut "public" et retire les champs de travail.
 
 Couleurs des points : vert pour un lieu visité, orange pour un lieu à visiter, violet pour un événement temporaire.
+
+## Hébergement (Cloudflare Pages, offre gratuite)
+
+Décision du 13/11/2026, validée par Laurent. Cloudflare publie le dépôt GitHub à chaque envoi sur la branche main.
+
+- Commande de build : `npm ci && python3 scripts/construire.py`. Dossier publié : `app`.
+- functions/_middleware.js protège tout le site par un mot de passe (cookie signé, six mois, huit essais par quart d'heure). Les tuiles, polices, pictogrammes et bibliothèques, qui sont des données publiques, restent hors protection (app/_routes.json) pour ne pas consommer le quota de fonctions.
+- functions/api/carnet.js tient le carnet de terrain : un journal d'opérations (visite, annulation, note) qui ne fait que s'allonger. Le téléphone garde les opérations en attente quand il n'a pas de réseau et les renvoie ensuite.
+- Réglages à faire dans le tableau de bord Cloudflare, jamais dans le dépôt : secrets MOT_DE_PASSE et SECRET_SESSION, espace KV lié sous le nom CARNET.
+- Limites vérifiées le 13/11/2026 dans la documentation Cloudflare : 20 000 fichiers par site, 25 Mio par fichier (d'où les tuiles individuelles plutôt qu'un fichier unique), 100 000 appels de fonctions par jour, 1 000 écritures KV par jour.
+- Pas de fichier wrangler.toml : il prendrait le pas sur les réglages du tableau de bord.
+- scripts/recuperer_carnet.py reverse le carnet dans les fiches (statut "visite", champ "notes").
+- Les médias ne passeront pas par git : leur hébergement privé reste à décider à l'étape 3.
 
 ## Commandes
 
     python3 scripts/import_lieux.py          # fiches et rapport, depuis les CSV du Mac
     npm install                              # bibliothèques de la carte
-    scripts/fond_de_carte.sh                 # tuiles de Londres, polices, pictogrammes (une fois)
     python3 scripts/construire.py            # assemble app/data et app/vendor
-    python3 scripts/serveur.py 8000          # essai en local sur http://localhost:8000
+    npx wrangler pages dev app --kv CARNET --binding MOT_DE_PASSE=essai --binding SECRET_SESSION=essai   # essai en local avec la protection
+    python3 scripts/serveur.py 8000          # essai en local sans protection ni carnet
+    scripts/fond_de_carte.sh                 # refait le fond de carte (rarement) : demande les outils pmtiles (Go) et pmtiles (pip)
+    python3 scripts/recuperer_carnet.py carnet.json

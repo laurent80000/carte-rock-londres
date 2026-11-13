@@ -11,10 +11,12 @@ ACTIFS="https://protomaps.github.io/basemaps-assets"
 
 command -v pmtiles >/dev/null || { echo "Outil pmtiles introuvable : go install github.com/protomaps/go-pmtiles@latest (puis le renommer en pmtiles)"; exit 1; }
 
-mkdir -p app/tuiles app/polices app/pictos
-pmtiles extract "https://build.protomaps.com/${VERSION}.pmtiles" app/tuiles/londres.pmtiles \
+mkdir -p app/polices app/pictos
+TEMP="$(mktemp -d)"
+pmtiles extract "https://build.protomaps.com/${VERSION}.pmtiles" "$TEMP/londres.pmtiles" \
   --bbox="$EMPRISE" --maxzoom="$ZOOM_MAX" > /dev/null 2>&1
-ls -lh app/tuiles/londres.pmtiles
+python3 scripts/eclater_tuiles.py "$TEMP/londres.pmtiles" app/tuiles   # pip install pmtiles
+rm -rf "$TEMP"
 
 for police in "Noto Sans Regular" "Noto Sans Medium" "Noto Sans Italic"; do
   mkdir -p "app/polices/$police"

@@ -135,6 +135,13 @@ details summary { font-weight: 600; cursor: pointer; }
 details p, details li { font-size: 14px; color: var(--encre-douce); }
 details ul { padding-left: 18px; margin: 8px 0 0; }
 
+textarea {
+  width: 100%; margin: 10px 0 0; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--trait);
+  background: var(--fond); color: inherit; font: inherit; resize: vertical; outline: 0;
+}
+textarea:focus { border-color: var(--encre-douce); }
+.lien { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
 .resultats { list-style: none; margin: 0; padding: 0; }
 .resultats li { border-top: 1px solid var(--trait); }
 .resultats li:first-child { border-top: 0; }

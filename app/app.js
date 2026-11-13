@@ -46,7 +46,8 @@ const etat = {
   categorie: 'tous', types: new Set(), artiste: null, quartier: null, requete: '',
   position: null, lieuOuvert: null, vue: null,
 };
-const categorie = (l) => (l.nature === 'evenement' ? 'evenement' : l.statut);
+const visite = (l) => l.statut === 'visite' || carnet.visites.has(l.id);
+const categorie = (l) => (l.nature === 'evenement' ? 'evenement' : visite(l) ? 'visite' : 'a_visiter');
 
 function correspond(l, { sansCategorie = false, sansType = false, sansArtiste = false, sansQuartier = false } = {}) {
   if (!sansCategorie && etat.categorie !== 'tous' && categorie(l) !== etat.categorie) return false;
@@ -62,12 +63,56 @@ function correspond(l, { sansCategorie = false, sansType = false, sansArtiste = 
 const lieuxFiltres = () => etat.lieux.filter((l) => correspond(l));
 const nbFiltres = () => etat.types.size + (etat.artiste ? 1 : 0) + (etat.quartier ? 1 : 0);
 
+/* ---------------------------------------------------------------- carnet */
+// Visites et notes prises sur place. Chaque geste est une opération gardée dans le
+// téléphone tant que le serveur ne l'a pas reçue : le carnet marche donc sans réseau.
+const carnet = { operations: [], attente: [], visites: new Map(), notes: new Map() };
+const memoire = {
+  lire(cle) { try { return JSON.parse(localStorage.getItem(cle)) ?? []; } catch { return []; } },
+  ecrire(cle, valeur) { try { localStorage.setItem(cle, JSON.stringify(valeur)); } catch { /* stockage indisponible */ } },
+};
+function recalculerCarnet() {
+  carnet.visites.clear();
+  carnet.notes.clear();
+  const toutes = [...carnet.operations, ...carnet.attente].sort((a, b) => a.date.localeCompare(b.date));
+  for (const o of toutes) {
+    if (o.type === 'visite') carnet.visites.set(o.lieu, o.date);
+    else if (o.type === 'annuler_visite') carnet.visites.delete(o.lieu);
+    else if (o.type === 'note') carnet.notes.set(o.lieu, [...(carnet.notes.get(o.lieu) ?? []), o]);
+  }
+}
+async function synchroniserCarnet() {
+  try {
+    const envoi = carnet.attente.slice();
+    const r = envoi.length
+      ? await fetch('api/carnet', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ operations: envoi }) })
+      : await fetch('api/carnet', { cache: 'no-store' });
+    if (r.status === 401) { location.reload(); return; }
+    if (!r.ok) return;
+    carnet.operations = (await r.json()).operations ?? [];
+    const recues = new Set(carnet.operations.map((o) => o.id));
+    carnet.attente = carnet.attente.filter((o) => !recues.has(o.id));
+    memoire.ecrire('carnet', carnet.operations);
+    memoire.ecrire('carnet-attente', carnet.attente);
+    recalculerCarnet();
+    rafraichir();
+    if (etat.vue === 'fiche' && !$('#note')?.value) ouvrirFiche(etat.lieuOuvert, { centrer: false, garder: true });
+  } catch { /* hors connexion : les opérations restent en attente */ }
+}
+function noter(lieu, type, texte) {
+  const o = { id: crypto.randomUUID(), lieu, type, date: new Date().toISOString(), ...(texte ? { texte } : {}) };
+  carnet.attente.push(o);
+  memoire.ecrire('carnet-attente', carnet.attente);
+  recalculerCarnet();
+  rafraichir();
+  synchroniserCarnet();
+}
+const dateHeure = (iso) => new Date(iso).toLocaleDateString('fr-BE', { day: 'numeric', month: 'long', year: 'numeric' });
+
 /* ----------------------------------------------------------------- carte */
 const sombre = matchMedia('(prefers-color-scheme: dark)').matches;
 const theme = sombre ? 'dark' : 'light';
 const base = new URL('.', location.href).href;
-
-maplibregl.addProtocol('pmtiles', new pmtiles.Protocol().tile);
 
 const carte = new maplibregl.Map({
   container: 'carte',
@@ -77,7 +122,7 @@ const carte = new maplibregl.Map({
     sprite: `${base}pictos/${theme}`,
     sources: {
       protomaps: {
-        type: 'vector', url: `pmtiles://${base}tuiles/londres.pmtiles`,
+        type: 'vector', tiles: [`${base}tuiles/{z}/{x}/{y}.pbf`], maxzoom: 15, bounds: [-0.56, 51.26, 0.36, 51.72],
         attribution: '<a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap</a> · <a href="https://protomaps.com" target="_blank" rel="noopener">Protomaps</a>',
       },
     },
@@ -245,7 +290,7 @@ function htmlFiche(l) {
   const cat = categorie(l);
   const lignes = [l.adresse, l.quartier, l.evenement?.lieu_hote].filter(Boolean).map(esc);
   if (etat.position) lignes.push(`à ${distanceLisible(distance(etat.position, l))}`);
-  const statut = l.nature === 'evenement' ? (l.statut === 'visite' ? 'Événement visité' : 'Événement') : CATEGORIES[cat];
+  const statut = l.nature === 'evenement' ? (visite(l) ? 'Événement visité' : 'Événement') : CATEGORIES[cat];
 
   let h = `<h1>${esc(l.nom)}</h1>`;
   if (lignes.length) h += `<div class="lieu-adresse">${lignes.join(' · ')}</div>`;
@@ -302,6 +347,21 @@ function htmlFiche(l) {
   }
 
   if (etat.mode === 'prive') {
+    const notes = carnet.notes.get(l.id) ?? [];
+    const enAttente = new Set(carnet.attente.map((o) => o.id));
+    h += '<h2>Carnet de terrain</h2>';
+    if (l.statut !== 'visite') {
+      h += carnet.visites.has(l.id)
+        ? `<p>Visité le ${dateHeure(carnet.visites.get(l.id))}. <button class="lien" data-carnet="annuler_visite">Annuler</button></p>`
+        : '<div class="boutons"><button class="bouton" data-carnet="visite">Marquer comme visité</button></div>';
+    }
+    if (notes.length) {
+      h += `<ul class="liens">${notes.map((n) => `<li>${esc(n.texte)}<small>${dateHeure(n.date)}${enAttente.has(n.id) ? ' · en attente d\'envoi' : ''}</small></li>`).join('')}</ul>`;
+    }
+    h += `<textarea id="note" rows="3" placeholder="Une note rapide sur ce lieu"></textarea>
+      <div class="boutons"><button class="bouton second" data-carnet="note">Ajouter la note</button></div>`;
+    if (carnet.attente.length) h += `<p class="note">${pluriel(carnet.attente.length, 'élément')} du carnet en attente d'envoi.</p>`;
+
     const travail = [];
     if (!l.coordonnees_validees) travail.push('Position du point non validée : elle vient de l\'endroit où les photos ont été prises.');
     for (const s of l.sources ?? []) if (s.recoupement) travail.push(`Source à recouper : ${s.recoupement}`);
@@ -315,11 +375,13 @@ function htmlFiche(l) {
   return h;
 }
 
-function ouvrirFiche(id, { centrer = true } = {}) {
+function ouvrirFiche(id, { centrer = true, garder = false } = {}) {
   const l = etat.lieux.find((x) => x.id === id);
   if (!l) return;
   etat.lieuOuvert = id;
-  montrer('fiche', htmlFiche(l), 'mi');
+  const haut = $('#contenu').scrollTop;
+  montrer('fiche', htmlFiche(l), garder && panneau.classList.contains('plein') ? 'plein' : 'mi');
+  if (garder) $('#contenu').scrollTop = haut;
   carte.setFilter('lieu-choisi', ['==', ['get', 'id'], id]);
   history.replaceState(null, '', `#${id}`);
   if (centrer) {
@@ -439,6 +501,14 @@ $('#contenu').addEventListener('click', (e) => {
   if (!cible) return;
   const d = cible.dataset;
   if (d.lieu) { $('#recherche').blur(); ouvrirFiche(d.lieu); return; }
+  if (d.carnet) {
+    const texte = $('#note')?.value.trim();
+    if (d.carnet === 'note' && !texte) { $('#note').focus(); return; }
+    noter(etat.lieuOuvert, d.carnet, d.carnet === 'note' ? texte : undefined);
+    if (d.carnet === 'note') $('#note').value = '';
+    ouvrirFiche(etat.lieuOuvert, { centrer: false, garder: true });
+    return;
+  }
   if (d.zoom) {
     const l = etat.lieux.find((x) => x.id === d.zoom);
     carte.easeTo({ center: [l.lon, l.lat], zoom: 17, padding: { top: 110, bottom: margeBasse(), left: innerWidth >= 820 ? 420 : 0, right: 0 } });
@@ -472,6 +542,15 @@ etat.lieux = donnees.lieux.map((l) => ({
   ...l,
   index: sansAccent([l.nom, l.adresse, l.quartier, TYPES[l.type], l.evenement?.lieu_hote, ...l.artistes].filter(Boolean).join(' | ')),
 }));
+
+carnet.operations = memoire.lire('carnet');
+carnet.attente = memoire.lire('carnet-attente');
+recalculerCarnet();
+if (etat.mode === 'prive') {
+  synchroniserCarnet();
+  addEventListener('online', synchroniserCarnet);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) synchroniserCarnet(); });
+}
 
 const pret = () => {
   installerCouches();
