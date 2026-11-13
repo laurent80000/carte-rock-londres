@@ -58,7 +58,7 @@ Français, prose continue, sans listes à puces dans les historiques. Pas de tir
 
 1. Import des données et rapport : fait le 13/11/2026.
 2. Carte avec les 69 lieux rock : faite le 13/11/2026.
-3. Mise en ligne privée, marquage "visité" et notes depuis le téléphone : code prêt et essayé en local le 13/11/2026, site créé chez Cloudflare par Laurent. Étape avancée avant les médias pour permettre l'essai sur iPhone.
+3. Mise en ligne privée, marquage "visité" et notes depuis le téléphone : en ligne le 13/11/2026, protection contrôlée à distance, connexion et carte confirmées par Laurent sur son téléphone. Étape avancée avant les médias pour permettre l'essai sur iPhone.
 4. Préparation et sélection des médias, exécutées sur le Mac.
 5. Import des livres (un CSV par ouvrage) et de l'export Facebook.
 
