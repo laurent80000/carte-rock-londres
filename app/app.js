@@ -183,13 +183,30 @@ const carte = new maplibregl.Map({
 carte.touchZoomRotate.disableRotation();
 window.carteRock = carte;
 
-const geojson = (lieux) => ({
-  type: 'FeatureCollection',
-  features: lieux.map((l) => ({
-    type: 'Feature', geometry: { type: 'Point', coordinates: [l.lon, l.lat] },
-    properties: { id: l.id, nom: l.nom, categorie: categorie(l) },
-  })),
-});
+// Plusieurs lieux d'une même rue peuvent partager la même position (géocodage à la rue) :
+// on les écarte légèrement en cercle pour qu'ils restent tous touchables.
+function geojson(lieux) {
+  const groupes = new Map();
+  for (const l of lieux) {
+    const cle = `${l.lat.toFixed(5)},${l.lon.toFixed(5)}`;
+    if (!groupes.has(cle)) groupes.set(cle, []);
+    groupes.get(cle).push(l);
+  }
+  const features = [];
+  for (const groupe of groupes.values()) {
+    groupe.forEach((l, i) => {
+      let { lat, lon } = l;
+      if (groupe.length > 1) {
+        const angle = (2 * Math.PI * i) / groupe.length, rayon = 0.00012 + 0.00001 * groupe.length;
+        lat += rayon * Math.sin(angle);
+        lon += (rayon * Math.cos(angle)) / Math.cos((lat * Math.PI) / 180);
+      }
+      features.push({ type: 'Feature', geometry: { type: 'Point', coordinates: [lon, lat] },
+        properties: { id: l.id, nom: l.nom, categorie: categorie(l) } });
+    });
+  }
+  return { type: 'FeatureCollection', features };
+}
 
 function installerCouches() {
   const couleur = ['match', ['get', 'categorie'], 'visite', css('--visite'), 'a_visiter', css('--a-visiter'), css('--evenement')];
@@ -346,6 +363,10 @@ function htmlFiche(l) {
   h += `<span class="etiquette">${esc(TYPES[l.type] ?? l.type)}</span>`;
   h += etiquetteEvenement(l);
   if (VERIFICATIONS[l.verification]) h += `<span class="etiquette alerte">${VERIFICATIONS[l.verification]}</span>`;
+  if (l.etat_selon_source === 'disparu') h += '<span class="etiquette alerte">Disparu en 2002 selon le guide</span>';
+  if (l.etat_selon_source === 'transformé') h += '<span class="etiquette">Transformé en 2002 selon le guide</span>';
+  if (l.precision === 'rue') h += '<span class="etiquette">Point placé dans la rue, numéro à situer</span>';
+  if (l.precision === 'quartier') h += '<span class="etiquette alerte">Position approximative</span>';
   for (const a of l.artistes) h += `<button class="etiquette artiste" data-artiste="${esc(a)}">${esc(a)}</button>`;
   h += '</div>';
 
@@ -386,7 +407,7 @@ function htmlFiche(l) {
     for (const s of l.sources) {
       const ref = esc(s.reference ?? s.url ?? '');
       h += `<li>${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${ref}</a>` : `<b>${ref}</b>`}
-        ${s.page ? `<small>page ${esc(s.page)}</small>` : ''}</li>`;
+        ${s.page ? `<small>page ${esc(s.page)}</small>` : ''}${s.faits && s.faits !== l.historique_court ? `<small>${esc(s.faits)}</small>` : ''}</li>`;
     }
     h += '</ul>';
   }

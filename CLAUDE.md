@@ -60,7 +60,7 @@ Français, prose continue, sans listes à puces dans les historiques. Pas de tir
 2. Carte avec les 69 lieux rock : faite le 13/11/2026.
 3. Mise en ligne privée, marquage "visité" et notes depuis le téléphone : en ligne le 13/11/2026, protection contrôlée à distance, connexion et carte confirmées par Laurent sur son téléphone. Étape avancée avant les médias pour permettre l'essai sur iPhone.
 4. Préparation et sélection des médias, exécutées sur le Mac.
-5. Import des livres (un CSV par ouvrage) et de l'export Facebook.
+5. Import des livres (un CSV par ouvrage) : premier ouvrage importé le 13/11/2026. Export Facebook : en attente.
 
 ## L'application (dossier app/)
 
@@ -90,6 +90,15 @@ Lancement simplifié (13/11/2026, à la demande de Laurent) : la première fois,
 
 Constat du 13/11/2026 : les aperçus du dossier font 360 x 480 pixels. Ils suffisent pour les vignettes mais restent flous en plein écran ; une meilleure qualité demandera les originaux ou un export de Photos en pleine taille.
 
+## Lieux tirés des livres
+
+Un relevé par ouvrage dans sources/livres/<ouvrage>.csv (colonnes : ouvrage, page, lieu, adresse, quartier, zone, type, artistes séparés par ;, fait, etat_2002, fiche_existante, lat, lon, precision). Le fait est une présentation courte du lieu, en deux ou trois lignes, reformulée et jamais recopiée : Laurent la réécrit ensuite à sa guise (consigne du 13/11/2026). Le texte intégral du livre reste hors du dépôt.
+
+- scripts/geocoder_livre.py remplit lat, lon et precision avec Nominatim (OpenStreetMap), au plus une requête par seconde, réponses gardées dans sources/livres/geocodage_cache.json. Précision "adresse", "rue" (point au milieu de la rue, faute de numéro connu), "quartier" ou "introuvable".
+- scripts/import_livre.py crée une fiche "a_visiter", marquée "a_verifier", pour chaque lieu nouveau (origine_fiche "livre:<ouvrage>", etat_selon_source, coordonnées d'origine "geocodage" jamais validées d'office), et ajoute le livre aux sources des fiches déjà visitées. Il écrit rapports/a_visiter_<ouvrage>.md, la liste de visite par zone et quartier, qui signale les photos du dossier Londres Rock prises à moins de 45 m d'une adresse précise.
+- Premier relevé (13/11/2026) : Max Wooldridge, Rock'n'Roll London (2002), 331 adresses, dont 41 rattachées à des lieux déjà visités.
+- Sur la carte, les lieux d'une même position sont légèrement écartés en cercle à l'affichage, sans toucher aux données.
+
 ## Commandes
 
     python3 scripts/import_lieux.py          # fiches et rapport, depuis les CSV du Mac
@@ -99,3 +108,5 @@ Constat du 13/11/2026 : les aperçus du dossier font 360 x 480 pixels. Ils suffi
     python3 scripts/serveur.py 8000          # essai en local sans protection ni carnet
     scripts/fond_de_carte.sh                 # refait le fond de carte (rarement) : demande les outils pmtiles (Go) et pmtiles (pip)
     python3 scripts/recuperer_carnet.py carnet.json
+    python3 scripts/geocoder_livre.py sources/livres/wooldridge_2002.csv
+    python3 scripts/import_livre.py sources/livres/wooldridge_2002.csv

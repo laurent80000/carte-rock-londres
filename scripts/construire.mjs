@@ -38,6 +38,8 @@ for (const nom of readdirSync(dossier).filter((n) => n.endsWith('.json')).sort()
     historique_court: f.historique_court ?? '', historique_long: f.historique_long ?? '',
     medias: f.medias ?? { couverture: null, selection: [] },
     articles: articlesSite.map((a) => ({ type: a.type, date: a.date, titre: a.titre, url: a.url })),
+    etat_selon_source: f.etat_selon_source ?? null,
+    precision: f.coordonnees.precision ?? null,
   };
   if (enPublic) {
     lieu.sources = (f.sources ?? []).map((s) => choisir(s, ['type', 'reference', 'url', 'page']));

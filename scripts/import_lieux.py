@@ -210,7 +210,8 @@ def main():
         if not args.simulation:
             chemin.write_text(json.dumps(fiche, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    orphelines = [f["id"] for d, (_, f) in existantes.items() if d not in {l["lieu"] for l in rock}]
+    # Les fiches venues d'un livre n'ont pas de dossier photo : elles ne sont pas orphelines.
+    orphelines = [f["id"] for d, (_, f) in existantes.items() if d and d not in {l["lieu"] for l in rock}]
 
     # ------------------------------------------------------------------ rapport
     R = []
