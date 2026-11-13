@@ -26,6 +26,7 @@ Français, prose continue, sans listes à puces dans les historiques. Pas de tir
 - data/lieux/ : la source de vérité, une fiche JSON par lieu.
 - scripts/import_lieux.py : import relançable, qui écrit aussi rapports/rapport_import.md.
 - rapports/ : rapports générés.
+- app/ : la carte (voir plus bas). scripts/construire.py, scripts/fond_de_carte.sh et scripts/serveur.py la préparent et la servent.
 
 ## Modèle d'une fiche (data/lieux/<id>.json)
 
@@ -56,12 +57,25 @@ Français, prose continue, sans listes à puces dans les historiques. Pas de tir
 ## Étapes
 
 1. Import des données et rapport : fait le 13/11/2026.
-2. Carte avec les 69 lieux rock (MapLibre et tuiles fondées sur OpenStreetMap, licence commerciale à vérifier).
+2. Carte avec les 69 lieux rock : faite le 13/11/2026, essayée en local au format iPhone (thèmes clair et sombre) et sur ordinateur. Pas encore en ligne.
 3. Préparation et sélection des médias, exécutées sur le Mac.
 4. Mise en ligne privée, marquage "visité" et notes depuis le téléphone.
 5. Import des livres (un CSV par ouvrage) et de l'export Facebook.
 
+## L'application (dossier app/)
+
+Site statique sans étape de compilation : index.html, style.css, app.js. MapLibre GL JS affiche un fond de carte Protomaps tiré d'OpenStreetMap, servi depuis un seul fichier app/tuiles/londres.pmtiles (Grand Londres, zooms 0 à 15, 141 Mo). Polices et pictogrammes sont copiés dans app/polices et app/pictos : la carte n'appelle aucun service extérieur, ce qui évite tout coût à l'usage. L'attribution "© OpenStreetMap" doit rester visible. Bibliothèques sous licence BSD (MapLibre, PMTiles, style Protomaps), données OpenStreetMap sous licence ODbL.
+
+L'application lit app/data/lieux.json, produit par scripts/construire.py à partir des fiches. En mode privé, la fiche montre aussi les notes de travail. L'option --public ne garde que les fiches dont la publication vaut "public" et retire les champs de travail.
+
+Le serveur de fichiers doit accepter les requêtes partielles (en-tête Range), indispensables au fichier .pmtiles. scripts/serveur.py le fait en local ; l'hébergeur retenu devra le faire aussi.
+
+Couleurs des points : vert pour un lieu visité, orange pour un lieu à visiter, violet pour un événement temporaire.
+
 ## Commandes
 
-    python3 scripts/import_lieux.py
-    python3 scripts/import_lieux.py --simulation
+    python3 scripts/import_lieux.py          # fiches et rapport, depuis les CSV du Mac
+    npm install                              # bibliothèques de la carte
+    scripts/fond_de_carte.sh                 # tuiles de Londres, polices, pictogrammes (une fois)
+    python3 scripts/construire.py            # assemble app/data et app/vendor
+    python3 scripts/serveur.py 8000          # essai en local sur http://localhost:8000

@@ -10,3 +10,7 @@ sources/Rock_n_Roll_London_Max_Wooldridge_2002.md
 .DS_Store
 __pycache__/
 node_modules/
+# Fichiers produits par les scripts : fond de carte (141 Mo), bibliothèques copiées, données assemblées.
+app/tuiles/
+app/vendor/
+app/data/

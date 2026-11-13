@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f7f3ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17161a" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Rock Londres">
+<title>Carte rock de Londres</title>
+<link rel="stylesheet" href="vendor/maplibre-gl.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="carte" aria-label="Carte de Londres"></div>
+
+<header class="barre">
+  <div class="recherche">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="recherche" type="search" placeholder="Un lieu, un artiste, une rue" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="search" aria-label="Rechercher">
+    <button id="effacer" class="rond discret" hidden aria-label="Effacer la recherche">&times;</button>
+  </div>
+  <button id="ouvrir-filtres" class="rond" aria-label="Filtres">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+    <span id="pastille-filtres" class="pastille" hidden></span>
+  </button>
+</header>
+
+<nav class="statuts" aria-label="Statut des lieux">
+  <button data-statut="tous" class="actif">Tous <span data-compte="tous"></span></button>
+  <button data-statut="visite"><i class="point visite"></i>Visités <span data-compte="visite"></span></button>
+  <button data-statut="a_visiter"><i class="point a_visiter"></i>À visiter <span data-compte="a_visiter"></span></button>
+  <button data-statut="evenement"><i class="point evenement"></i>Événements <span data-compte="evenement"></span></button>
+</nav>
+
+<div class="actions">
+  <button id="pres-de-moi" class="rond" aria-label="Lieux les plus proches de moi">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="3.5" cy="6" r="1"/><circle cx="3.5" cy="12" r="1"/><circle cx="3.5" cy="18" r="1"/></svg>
+  </button>
+  <button id="ma-position" class="rond" aria-label="Afficher ma position">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 18-8-8 18-2-8z"/></svg>
+  </button>
+</div>
+
+<section id="panneau" class="panneau" aria-live="polite" hidden>
+  <div class="poignee" id="poignee"><span></span></div>
+  <button id="fermer" class="rond discret fermer" aria-label="Fermer">&times;</button>
+  <div id="contenu" class="contenu"></div>
+</section>
+
+<div id="message" class="message" hidden></div>
+
+<script src="vendor/pmtiles.js"></script>
+<script src="vendor/basemaps.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>

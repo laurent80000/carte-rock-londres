@@ -1,0 +1,14 @@
+{
+  "name": "carte-rock-londres",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Carte interactive de l'histoire du rock à Londres",
+  "scripts": {
+    "vendor": "node scripts/vendor.mjs"
+  },
+  "dependencies": {
+    "@protomaps/basemaps": "5.7.2",
+    "maplibre-gl": "6.18.0",
+    "pmtiles": "4.5.0"
+  }
+}
