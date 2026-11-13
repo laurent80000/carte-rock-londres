@@ -1,0 +1,52 @@
+{
+  "id": "the-o2",
+  "nom": "The O2",
+  "dossier_photo": "The O2 (North Greenwich)",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": null,
+  "quartier": "North Greenwich",
+  "coordonnees": {
+    "lat": 51.502888,
+    "lon": 0.003967,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "non_renseigne",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 77,
+    "nb_photos": 71,
+    "nb_videos": 6,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2024-11-08"
+    ],
+    "annees": [
+      "2024"
+    ],
+    "adresses_apple": [
+      "O2 Arena (North Greenwich Arena)",
+      "5 Millennium Way"
+    ],
+    "note_verification_brute": "",
+    "gps_photos": {
+      "lat": 51.502888,
+      "lon": 0.003967,
+      "nb_points": 77,
+      "dispersion_p90_m": 67
+    }
+  }
+}

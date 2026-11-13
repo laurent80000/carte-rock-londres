@@ -1,0 +1,54 @@
+{
+  "id": "regent-street-polytechnic",
+  "nom": "Regent Street Polytechnic",
+  "dossier_photo": "Regent Street Polytechnic (309 Regent Street, Pink Floyd)",
+  "nature": "permanent",
+  "type": "ecole",
+  "adresse": "309 Regent Street",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.51688,
+    "lon": -0.142533,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Pink Floyd"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 11,
+    "nb_photos": 11,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2022-05-27"
+    ],
+    "annees": [
+      "2022"
+    ],
+    "adresses_apple": [
+      "310-312 Remo House, Regent Street",
+      "314-322 Morley House, Regent Street"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.51688,
+      "lon": -0.142533,
+      "nb_points": 11,
+      "dispersion_p90_m": 14
+    }
+  }
+}

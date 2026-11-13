@@ -1,0 +1,53 @@
+{
+  "id": "rs-no-9-carnaby",
+  "nom": "RS No. 9 Carnaby",
+  "dossier_photo": "RS No. 9 Carnaby (boutique des Rolling Stones)",
+  "nature": "permanent",
+  "type": "boutique",
+  "adresse": null,
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.512713,
+    "lon": -0.138264,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "The Rolling Stones"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 17,
+    "nb_photos": 16,
+    "nb_videos": 1,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2024-11-11"
+    ],
+    "annees": [
+      "2024"
+    ],
+    "adresses_apple": [
+      "61–71 Broadwick Street"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.512713,
+      "lon": -0.138264,
+      "nb_points": 17,
+      "dispersion_p90_m": 1
+    }
+  }
+}

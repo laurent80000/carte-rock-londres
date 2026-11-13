@@ -1,0 +1,54 @@
+{
+  "id": "dartford-livingstone-hospital",
+  "nom": "Livingstone Hospital",
+  "dossier_photo": "Dartford, Livingstone Hospital (Jagger et Richards)",
+  "nature": "permanent",
+  "type": "autre",
+  "adresse": null,
+  "quartier": "Dartford",
+  "coordonnees": {
+    "lat": 51.442712,
+    "lon": 0.227027,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Mick Jagger",
+    "Keith Richards"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 4,
+    "nb_photos": 4,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2023-04-28"
+    ],
+    "annees": [
+      "2023"
+    ],
+    "adresses_apple": [
+      "Livingstone Community Hospital"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.442712,
+      "lon": 0.227027,
+      "nb_points": 4,
+      "dispersion_p90_m": 6
+    }
+  }
+}

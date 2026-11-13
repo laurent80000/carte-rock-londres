@@ -1,0 +1,61 @@
+{
+  "id": "sothebys-exposition-freddie-mercury-2023",
+  "nom": "Exposition Freddie Mercury chez Sotheby's",
+  "dossier_photo": "Sotheby's (exposition Freddie Mercury, 2023)",
+  "nature": "evenement",
+  "type": "exposition",
+  "adresse": null,
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.511813,
+    "lon": -0.143468,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Freddie Mercury"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "evenement": {
+    "lieu_hote": "Sotheby's",
+    "date_debut": null,
+    "date_fin": null,
+    "annee": "2023"
+  },
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 118,
+    "nb_photos": 102,
+    "nb_videos": 16,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2023-08-31"
+    ],
+    "annees": [
+      "2023"
+    ],
+    "adresses_apple": [
+      "31 New Bond Street",
+      "36 Devlin House, Saint George Street",
+      "37 Conduit Street"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.511813,
+      "lon": -0.143468,
+      "nb_points": 118,
+      "dispersion_p90_m": 37
+    }
+  }
+}

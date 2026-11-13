@@ -1,0 +1,66 @@
+{
+  "id": "berwick-street",
+  "nom": "Berwick Street",
+  "dossier_photo": "Berwick Street (pochette d'Oasis, Sister Ray)",
+  "nature": "permanent",
+  "type": "pochette",
+  "adresse": "Berwick Street",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.514525,
+    "lon": -0.135686,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Oasis"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [
+    {
+      "type": "recit de visite",
+      "date": "2012-04-29",
+      "titre": "Petite balade a Londres",
+      "url": "https://laurentrieppi.com/2012/04/29/petite-ballade-a-londres/",
+      "faits_a_reprendre": "Berwick Street, pochette de (What's the Story) Morning Glory? d'Oasis, disquaires Sister Ray et Reckless Records. 7 images de 2012, anterieures au dossier photo.",
+      "a_verifier": ""
+    }
+  ],
+  "import": {
+    "nb_fichiers": 13,
+    "nb_photos": 13,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2023-04-27",
+      "2024-11-11"
+    ],
+    "annees": [
+      "2023",
+      "2024"
+    ],
+    "adresses_apple": [
+      "75 Berwick Street",
+      "36 Berwick Street",
+      "27-29 Berwick Street"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.514525,
+      "lon": -0.135686,
+      "nb_points": 13,
+      "dispersion_p90_m": 6
+    }
+  }
+}

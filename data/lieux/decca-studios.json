@@ -1,0 +1,54 @@
+{
+  "id": "decca-studios",
+  "nom": "Decca Studios et Billy Fury Way",
+  "dossier_photo": "Decca Studios (Broadhurst Gardens) et Billy Fury Way",
+  "nature": "permanent",
+  "type": "studio",
+  "adresse": "Broadhurst Gardens",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.547388,
+    "lon": -0.190955,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Billy Fury"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 8,
+    "nb_photos": 8,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2023-07-04"
+    ],
+    "annees": [
+      "2023"
+    ],
+    "adresses_apple": [
+      "Billy Fury Way",
+      "194 Broadhurst Gardens"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.547388,
+      "lon": -0.190955,
+      "nb_points": 8,
+      "dispersion_p90_m": 117
+    }
+  }
+}

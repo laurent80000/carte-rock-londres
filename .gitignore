@@ -1,0 +1,12 @@
+# Les médias ne vont jamais dans git (originaux comme versions web).
+medias/
+*.heic
+*.HEIC
+*.mov
+*.MOV
+*.mp4
+# Texte intégral d'un livre sous droits : il reste hors du dépôt.
+sources/Rock_n_Roll_London_Max_Wooldridge_2002.md
+.DS_Store
+__pycache__/
+node_modules/

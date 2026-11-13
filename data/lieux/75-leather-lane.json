@@ -1,0 +1,51 @@
+{
+  "id": "75-leather-lane",
+  "nom": "75 Leather Lane (galerie d'affiches rock)",
+  "dossier_photo": "75 Leather Lane (galerie d'affiches rock, à identifier)",
+  "nature": "permanent",
+  "type": "boutique",
+  "adresse": "75 Leather Lane",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.520702,
+    "lon": -0.109736,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "a_identifier",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 6,
+    "nb_photos": 5,
+    "nb_videos": 1,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2026-09-11"
+    ],
+    "annees": [
+      "2026"
+    ],
+    "adresses_apple": [
+      "75 Leather Lane"
+    ],
+    "note_verification_brute": "a identifier",
+    "gps_photos": {
+      "lat": 51.520702,
+      "lon": -0.109736,
+      "nb_points": 6,
+      "dispersion_p90_m": 11
+    }
+  }
+}

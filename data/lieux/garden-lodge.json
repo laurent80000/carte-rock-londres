@@ -1,0 +1,55 @@
+{
+  "id": "garden-lodge",
+  "nom": "Garden Lodge",
+  "dossier_photo": "Garden Lodge (1 Logan Place, Freddie Mercury)",
+  "nature": "permanent",
+  "type": "domicile",
+  "adresse": "1 Logan Place",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.494492,
+    "lon": -0.198447,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Freddie Mercury"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 6,
+    "nb_photos": 5,
+    "nb_videos": 1,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2022-05-26",
+      "2024-06-27"
+    ],
+    "annees": [
+      "2022",
+      "2024"
+    ],
+    "adresses_apple": [
+      "23 Logan Place"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.494492,
+      "lon": -0.198447,
+      "nb_points": 6,
+      "dispersion_p90_m": 14
+    }
+  }
+}

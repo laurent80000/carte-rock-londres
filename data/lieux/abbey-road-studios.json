@@ -1,0 +1,66 @@
+{
+  "id": "abbey-road-studios",
+  "nom": "Abbey Road Studios",
+  "dossier_photo": "Abbey Road Studios",
+  "nature": "permanent",
+  "type": "studio",
+  "adresse": null,
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.532258,
+    "lon": -0.177642,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "non_renseigne",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [
+    {
+      "type": "interview",
+      "date": "2025-09-01",
+      "titre": "David Bowie, Mick Jagger, Dancing in the Street (Clive Langer)",
+      "url": "https://laurentrieppi.com/2025/09/01/david-bowie-mick-jagger-dancing-in-the-street/",
+      "faits_a_reprendre": "Le producteur Clive Langer raconte la demo d'Absolute Beginners de Bowie enregistree a Abbey Road en 1985. Version anglaise disponible.",
+      "a_verifier": ""
+    }
+  ],
+  "import": {
+    "nb_fichiers": 11,
+    "nb_photos": 9,
+    "nb_videos": 2,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2022-05-28",
+      "2023-04-28",
+      "2026-09-12"
+    ],
+    "annees": [
+      "2022",
+      "2023",
+      "2026"
+    ],
+    "adresses_apple": [
+      "5E Abbey Road",
+      "3 Abbey Road",
+      "27 Grove End Road"
+    ],
+    "note_verification_brute": "",
+    "gps_photos": {
+      "lat": 51.532258,
+      "lon": -0.177642,
+      "nb_points": 11,
+      "dispersion_p90_m": 19
+    }
+  }
+}

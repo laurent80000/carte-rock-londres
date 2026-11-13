@@ -1,0 +1,62 @@
+{
+  "id": "va-east-storehouse-david-bowie-centre",
+  "nom": "V&A East Storehouse (David Bowie Centre)",
+  "dossier_photo": "V&A East Storehouse (David Bowie Centre)",
+  "nature": "permanent",
+  "type": "musee",
+  "adresse": null,
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.5465,
+    "lon": -0.020698,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "David Bowie"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [
+    {
+      "type": "annonce",
+      "date": "2025-07-10",
+      "titre": "David Bowie Center a Londres : ouverture en septembre",
+      "url": "https://laurentrieppi.com/2025/07/10/david-bowie-center-a-londres-ouverture-en-septembre/",
+      "faits_a_reprendre": "Annonce de l'ouverture du David Bowie Centre, heritier de l'exposition David Bowie Is.",
+      "a_verifier": "L'article laisse entendre South Kensington : le Centre est au V&A East Storehouse, a Stratford"
+    }
+  ],
+  "import": {
+    "nb_fichiers": 46,
+    "nb_photos": 33,
+    "nb_videos": 13,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2026-07-12"
+    ],
+    "annees": [
+      "2026"
+    ],
+    "adresses_apple": [
+      "Loughborough University"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.5465,
+      "lon": -0.020698,
+      "nb_points": 46,
+      "dispersion_p90_m": 39
+    }
+  }
+}

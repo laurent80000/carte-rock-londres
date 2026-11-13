@@ -1,0 +1,53 @@
+{
+  "id": "wetherby-mansions",
+  "nom": "Wetherby Mansions",
+  "dossier_photo": "Wetherby Mansions (Syd Barrett, Earls Court Square)",
+  "nature": "permanent",
+  "type": "domicile",
+  "adresse": "Earls Court Square",
+  "quartier": "Earls Court",
+  "coordonnees": {
+    "lat": 51.489785,
+    "lon": -0.191285,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Syd Barrett"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 16,
+    "nb_photos": 16,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2024-06-30"
+    ],
+    "annees": [
+      "2024"
+    ],
+    "adresses_apple": [
+      "Wetherby Mansions, Earls Court Square"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.489785,
+      "lon": -0.191285,
+      "nb_points": 16,
+      "dispersion_p90_m": 13
+    }
+  }
+}

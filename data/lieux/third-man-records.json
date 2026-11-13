@@ -1,0 +1,51 @@
+{
+  "id": "third-man-records",
+  "nom": "Third Man Records",
+  "dossier_photo": "Third Man Records (1 Marshall Street)",
+  "nature": "permanent",
+  "type": "boutique",
+  "adresse": "1 Marshall Street",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.512712,
+    "lon": -0.137319,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 6,
+    "nb_photos": 6,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2023-08-31"
+    ],
+    "annees": [
+      "2023"
+    ],
+    "adresses_apple": [
+      "1 Marshall Street"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.512712,
+      "lon": -0.137319,
+      "nb_points": 6,
+      "dispersion_p90_m": 11
+    }
+  }
+}

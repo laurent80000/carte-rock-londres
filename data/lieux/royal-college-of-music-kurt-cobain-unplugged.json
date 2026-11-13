@@ -1,0 +1,59 @@
+{
+  "id": "royal-college-of-music-kurt-cobain-unplugged",
+  "nom": "Exposition Kurt Cobain Unplugged au Royal College of Music",
+  "dossier_photo": "Royal College of Music (exposition Kurt Cobain Unplugged)",
+  "nature": "evenement",
+  "type": "exposition",
+  "adresse": null,
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.4996,
+    "lon": -0.1771,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Kurt Cobain"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "evenement": {
+    "lieu_hote": "Royal College of Music",
+    "date_debut": null,
+    "date_fin": null,
+    "annee": "2025"
+  },
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 6,
+    "nb_photos": 2,
+    "nb_videos": 4,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2025-11-18"
+    ],
+    "annees": [
+      "2025"
+    ],
+    "adresses_apple": [
+      "Royal College of Music, Prince Consort Road"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.4996,
+      "lon": -0.1771,
+      "nb_points": 6,
+      "dispersion_p90_m": 5
+    }
+  }
+}

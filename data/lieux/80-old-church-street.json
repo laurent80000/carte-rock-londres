@@ -1,0 +1,51 @@
+{
+  "id": "80-old-church-street",
+  "nom": "80 Old Church Street (façade punk)",
+  "dossier_photo": "80 Old Church Street (façade punk Roxy, à identifier)",
+  "nature": "permanent",
+  "type": "autre",
+  "adresse": "80 Old Church Street",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.487992,
+    "lon": -0.174362,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "a_identifier",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 5,
+    "nb_photos": 5,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2026-09-30"
+    ],
+    "annees": [
+      "2026"
+    ],
+    "adresses_apple": [
+      "80 Old Church Street"
+    ],
+    "note_verification_brute": "a identifier",
+    "gps_photos": {
+      "lat": 51.487992,
+      "lon": -0.174362,
+      "nb_points": 5,
+      "dispersion_p90_m": 1
+    }
+  }
+}

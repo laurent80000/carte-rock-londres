@@ -1,0 +1,51 @@
+{
+  "id": "bbc-maida-vale-studios",
+  "nom": "BBC Maida Vale Studios",
+  "dossier_photo": "BBC Maida Vale Studios (Delaware Road)",
+  "nature": "permanent",
+  "type": "studio",
+  "adresse": "Delaware Road",
+  "quartier": "Maida Vale",
+  "coordonnees": {
+    "lat": 51.526291,
+    "lon": -0.190909,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 8,
+    "nb_photos": 6,
+    "nb_videos": 2,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2026-09-12"
+    ],
+    "annees": [
+      "2026"
+    ],
+    "adresses_apple": [
+      "170 Rayne House, Delaware Road"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.526291,
+      "lon": -0.190909,
+      "nb_points": 8,
+      "dispersion_p90_m": 10
+    }
+  }
+}

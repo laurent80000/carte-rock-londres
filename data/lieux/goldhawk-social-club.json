@@ -1,0 +1,62 @@
+{
+  "id": "goldhawk-social-club",
+  "nom": "Goldhawk Social Club",
+  "dossier_photo": "Goldhawk Social Club (205 Goldhawk Road, The Who)",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "205 Goldhawk Road",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.500338,
+    "lon": -0.235225,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "The Who"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [
+    {
+      "type": "article anniversaire",
+      "date": "2025-05-19",
+      "titre": "Pete Townshend des Who a 80 ans",
+      "url": "https://laurentrieppi.com/2025/05/19/pete-townshend-des-who-a-80-ans/",
+      "faits_a_reprendre": "Laurent ecrit depuis Shepherd's Bush, le quartier ou Pete Townshend a grandi, en mai 2025 (meme sejour que les photos du Goldhawk Social Club).",
+      "a_verifier": ""
+    }
+  ],
+  "import": {
+    "nb_fichiers": 7,
+    "nb_photos": 7,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2025-05-15"
+    ],
+    "annees": [
+      "2025"
+    ],
+    "adresses_apple": [
+      "205 Goldhawk Road"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.500338,
+      "lon": -0.235225,
+      "nb_points": 7,
+      "dispersion_p90_m": 6
+    }
+  }
+}

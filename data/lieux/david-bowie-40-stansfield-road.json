@@ -1,0 +1,54 @@
+{
+  "id": "david-bowie-40-stansfield-road",
+  "nom": "Maison natale de David Bowie, 40 Stansfield Road",
+  "dossier_photo": "Brixton, maison natale de David Bowie (40 Stansfield Road)",
+  "nature": "permanent",
+  "type": "domicile",
+  "adresse": "40 Stansfield Road",
+  "quartier": "Brixton",
+  "coordonnees": {
+    "lat": 51.465805,
+    "lon": -0.118572,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "David Bowie"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 7,
+    "nb_photos": 7,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2023-07-03"
+    ],
+    "annees": [
+      "2023"
+    ],
+    "adresses_apple": [
+      "29 Stansfield Road",
+      "1–21 Stansfield Road"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.465805,
+      "lon": -0.118572,
+      "nb_points": 7,
+      "dispersion_p90_m": 121
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "ronnie-scotts",
+  "nom": "Ronnie Scott's",
+  "dossier_photo": "Ronnie Scott's (47 Frith Street)",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "47 Frith Street",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.513455,
+    "lon": -0.131347,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [
+    {
+      "type": "chronique d'album",
+      "date": "2009-03-28",
+      "titre": "Jeff Beck, Live at Ronnie Scott's",
+      "url": "https://laurentrieppi.com/2009/03/28/jeff-beck-live-at-ronnie-scotts/",
+      "faits_a_reprendre": "Derniere apparition sur scene de Jimi Hendrix le 16 septembre 1970 avec Eric Burdon & War, live de Jeff Beck enregistre en 2007 (invites Clapton, Joss Stone), entretien telephonique de Laurent avec Jeff Beck.",
+      "a_verifier": ""
+    }
+  ],
+  "import": {
+    "nb_fichiers": 3,
+    "nb_photos": 3,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2024-11-11"
+    ],
+    "annees": [
+      "2024"
+    ],
+    "adresses_apple": [
+      "21 Frith Street"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.513455,
+      "lon": -0.131347,
+      "nb_points": 3,
+      "dispersion_p90_m": 0
+    }
+  }
+}

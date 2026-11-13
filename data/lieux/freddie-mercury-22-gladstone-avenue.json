@@ -1,0 +1,53 @@
+{
+  "id": "freddie-mercury-22-gladstone-avenue",
+  "nom": "Maison de Freddie Mercury, 22 Gladstone Avenue",
+  "dossier_photo": "Feltham, 22 Gladstone Avenue (maison de Freddie Mercury)",
+  "nature": "permanent",
+  "type": "domicile",
+  "adresse": "22 Gladstone Avenue",
+  "quartier": "Feltham",
+  "coordonnees": {
+    "lat": 51.453967,
+    "lon": -0.41027,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Freddie Mercury"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 3,
+    "nb_photos": 3,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2025-10-19"
+    ],
+    "annees": [
+      "2025"
+    ],
+    "adresses_apple": [
+      "22 Gladstone Avenue"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.453967,
+      "lon": -0.41027,
+      "nb_points": 3,
+      "dispersion_p90_m": 7
+    }
+  }
+}

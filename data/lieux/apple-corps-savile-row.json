@@ -1,0 +1,56 @@
+{
+  "id": "apple-corps-savile-row",
+  "nom": "Apple Corps, Savile Row",
+  "dossier_photo": "Apple Corps, Savile Row (concert sur le toit)",
+  "nature": "permanent",
+  "type": "autre",
+  "adresse": "Savile Row",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.510397,
+    "lon": -0.139819,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "The Beatles"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "a_verifier",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 14,
+    "nb_photos": 8,
+    "nb_videos": 6,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2022-05-27",
+      "2023-09-01"
+    ],
+    "annees": [
+      "2022",
+      "2023"
+    ],
+    "adresses_apple": [
+      "5 Savile Row",
+      "11 Heddon Street"
+    ],
+    "note_verification_brute": "adresse Apple a verifier",
+    "gps_photos": {
+      "lat": 51.510397,
+      "lon": -0.139819,
+      "nb_points": 14,
+      "dispersion_p90_m": 8
+    }
+  }
+}

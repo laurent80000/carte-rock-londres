@@ -1,0 +1,56 @@
+{
+  "id": "beckenham-croydon-road-recreation-ground",
+  "nom": "Croydon Road Recreation Ground",
+  "dossier_photo": "Beckenham, Croydon Road Recreation Ground (Bowie)",
+  "nature": "permanent",
+  "type": "autre",
+  "adresse": null,
+  "quartier": "Beckenham",
+  "coordonnees": {
+    "lat": 51.403605,
+    "lon": -0.034667,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "David Bowie"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "a_verifier",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 27,
+    "nb_photos": 21,
+    "nb_videos": 6,
+    "nb_originaux": 3,
+    "jours_de_visite": [
+      "2024-06-26",
+      "2026-07-11"
+    ],
+    "annees": [
+      "2024",
+      "2026"
+    ],
+    "adresses_apple": [
+      "319 Croydon Road",
+      "379 Croydon Road"
+    ],
+    "note_verification_brute": "a verifier",
+    "gps_photos": {
+      "lat": 51.403605,
+      "lon": -0.034667,
+      "nb_points": 27,
+      "dispersion_p90_m": 121
+    }
+  }
+}

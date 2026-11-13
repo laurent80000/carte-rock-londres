@@ -1,0 +1,55 @@
+{
+  "id": "beckenham-three-tuns",
+  "nom": "Three Tuns (Arts Lab)",
+  "dossier_photo": "Beckenham, Three Tuns (Bowie, Arts Lab)",
+  "nature": "permanent",
+  "type": "pub",
+  "adresse": null,
+  "quartier": "Beckenham",
+  "coordonnees": {
+    "lat": 51.406491,
+    "lon": -0.028727,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "David Bowie"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "a_verifier",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 20,
+    "nb_photos": 17,
+    "nb_videos": 3,
+    "nb_originaux": 4,
+    "jours_de_visite": [
+      "2024-06-26",
+      "2026-07-11"
+    ],
+    "annees": [
+      "2024",
+      "2026"
+    ],
+    "adresses_apple": [
+      "157 High Street"
+    ],
+    "note_verification_brute": "a verifier",
+    "gps_photos": {
+      "lat": 51.406491,
+      "lon": -0.028727,
+      "nb_points": 20,
+      "dispersion_p90_m": 18
+    }
+  }
+}

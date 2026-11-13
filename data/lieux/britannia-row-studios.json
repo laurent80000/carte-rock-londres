@@ -1,0 +1,54 @@
+{
+  "id": "britannia-row-studios",
+  "nom": "Britannia Row Studios",
+  "dossier_photo": "Britannia Row Studios (Pink Floyd)",
+  "nature": "permanent",
+  "type": "studio",
+  "adresse": null,
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.537467,
+    "lon": -0.097261,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Pink Floyd"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 7,
+    "nb_photos": 7,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2022-05-29"
+    ],
+    "annees": [
+      "2022"
+    ],
+    "adresses_apple": [
+      "31-33 Denham Lodge, Britannia Row",
+      "1–5 Britannia Row"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.537467,
+      "lon": -0.097261,
+      "nb_points": 7,
+      "dispersion_p90_m": 161
+    }
+  }
+}

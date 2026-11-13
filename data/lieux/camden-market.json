@@ -1,0 +1,60 @@
+{
+  "id": "camden-market",
+  "nom": "Camden Market",
+  "dossier_photo": "Camden Market",
+  "nature": "permanent",
+  "type": "autre",
+  "adresse": null,
+  "quartier": "Camden",
+  "coordonnees": {
+    "lat": 51.541113,
+    "lon": -0.145855,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "non_renseigne",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 29,
+    "nb_photos": 27,
+    "nb_videos": 2,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2023-07-04",
+      "2024-03-20",
+      "2024-03-21",
+      "2024-06-25",
+      "2024-11-09"
+    ],
+    "annees": [
+      "2023",
+      "2024"
+    ],
+    "adresses_apple": [
+      "Camden Market",
+      "Canal-Side Walk",
+      "198 Camden High Street",
+      "28 Jamestown Road",
+      "10-12 Dewsbury Terrace"
+    ],
+    "note_verification_brute": "",
+    "gps_photos": {
+      "lat": 51.541113,
+      "lon": -0.145855,
+      "nb_points": 29,
+      "dispersion_p90_m": 216
+    }
+  }
+}

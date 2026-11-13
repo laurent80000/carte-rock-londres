@@ -1,0 +1,53 @@
+{
+  "id": "marc-bolan-rock-shrine",
+  "nom": "Marc Bolan Rock Shrine",
+  "dossier_photo": "Marc Bolan Rock Shrine (Barnes)",
+  "nature": "permanent",
+  "type": "memorial",
+  "adresse": null,
+  "quartier": "Barnes",
+  "coordonnees": {
+    "lat": 51.465937,
+    "lon": -0.238675,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Marc Bolan"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "a_verifier",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 9,
+    "nb_photos": 9,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2022-05-28"
+    ],
+    "annees": [
+      "2022"
+    ],
+    "adresses_apple": [
+      "9–47 Queen's Ride"
+    ],
+    "note_verification_brute": "a verifier",
+    "gps_photos": {
+      "lat": 51.465937,
+      "lon": -0.238675,
+      "nb_points": 9,
+      "dispersion_p90_m": 6
+    }
+  }
+}

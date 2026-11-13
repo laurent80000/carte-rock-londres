@@ -1,0 +1,53 @@
+{
+  "id": "tower-house",
+  "nom": "Tower House",
+  "dossier_photo": "Tower House, 29 Melbury Road (Jimmy Page)",
+  "nature": "permanent",
+  "type": "domicile",
+  "adresse": "29 Melbury Road",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.499695,
+    "lon": -0.203055,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Jimmy Page"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 7,
+    "nb_photos": 6,
+    "nb_videos": 1,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2022-05-26"
+    ],
+    "annees": [
+      "2022"
+    ],
+    "adresses_apple": [
+      "29 Tower House, Melbury Road"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.499695,
+      "lon": -0.203055,
+      "nb_points": 7,
+      "dispersion_p90_m": 10
+    }
+  }
+}

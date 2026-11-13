@@ -1,0 +1,55 @@
+{
+  "id": "hackney-empire",
+  "nom": "Hackney Empire",
+  "dossier_photo": "Hackney Empire (lancement de Hackney Diamonds, Rolling Stones)",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": null,
+  "quartier": "Hackney",
+  "coordonnees": {
+    "lat": 51.545295,
+    "lon": -0.0555,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "The Rolling Stones"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 16,
+    "nb_photos": 11,
+    "nb_videos": 5,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2023-09-06"
+    ],
+    "annees": [
+      "2023"
+    ],
+    "adresses_apple": [
+      "Wilton Way",
+      "2 Sylvester Path",
+      "290-296 Maidenway House, Mare Street"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.545295,
+      "lon": -0.0555,
+      "nb_points": 16,
+      "dispersion_p90_m": 60
+    }
+  }
+}

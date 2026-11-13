@@ -1,0 +1,55 @@
+{
+  "id": "olympic-studios",
+  "nom": "Olympic Studios",
+  "dossier_photo": "Olympic Studios (Barnes)",
+  "nature": "permanent",
+  "type": "studio",
+  "adresse": null,
+  "quartier": "Barnes",
+  "coordonnees": {
+    "lat": 51.475138,
+    "lon": -0.240671,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 28,
+    "nb_photos": 28,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2022-05-28",
+      "2025-10-19"
+    ],
+    "annees": [
+      "2022",
+      "2025"
+    ],
+    "adresses_apple": [
+      "Church Road",
+      "Orchard House, 115 Church Road",
+      "117-123 Church Road"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.475138,
+      "lon": -0.240671,
+      "nb_points": 28,
+      "dispersion_p90_m": 37
+    }
+  }
+}

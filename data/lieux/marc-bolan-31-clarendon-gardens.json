@@ -1,0 +1,53 @@
+{
+  "id": "marc-bolan-31-clarendon-gardens",
+  "nom": "Marc Bolan, 31 Clarendon Gardens",
+  "dossier_photo": "Marc Bolan, 31 Clarendon Gardens (plaque bleue)",
+  "nature": "permanent",
+  "type": "plaque",
+  "adresse": "31 Clarendon Gardens",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.524137,
+    "lon": -0.180795,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Marc Bolan"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 17,
+    "nb_photos": 15,
+    "nb_videos": 2,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2026-09-12"
+    ],
+    "annees": [
+      "2026"
+    ],
+    "adresses_apple": [
+      "30 Clarendon Gardens"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.524137,
+      "lon": -0.180795,
+      "nb_points": 17,
+      "dispersion_p90_m": 15
+    }
+  }
+}

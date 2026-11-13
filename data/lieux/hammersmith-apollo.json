@@ -1,0 +1,55 @@
+{
+  "id": "hammersmith-apollo",
+  "nom": "Hammersmith Apollo",
+  "dossier_photo": "Hammersmith Apollo",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": null,
+  "quartier": "Hammersmith",
+  "coordonnees": {
+    "lat": 51.4908,
+    "lon": -0.224342,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 67,
+    "nb_photos": 64,
+    "nb_videos": 3,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2022-05-28",
+      "2023-07-03"
+    ],
+    "annees": [
+      "2022",
+      "2023"
+    ],
+    "adresses_apple": [
+      "Hammersmith",
+      "Eventim Apollo",
+      "Fulham Palace Road"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.4908,
+      "lon": -0.224342,
+      "nb_points": 67,
+      "dispersion_p90_m": 41
+    }
+  }
+}

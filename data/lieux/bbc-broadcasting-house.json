@@ -1,0 +1,55 @@
+{
+  "id": "bbc-broadcasting-house",
+  "nom": "BBC Broadcasting House",
+  "dossier_photo": "BBC Broadcasting House",
+  "nature": "permanent",
+  "type": "autre",
+  "adresse": null,
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.518158,
+    "lon": -0.143572,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 15,
+    "nb_photos": 15,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2022-05-27"
+    ],
+    "annees": [
+      "2022"
+    ],
+    "adresses_apple": [
+      "14 Langham Place",
+      "All Souls' Place",
+      "2 All Souls' Place",
+      "Langham Place",
+      "2–28 Langham Street"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.518158,
+      "lon": -0.143572,
+      "nb_points": 15,
+      "dispersion_p90_m": 100
+    }
+  }
+}

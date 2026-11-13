@@ -1,0 +1,55 @@
+{
+  "id": "roundhouse",
+  "nom": "Roundhouse",
+  "dossier_photo": "Roundhouse (Chalk Farm)",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": null,
+  "quartier": "Chalk Farm",
+  "coordonnees": {
+    "lat": 51.543388,
+    "lon": -0.151831,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "non_renseigne",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 413,
+    "nb_photos": 397,
+    "nb_videos": 16,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2022-05-29",
+      "2026-09-28"
+    ],
+    "annees": [
+      "2022",
+      "2026"
+    ],
+    "adresses_apple": [
+      "110A Chalk Farm Road",
+      "100 Chalk Farm Road",
+      "70 Chalk Farm Road"
+    ],
+    "note_verification_brute": "",
+    "gps_photos": {
+      "lat": 51.543388,
+      "lon": -0.151831,
+      "nb_points": 413,
+      "dispersion_p90_m": 3
+    }
+  }
+}

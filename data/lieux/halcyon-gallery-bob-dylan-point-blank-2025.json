@@ -1,0 +1,59 @@
+{
+  "id": "halcyon-gallery-bob-dylan-point-blank-2025",
+  "nom": "Exposition Bob Dylan, Point Blank, à la Halcyon Gallery",
+  "dossier_photo": "Halcyon Gallery (exposition Bob Dylan, Point Blank, 2025)",
+  "nature": "evenement",
+  "type": "exposition",
+  "adresse": null,
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.511337,
+    "lon": -0.143561,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Bob Dylan"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "evenement": {
+    "lieu_hote": "Halcyon Gallery",
+    "date_debut": null,
+    "date_fin": null,
+    "annee": "2025"
+  },
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 18,
+    "nb_photos": 18,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2025-05-16"
+    ],
+    "annees": [
+      "2025"
+    ],
+    "adresses_apple": [
+      "149 New Bond Street"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.511337,
+      "lon": -0.143561,
+      "nb_points": 18,
+      "dispersion_p90_m": 16
+    }
+  }
+}

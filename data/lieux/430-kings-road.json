@@ -1,0 +1,62 @@
+{
+  "id": "430-kings-road",
+  "nom": "430 King's Road (boutique SEX)",
+  "dossier_photo": "430 King's Road (boutique SEX, Malcolm McLaren)",
+  "nature": "permanent",
+  "type": "boutique",
+  "adresse": "430 King's Road",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.4832,
+    "lon": -0.177362,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Malcolm McLaren"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "non_renseigne",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [
+    {
+      "type": "dossier",
+      "date": "2026-03-23",
+      "titre": "Punk (L'Odyssee du Punk, de Detroit a Londres)",
+      "url": "https://laurentrieppi.com/livres/rock-progressif-playlist/punk/",
+      "faits_a_reprendre": "Dossier sur le punk avec une partie londonienne : Malcolm McLaren et Vivienne Westwood, boutique SEX, Sex Pistols, The Clash, The Damned, The Stranglers.",
+      "a_verifier": ""
+    }
+  ],
+  "import": {
+    "nb_fichiers": 13,
+    "nb_photos": 11,
+    "nb_videos": 2,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2026-09-30"
+    ],
+    "annees": [
+      "2026"
+    ],
+    "adresses_apple": [
+      "430 The Clockhouse, King's Road"
+    ],
+    "note_verification_brute": "",
+    "gps_photos": {
+      "lat": 51.4832,
+      "lon": -0.177362,
+      "nb_points": 13,
+      "dispersion_p90_m": 19
+    }
+  }
+}

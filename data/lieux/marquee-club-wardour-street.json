@@ -1,0 +1,72 @@
+{
+  "id": "marquee-club-wardour-street",
+  "nom": "Marquee Club (Wardour Street)",
+  "dossier_photo": "Marquee Club (90 Wardour Street)",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "90 Wardour Street",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.513397,
+    "lon": -0.133946,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "a_verifier",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [
+    {
+      "type": "recit de visite",
+      "date": "2023-07-06",
+      "titre": "Retour au Marquee Club, salle rock mythique de Londres",
+      "url": "https://laurentrieppi.com/2023/07/06/retour-au-marquee-club-salle-rock-mythique-de-londres/",
+      "faits_a_reprendre": "Club ouvert en 1958, reference du rock des annees 60 (Stones, Yardbirds, Who, Hendrix, Pink Floyd, Bowie avec les Manish Boys), petit studio a l'arriere, plaque Keith Moon sur la facade.",
+      "a_verifier": "L'article parle de facade du club original : le Marquee de 1958 etait au 165 Oxford Street, Wardour Street est la deuxieme adresse (1964). Date de fermeture 2009 a verifier (2008 selon les sources courantes)"
+    },
+    {
+      "type": "chronique d'album",
+      "date": "2020-12-26",
+      "titre": "Five Live Yardbirds",
+      "url": "https://laurentrieppi.com/2020/12/26/five-live-yardbirds/",
+      "faits_a_reprendre": "Album live des Yardbirds (Clapton, Dreja, McCarty, Relf, Samwell-Smith) enregistre au Marquee, sorti le 31 decembre 1964.",
+      "a_verifier": "Le concert de mars 1964 a ete enregistre au Marquee d'Oxford Street, pas a Wardour Street : a verifier avant de le rattacher a ce point"
+    }
+  ],
+  "import": {
+    "nb_fichiers": 10,
+    "nb_photos": 10,
+    "nb_videos": 0,
+    "nb_originaux": 1,
+    "jours_de_visite": [
+      "2023-07-04",
+      "2026-07-10"
+    ],
+    "annees": [
+      "2023",
+      "2026"
+    ],
+    "adresses_apple": [
+      "90-100 Wardour Street",
+      "135-139 Wardour Street",
+      "88 Wardour Street"
+    ],
+    "note_verification_brute": "ancienne adresse du Marquee, a verifier",
+    "gps_photos": {
+      "lat": 51.513397,
+      "lon": -0.133946,
+      "nb_points": 10,
+      "dispersion_p90_m": 57
+    }
+  }
+}

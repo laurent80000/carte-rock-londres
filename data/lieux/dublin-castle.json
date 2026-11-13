@@ -1,0 +1,65 @@
+{
+  "id": "dublin-castle",
+  "nom": "Dublin Castle",
+  "dossier_photo": "Dublin Castle (94 Parkway, Camden)",
+  "nature": "permanent",
+  "type": "pub",
+  "adresse": "94 Parkway",
+  "quartier": "Camden",
+  "coordonnees": {
+    "lat": 51.53745,
+    "lon": -0.14554,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "non_renseigne",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [
+    {
+      "type": "recit de visite",
+      "date": "2024-03-21",
+      "titre": "Le Dublin Castle de Camden, club mythique de Londres",
+      "url": "https://laurentrieppi.com/2024/03/21/le-dublin-castle-de-camden-club-mythique-de-londres/",
+      "faits_a_reprendre": "Madness y forge sa reputation en 1979 (plaque devoilee en 2017), concert secret de Blur le 18 mai 1995 avec la premiere de Stereotypes, Coldplay le 22 fevrier 1998, Amy Winehouse habituee et amie de la proprietaire Peggy Conlon, tremplin de Supergrass, The Killers, Arctic Monkeys.",
+      "a_verifier": "Date du concert de Coldplay a recouper"
+    }
+  ],
+  "import": {
+    "nb_fichiers": 56,
+    "nb_photos": 53,
+    "nb_videos": 3,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2024-03-20",
+      "2024-06-25",
+      "2024-11-09",
+      "2025-02-09"
+    ],
+    "annees": [
+      "2024",
+      "2025"
+    ],
+    "adresses_apple": [
+      "94 Parkway",
+      "88 Parkway"
+    ],
+    "note_verification_brute": "",
+    "gps_photos": {
+      "lat": 51.53745,
+      "lon": -0.14554,
+      "nb_points": 56,
+      "dispersion_p90_m": 18
+    }
+  }
+}

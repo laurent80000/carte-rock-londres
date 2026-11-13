@@ -1,0 +1,53 @@
+{
+  "id": "cafe-royal",
+  "nom": "Café Royal",
+  "dossier_photo": "Café Royal (The Last Supper, David Bowie)",
+  "nature": "permanent",
+  "type": "autre",
+  "adresse": null,
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.510338,
+    "lon": -0.136392,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "David Bowie"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 13,
+    "nb_photos": 13,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2023-07-03"
+    ],
+    "annees": [
+      "2023"
+    ],
+    "adresses_apple": [
+      "8 Air Street"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.510338,
+      "lon": -0.136392,
+      "nb_points": 13,
+      "dispersion_p90_m": 5
+    }
+  }
+}

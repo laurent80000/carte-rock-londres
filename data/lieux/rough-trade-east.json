@@ -1,0 +1,51 @@
+{
+  "id": "rough-trade-east",
+  "nom": "Rough Trade East",
+  "dossier_photo": "Rough Trade East (Brick Lane)",
+  "nature": "permanent",
+  "type": "boutique",
+  "adresse": null,
+  "quartier": "Brick Lane",
+  "coordonnees": {
+    "lat": 51.521145,
+    "lon": -0.072341,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 26,
+    "nb_photos": 26,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2023-04-30"
+    ],
+    "annees": [
+      "2023"
+    ],
+    "adresses_apple": [
+      "Trumans Brewery, 91 Brick Lane"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.521145,
+      "lon": -0.072341,
+      "nb_points": 26,
+      "dispersion_p90_m": 13
+    }
+  }
+}

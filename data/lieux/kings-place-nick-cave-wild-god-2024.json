@@ -1,0 +1,59 @@
+{
+  "id": "kings-place-nick-cave-wild-god-2024",
+  "nom": "Nick Cave, Wild God, à Kings Place",
+  "dossier_photo": "Kings Place (Nick Cave, Wild God, 2024)",
+  "nature": "evenement",
+  "type": "autre",
+  "adresse": null,
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.535003,
+    "lon": -0.122153,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Nick Cave"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "evenement": {
+    "lieu_hote": "Kings Place",
+    "date_debut": null,
+    "date_fin": null,
+    "annee": "2024"
+  },
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 7,
+    "nb_photos": 6,
+    "nb_videos": 1,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2024-08-29"
+    ],
+    "annees": [
+      "2024"
+    ],
+    "adresses_apple": [
+      "90 York Way"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.535003,
+      "lon": -0.122153,
+      "nb_points": 7,
+      "dispersion_p90_m": 33
+    }
+  }
+}

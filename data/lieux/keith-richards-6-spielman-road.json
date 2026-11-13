@@ -1,0 +1,54 @@
+{
+  "id": "keith-richards-6-spielman-road",
+  "nom": "Keith Richards, 6 Spielman Road",
+  "dossier_photo": "Dartford, 6 Spielman Road (Keith Richards)",
+  "nature": "permanent",
+  "type": "domicile",
+  "adresse": "6 Spielman Road",
+  "quartier": "Dartford",
+  "coordonnees": {
+    "lat": 51.45428,
+    "lon": 0.224033,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Keith Richards"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 5,
+    "nb_photos": 5,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2023-04-28"
+    ],
+    "annees": [
+      "2023"
+    ],
+    "adresses_apple": [
+      "4 Spielman Road",
+      "5–9 Spielman Road"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.45428,
+      "lon": 0.224033,
+      "nb_points": 5,
+      "dispersion_p90_m": 29
+    }
+  }
+}

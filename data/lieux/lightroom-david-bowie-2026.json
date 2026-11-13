@@ -1,0 +1,60 @@
+{
+  "id": "lightroom-david-bowie-2026",
+  "nom": "David Bowie au Lightroom",
+  "dossier_photo": "Lightroom (12 Lewis Cubitt Square, David Bowie)",
+  "nature": "evenement",
+  "type": "exposition",
+  "adresse": "12 Lewis Cubitt Square",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.537472,
+    "lon": -0.126092,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "David Bowie"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "evenement": {
+    "lieu_hote": "Lightroom",
+    "date_debut": null,
+    "date_fin": null,
+    "annee": "2026"
+  },
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 21,
+    "nb_photos": 18,
+    "nb_videos": 3,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2026-09-12"
+    ],
+    "annees": [
+      "2026"
+    ],
+    "adresses_apple": [
+      "12 Lewis Cubitt Square",
+      "8 Lewis Cubitt Square"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.537472,
+      "lon": -0.126092,
+      "nb_points": 21,
+      "dispersion_p90_m": 70
+    }
+  }
+}

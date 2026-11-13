@@ -1,0 +1,74 @@
+{
+  "id": "wembley-stadium",
+  "nom": "Wembley Stadium",
+  "dossier_photo": "Wembley Stadium",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": null,
+  "quartier": "Wembley",
+  "coordonnees": {
+    "lat": 51.556492,
+    "lon": -0.2792,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "non_renseigne",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [
+    {
+      "type": "recit de concert",
+      "date": "2023-07-10",
+      "titre": "Blur, Wembley le samedi 8 juillet 2023",
+      "url": "https://laurentrieppi.com/2023/07/10/blur-wembley-le-samedi-8-juillet-2023/",
+      "faits_a_reprendre": "Concert de Blur du 8 juillet 2023, Damon Albarn cite Freddie Mercury, rappel du Live Aid et du Freddie Mercury Tribute de 1992.",
+      "a_verifier": ""
+    },
+    {
+      "type": "article anniversaire",
+      "date": "2025-07-15",
+      "titre": "Live Aid : 40 ans deja",
+      "url": "https://laurentrieppi.com/2025/07/15/live-aid-40-ans-deja-et-toujours-autant-de-frissons/",
+      "faits_a_reprendre": "Live Aid du 13 juillet 1985, Phil Collins joue a Wembley puis a Philadelphie le meme jour.",
+      "a_verifier": ""
+    }
+  ],
+  "import": {
+    "nb_fichiers": 101,
+    "nb_photos": 88,
+    "nb_videos": 13,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2023-07-08",
+      "2025-10-21"
+    ],
+    "annees": [
+      "2023",
+      "2025"
+    ],
+    "adresses_apple": [
+      "Wembley Stadium",
+      "47–55 Olympic Way",
+      "Olympic Way East",
+      "Engineers Way",
+      "Londres"
+    ],
+    "note_verification_brute": "",
+    "gps_photos": {
+      "lat": 51.556492,
+      "lon": -0.2792,
+      "nb_points": 101,
+      "dispersion_p90_m": 113
+    }
+  }
+}

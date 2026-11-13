@@ -1,0 +1,54 @@
+{
+  "id": "brixton-fresque-david-bowie",
+  "nom": "Fresque David Bowie de Brixton",
+  "dossier_photo": "Brixton, fresque David Bowie (Tunstall Road)",
+  "nature": "permanent",
+  "type": "fresque",
+  "adresse": "Tunstall Road",
+  "quartier": "Brixton",
+  "coordonnees": {
+    "lat": 51.462678,
+    "lon": -0.115431,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "David Bowie"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 9,
+    "nb_photos": 8,
+    "nb_videos": 1,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2023-07-03"
+    ],
+    "annees": [
+      "2023"
+    ],
+    "adresses_apple": [
+      "6 Tunstall Road",
+      "2–4 Tunstall Road"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.462678,
+      "lon": -0.115431,
+      "nb_points": 9,
+      "dispersion_p90_m": 6
+    }
+  }
+}

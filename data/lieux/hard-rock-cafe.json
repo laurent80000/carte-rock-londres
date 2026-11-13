@@ -1,0 +1,51 @@
+{
+  "id": "hard-rock-cafe",
+  "nom": "Hard Rock Cafe",
+  "dossier_photo": "Hard Rock Cafe (Old Park Lane)",
+  "nature": "permanent",
+  "type": "autre",
+  "adresse": "Old Park Lane",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.503845,
+    "lon": -0.148978,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 3,
+    "nb_photos": 3,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2025-10-19"
+    ],
+    "annees": [
+      "2025"
+    ],
+    "adresses_apple": [
+      "Hamilton Place"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.503845,
+      "lon": -0.148978,
+      "nb_points": 3,
+      "dispersion_p90_m": 3
+    }
+  }
+}

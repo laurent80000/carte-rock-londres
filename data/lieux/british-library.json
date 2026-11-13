@@ -1,0 +1,56 @@
+{
+  "id": "british-library",
+  "nom": "British Library (manuscrits des Beatles)",
+  "dossier_photo": "British Library (manuscrits des Beatles)",
+  "nature": "permanent",
+  "type": "musee",
+  "adresse": null,
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.529605,
+    "lon": -0.128144,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "The Beatles"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 23,
+    "nb_photos": 21,
+    "nb_videos": 2,
+    "nb_originaux": 2,
+    "jours_de_visite": [
+      "2023-05-01",
+      "2026-07-12"
+    ],
+    "annees": [
+      "2023",
+      "2026"
+    ],
+    "adresses_apple": [
+      "32–40 Ossulston Street",
+      "96 Euston Road"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.529605,
+      "lon": -0.128144,
+      "nb_points": 23,
+      "dispersion_p90_m": 64
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "id": "island-studios",
+  "nom": "Island Studios",
+  "dossier_photo": "Island Studios (10 Basing Street)",
+  "nature": "permanent",
+  "type": "studio",
+  "adresse": "10 Basing Street",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.517637,
+    "lon": -0.20512,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "non_renseigne",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [
+    {
+      "type": "interview",
+      "date": "2026-10-27",
+      "titre": "Ron Nevison, de Quadrophenia des Who a Physical Graffiti de Led Zeppelin",
+      "url": "https://laurentrieppi.com/2026/10/27/interview-ron-nevison/",
+      "faits_a_reprendre": "Ron Nevison debute comme assistant aux Island Studios de Basing Street grace a Chris Blackwell, console Helios et enregistreur Studer. Il evoque aussi le studio mobile Airstream de Ronnie Lane, la societe de Pete Townshend qui construit des studios, le club Tramp, Olympic et un studio a Battersea.",
+      "a_verifier": "Tramp et le studio de Battersea (Ramport) sont des points a creer"
+    },
+    {
+      "type": "page Studio Experience",
+      "date": "2026-11-05",
+      "titre": "Led Zeppelin IV de Led Zeppelin",
+      "url": "https://laurentrieppi.com/studio-experience/led-zeppelin-iv/",
+      "faits_a_reprendre": "Les seances de Led Zeppelin IV commencent a Island le 5 decembre 1970 avec Black Dog, derniers ajouts a Island en fevrier 1971.",
+      "a_verifier": ""
+    }
+  ],
+  "import": {
+    "nb_fichiers": 26,
+    "nb_photos": 25,
+    "nb_videos": 1,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2022-05-30",
+      "2024-11-08"
+    ],
+    "annees": [
+      "2022",
+      "2024"
+    ],
+    "adresses_apple": [
+      "10 Basing Street",
+      "15 Basing Street",
+      "25–43 Lancaster Road",
+      "28–98 Saint Luke's Mews"
+    ],
+    "note_verification_brute": "",
+    "gps_photos": {
+      "lat": 51.517637,
+      "lon": -0.20512,
+      "nb_points": 26,
+      "dispersion_p90_m": 20
+    }
+  }
+}

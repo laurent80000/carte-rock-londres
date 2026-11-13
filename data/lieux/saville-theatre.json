@@ -1,0 +1,51 @@
+{
+  "id": "saville-theatre",
+  "nom": "Saville Theatre",
+  "dossier_photo": "Saville Theatre (135 Shaftesbury Avenue)",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "135 Shaftesbury Avenue",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.514159,
+    "lon": -0.128001,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 10,
+    "nb_photos": 10,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2024-03-19"
+    ],
+    "annees": [
+      "2024"
+    ],
+    "adresses_apple": [
+      "135-149 Shaftesbury Avenue"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.514159,
+      "lon": -0.128001,
+      "nb_points": 10,
+      "dispersion_p90_m": 29
+    }
+  }
+}

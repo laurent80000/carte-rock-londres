@@ -1,0 +1,54 @@
+{
+  "id": "keith-richards-33-chastilian-road",
+  "nom": "Keith Richards, 33 Chastilian Road",
+  "dossier_photo": "Keith Richards, 33 Chastilian Road (Dartford)",
+  "nature": "permanent",
+  "type": "domicile",
+  "adresse": "33 Chastilian Road",
+  "quartier": "Dartford",
+  "coordonnees": {
+    "lat": 51.4435,
+    "lon": 0.191197,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Keith Richards"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 11,
+    "nb_photos": 11,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2023-04-28"
+    ],
+    "annees": [
+      "2023"
+    ],
+    "adresses_apple": [
+      "33 Chastilian Road",
+      "39 Denver Road"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.4435,
+      "lon": 0.191197,
+      "nb_points": 11,
+      "dispersion_p90_m": 223
+    }
+  }
+}

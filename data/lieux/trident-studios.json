@@ -1,0 +1,87 @@
+{
+  "id": "trident-studios",
+  "nom": "Trident Studios",
+  "dossier_photo": "Trident Studios (17 St Anne's Court)",
+  "nature": "permanent",
+  "type": "studio",
+  "adresse": "17 St Anne's Court",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.514367,
+    "lon": -0.134228,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [
+    {
+      "type": "recit de visite",
+      "date": "2011-03-22",
+      "titre": "Les studios Trident au centre de Londres, des studios mythiques",
+      "url": "https://laurentrieppi.com/2011/03/22/les-studios-trident-au-centre-de-londres-des-studios-mythiques/",
+      "faits_a_reprendre": "Visite fin fevrier 2011 pour interviewer Brian May et Roger Taylor. Studio fonde par Norman et Barry Sheffield, enregistreur 8 pistes qui attire les Beatles (Hey Jude, plusieurs titres de l'album blanc), Bowie (Space Oddity, Ziggy Stardust), T. Rex (Electric Warrior), Lou Reed (Transformer), les deux premiers albums de Queen. Revente en 1981.",
+      "a_verifier": ""
+    },
+    {
+      "type": "interview",
+      "date": "2026-10-22",
+      "titre": "Anthony Phillips et les debuts de Genesis jusqu'a Trespass",
+      "url": "https://laurentrieppi.com/2026/10/22/interview-anthony-phillips/",
+      "faits_a_reprendre": "Trespass de Genesis enregistre a Trident a l'ete 1970, temoignage direct du guitariste Anthony Phillips.",
+      "a_verifier": ""
+    },
+    {
+      "type": "interview",
+      "date": "2026-10-26",
+      "titre": "Trevor Horn et la fabrication de The Age of Plastic des Buggles",
+      "url": "https://laurentrieppi.com/2026/10/26/interview-trevor-horn/",
+      "faits_a_reprendre": "Trevor Horn raconte un micro installe dans Wardour Street depuis Trident pour une introduction des Buggles.",
+      "a_verifier": ""
+    },
+    {
+      "type": "page Studio Experience",
+      "date": "2026-10-26",
+      "titre": "Crime of the Century de Supertramp",
+      "url": "https://laurentrieppi.com/studio-experience/crime-of-the-century/",
+      "faits_a_reprendre": "Album enregistre de fevrier a juin 1974 dans trois studios londoniens dont Trident et Ramport (studio des Who), sons de train a Paddington et de foule a Leicester Square.",
+      "a_verifier": "Ramport, Paddington et Leicester Square sont des points a creer"
+    }
+  ],
+  "import": {
+    "nb_fichiers": 5,
+    "nb_photos": 5,
+    "nb_videos": 0,
+    "nb_originaux": 1,
+    "jours_de_visite": [
+      "2022-05-27",
+      "2026-07-11"
+    ],
+    "annees": [
+      "2022",
+      "2026"
+    ],
+    "adresses_apple": [
+      "17 Saint Anne's Court",
+      "16A Saint Anne's Court"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.514367,
+      "lon": -0.134228,
+      "nb_points": 5,
+      "dispersion_p90_m": 5
+    }
+  }
+}

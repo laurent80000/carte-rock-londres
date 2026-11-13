@@ -1,0 +1,62 @@
+{
+  "id": "clissold-arms",
+  "nom": "Clissold Arms",
+  "dossier_photo": "Clissold Arms (Fortis Green, les Kinks)",
+  "nature": "permanent",
+  "type": "pub",
+  "adresse": null,
+  "quartier": "Fortis Green",
+  "coordonnees": {
+    "lat": 51.590667,
+    "lon": -0.1554,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "The Kinks"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [
+    {
+      "type": "recit de visite",
+      "date": "2025-07-31",
+      "titre": "Sur les traces des Kinks a Muswell Hill, Londres (juillet 2025)",
+      "url": "https://laurentrieppi.com/2025/07/31/sur-les-traces-des-kinks-a-muswell-hill-londres-juillet-2025/",
+      "faits_a_reprendre": "Premier concert de Ray (16 ans) et Dave Davies (13 ans) au Clissold Arms en decembre 1960, organise par leur pere Fred, pub situe en face de la maison familiale, plaque The Home of The Kinks, Kinks Room. Texte bilingue, 26 images.",
+      "a_verifier": "La maison familiale en face du pub est un point a creer. Les photos de Muswell Hill restees dans _Divers appartiennent a cette visite"
+    }
+  ],
+  "import": {
+    "nb_fichiers": 41,
+    "nb_photos": 38,
+    "nb_videos": 3,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2025-07-20"
+    ],
+    "annees": [
+      "2025"
+    ],
+    "adresses_apple": [
+      "105 Fortis Green"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.590667,
+      "lon": -0.1554,
+      "nb_points": 41,
+      "dispersion_p90_m": 14
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "battersea-power-station",
+  "nom": "Battersea Power Station",
+  "dossier_photo": "Battersea Power Station (Pink Floyd, Animals)",
+  "nature": "permanent",
+  "type": "pochette",
+  "adresse": null,
+  "quartier": "Battersea",
+  "coordonnees": {
+    "lat": 51.482081,
+    "lon": -0.1451,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Pink Floyd"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "non_renseigne",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 132,
+    "nb_photos": 121,
+    "nb_videos": 11,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2023-07-09",
+      "2026-09-29"
+    ],
+    "annees": [
+      "2023",
+      "2026"
+    ],
+    "adresses_apple": [
+      "Faraday House, Circus Road West",
+      "Circus Road South",
+      "Aurora Gardens, 1 Circus Road East",
+      "85–99 Battersea Park Road",
+      "Circus Road North"
+    ],
+    "note_verification_brute": "",
+    "gps_photos": {
+      "lat": 51.482081,
+      "lon": -0.1451,
+      "nb_points": 132,
+      "dispersion_p90_m": 308
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "royal-albert-hall",
+  "nom": "Royal Albert Hall",
+  "dossier_photo": "Royal Albert Hall",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": null,
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.501095,
+    "lon": -0.177428,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "non_renseigne",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 137,
+    "nb_photos": 110,
+    "nb_videos": 27,
+    "nb_originaux": 1,
+    "jours_de_visite": [
+      "2022-05-26",
+      "2024-06-29",
+      "2025-11-18"
+    ],
+    "annees": [
+      "2022",
+      "2024",
+      "2025"
+    ],
+    "adresses_apple": [
+      "Royal Albert Hall",
+      "Royal College of Music, Prince Consort Road",
+      "26 Kensington Gore",
+      "Imperial College London",
+      "Jardins de Kensington"
+    ],
+    "note_verification_brute": "",
+    "gps_photos": {
+      "lat": 51.501095,
+      "lon": -0.177428,
+      "nb_points": 137,
+      "dispersion_p90_m": 149
+    }
+  }
+}

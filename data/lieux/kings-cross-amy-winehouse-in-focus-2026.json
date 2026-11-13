@@ -1,0 +1,61 @@
+{
+  "id": "kings-cross-amy-winehouse-in-focus-2026",
+  "nom": "Exposition Amy Winehouse In Focus",
+  "dossier_photo": "King's Cross (exposition Amy Winehouse In Focus, 2026)",
+  "nature": "evenement",
+  "type": "exposition",
+  "adresse": null,
+  "quartier": "King's Cross",
+  "coordonnees": {
+    "lat": 51.533267,
+    "lon": -0.125297,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Amy Winehouse"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "evenement": {
+    "lieu_hote": null,
+    "date_debut": null,
+    "date_fin": null,
+    "annee": "2026"
+  },
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 11,
+    "nb_photos": 11,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2026-09-12"
+    ],
+    "annees": [
+      "2026"
+    ],
+    "adresses_apple": [
+      "Clarence Passage",
+      "9 King's Boulevard",
+      "5 King's Boulevard"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.533267,
+      "lon": -0.125297,
+      "nb_points": 11,
+      "dispersion_p90_m": 70
+    }
+  }
+}

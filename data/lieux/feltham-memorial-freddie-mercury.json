@@ -1,0 +1,53 @@
+{
+  "id": "feltham-memorial-freddie-mercury",
+  "nom": "Mémorial Freddie Mercury de Feltham",
+  "dossier_photo": "Feltham, mémorial Freddie Mercury",
+  "nature": "permanent",
+  "type": "memorial",
+  "adresse": null,
+  "quartier": "Feltham",
+  "coordonnees": {
+    "lat": 51.445678,
+    "lon": -0.409896,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Freddie Mercury"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 6,
+    "nb_photos": 5,
+    "nb_videos": 1,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2025-10-19"
+    ],
+    "annees": [
+      "2025"
+    ],
+    "adresses_apple": [
+      "Feltham Green Park"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.445678,
+      "lon": -0.409896,
+      "nb_points": 6,
+      "dispersion_p90_m": 6
+    }
+  }
+}

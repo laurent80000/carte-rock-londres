@@ -1,0 +1,53 @@
+{
+  "id": "brompton-oratory",
+  "nom": "Brompton Oratory",
+  "dossier_photo": "Brompton Oratory (Nick Cave)",
+  "nature": "permanent",
+  "type": "autre",
+  "adresse": null,
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.496668,
+    "lon": -0.169452,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Nick Cave"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 16,
+    "nb_photos": 15,
+    "nb_videos": 1,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2022-05-29"
+    ],
+    "annees": [
+      "2022"
+    ],
+    "adresses_apple": [
+      "Thurloe Place"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.496668,
+      "lon": -0.169452,
+      "nb_points": 16,
+      "dispersion_p90_m": 26
+    }
+  }
+}

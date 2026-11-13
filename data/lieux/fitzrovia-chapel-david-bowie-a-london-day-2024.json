@@ -1,0 +1,69 @@
+{
+  "id": "fitzrovia-chapel-david-bowie-a-london-day-2024",
+  "nom": "Exposition David Bowie, A London Day, à la Fitzrovia Chapel",
+  "dossier_photo": "Fitzrovia Chapel (exposition David Bowie, A London Day, 2024)",
+  "nature": "evenement",
+  "type": "exposition",
+  "adresse": null,
+  "quartier": "Fitzrovia",
+  "coordonnees": {
+    "lat": 51.519208,
+    "lon": -0.138431,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "David Bowie"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "evenement": {
+    "lieu_hote": "Fitzrovia Chapel",
+    "date_debut": null,
+    "date_fin": null,
+    "annee": "2024"
+  },
+  "sources_site": [
+    {
+      "type": "recit de visite",
+      "date": "2024-03-20",
+      "titre": "Le sacre de David Bowie par Kevin Davies",
+      "url": "https://laurentrieppi.com/2024/03/20/le-sacre-de-david-bowie-par-kevin-davies/",
+      "faits_a_reprendre": "Exposition des photos de Kevin Davies, seance du dimanche 13 decembre 1992 a Clerkenwell avant la sortie de Black Tie White Noise.",
+      "a_verifier": "ERREUR dans l'article : la reprise de Cream sur cet album est I Feel Free, pas I'm so Free"
+    }
+  ],
+  "import": {
+    "nb_fichiers": 9,
+    "nb_photos": 9,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2024-03-19"
+    ],
+    "annees": [
+      "2024"
+    ],
+    "adresses_apple": [
+      "5 Pearson Square",
+      "Cleveland Street"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.519208,
+      "lon": -0.138431,
+      "nb_points": 9,
+      "dispersion_p90_m": 61
+    }
+  }
+}

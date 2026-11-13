@@ -1,0 +1,51 @@
+{
+  "id": "townhouse-studios",
+  "nom": "Townhouse Studios",
+  "dossier_photo": "Townhouse Studios (Goldhawk Road)",
+  "nature": "permanent",
+  "type": "studio",
+  "adresse": "Goldhawk Road",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.50175,
+    "lon": -0.231872,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 7,
+    "nb_photos": 7,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2025-05-16"
+    ],
+    "annees": [
+      "2025"
+    ],
+    "adresses_apple": [
+      "4 Townhouse Mews"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.50175,
+      "lon": -0.231872,
+      "nb_points": 7,
+      "dispersion_p90_m": 7
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "shepherds-bush-empire",
+  "nom": "Shepherd's Bush Empire",
+  "dossier_photo": "Shepherd's Bush Empire",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": null,
+  "quartier": "Shepherd's Bush",
+  "coordonnees": {
+    "lat": 51.503472,
+    "lon": -0.224258,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "non_renseigne",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [
+    {
+      "type": "recit de concert",
+      "date": "2025-05-16",
+      "titre": "Tony Visconti et Woody Woodmansey, Holy Holy, live a Londres mai 2025",
+      "url": "https://laurentrieppi.com/2025/05/16/tony-visconti-et-woody-woodmansey-holy-holy-live-a-londres-mai-2025/",
+      "faits_a_reprendre": "Concert de Holy Holy avec Tony Visconti et Woody Woodmansey, Glenn Gregory au chant. 16 images.",
+      "a_verifier": ""
+    }
+  ],
+  "import": {
+    "nb_fichiers": 204,
+    "nb_photos": 195,
+    "nb_videos": 9,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2025-05-15"
+    ],
+    "annees": [
+      "2025"
+    ],
+    "adresses_apple": [
+      "54 Shepherd's Bush Green"
+    ],
+    "note_verification_brute": "",
+    "gps_photos": {
+      "lat": 51.503472,
+      "lon": -0.224258,
+      "nb_points": 204,
+      "dispersion_p90_m": 4
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "koko",
+  "nom": "KOKO",
+  "dossier_photo": "KOKO (Camden)",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": null,
+  "quartier": "Camden",
+  "coordonnees": {
+    "lat": 51.534725,
+    "lon": -0.137947,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 81,
+    "nb_photos": 77,
+    "nb_videos": 4,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2024-06-25"
+    ],
+    "annees": [
+      "2024"
+    ],
+    "adresses_apple": [
+      "74 Crowndale Road",
+      "Mornington Crescent",
+      "Euston"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.534725,
+      "lon": -0.137947,
+      "nb_points": 81,
+      "dispersion_p90_m": 7
+    }
+  }
+}

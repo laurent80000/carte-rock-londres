@@ -1,0 +1,55 @@
+{
+  "id": "sound-techniques-studio",
+  "nom": "Sound Techniques Studio",
+  "dossier_photo": "Sound Techniques Studio (46a Old Church Street, Pink Floyd)",
+  "nature": "permanent",
+  "type": "studio",
+  "adresse": "46a Old Church Street",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.484372,
+    "lon": -0.172167,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Pink Floyd"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 19,
+    "nb_photos": 19,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2022-05-29",
+      "2026-09-30"
+    ],
+    "annees": [
+      "2022",
+      "2026"
+    ],
+    "adresses_apple": [
+      "46B Old Church Street"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.484372,
+      "lon": -0.172167,
+      "nb_points": 19,
+      "dispersion_p90_m": 13
+    }
+  }
+}

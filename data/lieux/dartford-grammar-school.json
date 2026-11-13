@@ -1,0 +1,54 @@
+{
+  "id": "dartford-grammar-school",
+  "nom": "Dartford Grammar School",
+  "dossier_photo": "Dartford Grammar School (Mick Jagger)",
+  "nature": "permanent",
+  "type": "ecole",
+  "adresse": null,
+  "quartier": "Dartford",
+  "coordonnees": {
+    "lat": 51.445743,
+    "lon": 0.206338,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Mick Jagger"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "confirme_visuellement",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [],
+  "import": {
+    "nb_fichiers": 12,
+    "nb_photos": 12,
+    "nb_videos": 0,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2023-04-28"
+    ],
+    "annees": [
+      "2023"
+    ],
+    "adresses_apple": [
+      "Dartford Grammar School",
+      "Dartford Grammar School, Shepherds Lane"
+    ],
+    "note_verification_brute": "lieu confirme visuellement",
+    "gps_photos": {
+      "lat": 51.445743,
+      "lon": 0.206338,
+      "nb_points": 12,
+      "dispersion_p90_m": 88
+    }
+  }
+}

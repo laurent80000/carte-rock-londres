@@ -1,0 +1,75 @@
+{
+  "id": "handel-hendrix-house",
+  "nom": "Handel et Hendrix House",
+  "dossier_photo": "Handel et Hendrix House (23 Brook Street)",
+  "nature": "permanent",
+  "type": "domicile",
+  "adresse": "23 Brook Street",
+  "quartier": null,
+  "coordonnees": {
+    "lat": 51.513116,
+    "lon": -0.145893,
+    "origine": "photos",
+    "validees": false
+  },
+  "artistes": [
+    "Jimi Hendrix"
+  ],
+  "periode": null,
+  "statut": "visite",
+  "verification": "non_renseigne",
+  "publication": "prive",
+  "historique_court": "",
+  "historique_long": "",
+  "sources": [],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": [],
+  "sources_site": [
+    {
+      "type": "recit de visite",
+      "date": "2025-05-23",
+      "titre": "Haendel & Hendrix : deux genies, deux siecles, une meme adresse",
+      "url": "https://laurentrieppi.com/2025/05/23/haendel-hendrix-deux-genies-deux-siecles-une-meme-adresse/",
+      "faits_a_reprendre": "Hendrix s'installe en 1968 avec Kathy Etchingham, chambre reconstituee a l'identique, guitare Wandre jouee le jour de son arrivee a Londres le 24 septembre 1966 chez Zoot Money, achats de disques chez HMV Oxford Street et One Stop Records (South Molton Street). 20 images dans l'article.",
+      "a_verifier": "HMV Oxford Street et One Stop Records sont des points a creer"
+    },
+    {
+      "type": "interview",
+      "date": "2025-06-09",
+      "titre": "Dans l'intimite de Jimi Hendrix a Brook Street, entretien avec Kathy Etchingham",
+      "url": "https://laurentrieppi.com/2025/06/09/dans-lintimite-de-jimi-hendrix-a-brook-street-entretien-exclusif-avec-kathy-etchingham/",
+      "faits_a_reprendre": "Temoignage exclusif de Kathy Etchingham sur la vie quotidienne au 23 Brook Street (premier vrai chez-soi, Hendrix ordonne, the a l'anglaise, Coronation Street). 15 images.",
+      "a_verifier": ""
+    }
+  ],
+  "import": {
+    "nb_fichiers": 88,
+    "nb_photos": 83,
+    "nb_videos": 5,
+    "nb_originaux": 0,
+    "jours_de_visite": [
+      "2022-05-27",
+      "2023-09-01",
+      "2025-05-16"
+    ],
+    "annees": [
+      "2022",
+      "2023",
+      "2025"
+    ],
+    "adresses_apple": [
+      "23 Brook Street",
+      "Horseshoe Yard"
+    ],
+    "note_verification_brute": "",
+    "gps_photos": {
+      "lat": 51.513116,
+      "lon": -0.145893,
+      "nb_points": 88,
+      "dispersion_p90_m": 16
+    }
+  }
+}
