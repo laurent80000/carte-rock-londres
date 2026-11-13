@@ -359,8 +359,17 @@ def main():
     if not HEIF:
         print("pillow-heif absent : les originaux .heic passeront par sips.")
 
-    serveur = ThreadingHTTPServer(("127.0.0.1", args.port), gestionnaire(app))
-    adresse = f"http://127.0.0.1:{args.port}/"
+    # Si le port est déjà pris par un autre programme, on essaie les suivants.
+    serveur = None
+    for port in range(args.port, args.port + 50):
+        try:
+            serveur = ThreadingHTTPServer(("127.0.0.1", port), gestionnaire(app))
+            break
+        except OSError:
+            continue
+    if serveur is None:
+        sys.exit("Aucun port libre trouvé pour la page de sélection.")
+    adresse = f"http://127.0.0.1:{serveur.server_address[1]}/"
     print(f"Page de sélection : {adresse}")
     print("Ferme cette fenêtre de Terminal (ou tape Ctrl+C) quand tu as fini.")
     if not args.sans_navigateur:
