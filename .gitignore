@@ -15,3 +15,4 @@ app/vendor/
 app/data/
 .wrangler/
 .dev.vars
+app/outils/

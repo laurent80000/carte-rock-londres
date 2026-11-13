@@ -66,4 +66,7 @@ if (!existsSync(join(RACINE, 'node_modules/maplibre-gl'))) {
 }
 mkdirSync(join(RACINE, 'app/vendor'), { recursive: true });
 for (const b of BIBLIOTHEQUES) copyFileSync(join(RACINE, 'node_modules', b), join(RACINE, 'app/vendor', basename(b)));
+// Outils du Mac, publiés sans protection : du code seul, sans aucune donnée.
+mkdirSync(join(RACINE, 'app/outils'), { recursive: true });
+for (const f of ['medias.py', 'photos.sh']) copyFileSync(join(RACINE, 'outils', f), join(RACINE, 'app/outils', f));
 console.log(`${lieux.length} lieux écrits dans app/data/lieux.json (${enPublic ? 'public' : 'privé'}).`);

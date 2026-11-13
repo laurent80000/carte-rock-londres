@@ -14,9 +14,9 @@ Le script :
 
 Les photos de "02 Autres lieux" ne sont jamais lues.
 
-Prérequis, une seule fois :  python3 -m pip install --user pillow pillow-heif
-(pillow-heif n'est utile que pour les quelques originaux .heic ; à défaut,
-l'outil sips de macOS prend le relais.)
+Lancement habituel : outils/photos.sh, qui installe Pillow dans un environnement
+propre au projet et crée un raccourci sur le Bureau. Le mot de passe est gardé
+dans le trousseau d'Apple après la première connexion.
 
 Options :
   --dossier CHEMIN   dossier des photos (par défaut ~/Pictures/Londres Rock)
@@ -107,6 +107,23 @@ class Site:
 
     def supprimer(self, cle):
         self.requete("DELETE", "/api/medias/" + urllib.parse.quote(cle))
+
+
+# ---------------------------------------------------------------- trousseau
+# Sur le Mac, le mot de passe est gardé dans le trousseau d'Apple après la première connexion.
+TROUSSEAU = ["-s", "carte-rock-londres", "-a", "carte"]
+
+
+def trousseau_lire():
+    if sys.platform != "darwin":
+        return None
+    r = subprocess.run(["security", "find-generic-password", *TROUSSEAU, "-w"], capture_output=True, text=True)
+    return (r.stdout.strip() or None) if r.returncode == 0 else None
+
+
+def trousseau_ecrire(mot_de_passe):
+    if sys.platform == "darwin":
+        subprocess.run(["security", "add-generic-password", "-U", *TROUSSEAU, "-w", mot_de_passe], capture_output=True)
 
 
 # ---------------------------------------------------------------- photos locales
@@ -321,8 +338,13 @@ def main():
     args = ap.parse_args()
 
     site = Site(args.site)
-    mot_de_passe = os.environ.get("CARTE_MOT_DE_PASSE") or getpass.getpass("Mot de passe de la carte : ")
-    erreur = site.se_connecter(mot_de_passe)
+    memorise = os.environ.get("CARTE_MOT_DE_PASSE") or trousseau_lire()
+    erreur = site.se_connecter(memorise) if memorise else 401
+    if erreur == 401:
+        mot_de_passe = getpass.getpass("Mot de passe de la carte (il ne s'affiche pas pendant la frappe) : ")
+        erreur = site.se_connecter(mot_de_passe)
+        if not erreur:
+            trousseau_ecrire(mot_de_passe)
     if erreur:
         sys.exit("Connexion refusée (mot de passe incorrect ?)." if erreur == 401 else f"Connexion impossible (erreur {erreur}).")
     lieux_site = site.json("GET", "/data/lieux.json")["lieux"]
