@@ -50,7 +50,8 @@ Français, prose continue, sans listes à puces dans les historiques. Pas de tir
 - 13/11/2026. Source de vérité en fichiers JSON, un par lieu, versionnés dans git, plutôt qu'une base SQLite : relecture à l'œil et historique des modifications. Une base pourra être générée à partir de ces fichiers pour l'application.
 - 13/11/2026. Le travail se fait dans une session cloud. Les scripts qui touchent aux photos sont écrits ici et exécutés sur le Mac.
 - 13/11/2026. Le point d'un lieu est la médiane des positions GPS des photos et non leur moyenne, qu'une seule photo prise depuis un train suffit à fausser (gare de Dartford : 5 km d'écart).
-- 13/11/2026. Événements créés d'office : Sotheby's 2023, Fitzrovia Chapel 2024, Kings Place 2024, Halcyon Gallery 2025, Lightroom 2026, King's Cross 2026. Proposé et à confirmer : Royal College of Music (exposition Kurt Cobain). Hackney Empire reste un lieu permanent.
+- 13/11/2026. Événements créés d'office : Sotheby's 2023, Fitzrovia Chapel 2024, Kings Place 2024, Halcyon Gallery 2025, Lightroom 2026, King's Cross 2026. Hackney Empire reste un lieu permanent.
+- 13/11/2026. L'exposition Kurt Cobain Unplugged du Royal College of Music Museum est confirmée comme événement (3 juin au 18 novembre 2025, dates données par Laurent d'après le site du musée).
 
 ## Étapes
 

@@ -1,6 +1,6 @@
 {
   "id": "royal-college-of-music-kurt-cobain-unplugged",
-  "nom": "Exposition Kurt Cobain Unplugged au Royal College of Music",
+  "nom": "Exposition Kurt Cobain Unplugged au Royal College of Music Museum",
   "dossier_photo": "Royal College of Music (exposition Kurt Cobain Unplugged)",
   "nature": "evenement",
   "type": "exposition",
@@ -21,16 +21,25 @@
   "publication": "prive",
   "historique_court": "",
   "historique_long": "",
-  "sources": [],
+  "sources": [
+    {
+      "type": "site_officiel",
+      "reference": "Royal College of Music Museum, page de l'exposition Kurt Cobain Unplugged",
+      "url": "https://www.rcm.ac.uk/museum/exhibitions/kurtcobain/",
+      "transmis_par": "Laurent Rieppi, 13/11/2026",
+      "faits": "Exposition tenue du 3 juin au 18 novembre 2025. Elle réunit pour la première fois en Europe la guitare Martin D-18E pour gaucher jouée au concert MTV Unplugged de Nirvana en 1993 et le cardigan en mohair vert olive de Kurt Cobain.",
+      "recoupement": "a_verifier : la page n'a pas pu être consultée depuis la session de travail (hôte bloqué par le réseau)"
+    }
+  ],
   "medias": {
     "couverture": null,
     "selection": []
   },
   "notes": [],
   "evenement": {
-    "lieu_hote": "Royal College of Music",
-    "date_debut": null,
-    "date_fin": null,
+    "lieu_hote": "Royal College of Music Museum",
+    "date_debut": "2025-06-03",
+    "date_fin": "2025-11-18",
     "annee": "2025"
   },
   "sources_site": [],
