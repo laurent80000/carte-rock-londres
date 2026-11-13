@@ -26,7 +26,7 @@ Français, prose continue, sans listes à puces dans les historiques. Pas de tir
 - data/lieux/ : la source de vérité, une fiche JSON par lieu.
 - scripts/import_lieux.py : import relançable, qui écrit aussi rapports/rapport_import.md.
 - rapports/ : rapports générés.
-- app/ : la carte (voir plus bas). scripts/construire.py, scripts/fond_de_carte.sh et scripts/serveur.py la préparent et la servent.
+- app/ : la carte (voir plus bas). scripts/construire.mjs, scripts/fond_de_carte.sh et scripts/serveur.py la préparent et la servent.
 
 ## Modèle d'une fiche (data/lieux/<id>.json)
 
@@ -58,7 +58,7 @@ Français, prose continue, sans listes à puces dans les historiques. Pas de tir
 
 1. Import des données et rapport : fait le 13/11/2026.
 2. Carte avec les 69 lieux rock : faite le 13/11/2026.
-3. Mise en ligne privée, marquage "visité" et notes depuis le téléphone : code prêt et essayé en local le 13/11/2026, en attente de la création du site chez Cloudflare par Laurent. Étape avancée avant les médias pour permettre l'essai sur iPhone.
+3. Mise en ligne privée, marquage "visité" et notes depuis le téléphone : code prêt et essayé en local le 13/11/2026, site créé chez Cloudflare par Laurent. Étape avancée avant les médias pour permettre l'essai sur iPhone.
 4. Préparation et sélection des médias, exécutées sur le Mac.
 5. Import des livres (un CSV par ouvrage) et de l'export Facebook.
 
@@ -66,29 +66,30 @@ Français, prose continue, sans listes à puces dans les historiques. Pas de tir
 
 Site statique sans étape de compilation : index.html, style.css, app.js. MapLibre GL JS affiche un fond de carte Protomaps tiré d'OpenStreetMap. Les tuiles (Grand Londres, zooms 0 à 15, 7791 fichiers, 242 Mo) sont dans app/tuiles/z/x/y.pbf et versionnées dans git, comme les polices et les pictogrammes : la carte n'appelle aucun service extérieur, donc aucun coût à l'usage. L'attribution "© OpenStreetMap" doit rester visible. Bibliothèques sous licence BSD (MapLibre, style Protomaps), données OpenStreetMap sous licence ODbL.
 
-L'application lit app/data/lieux.json, produit par scripts/construire.py à partir des fiches. En mode privé, la fiche montre aussi le carnet de terrain et les notes de travail. L'option --public ne garde que les fiches dont la publication vaut "public" et retire les champs de travail.
+L'application lit app/data/lieux.json, produit par scripts/construire.mjs à partir des fiches. En mode privé, la fiche montre aussi le carnet de terrain et les notes de travail. L'option --public ne garde que les fiches dont la publication vaut "public" et retire les champs de travail.
 
 Couleurs des points : vert pour un lieu visité, orange pour un lieu à visiter, violet pour un événement temporaire.
 
-## Hébergement (Cloudflare Pages, offre gratuite)
+## Hébergement (Cloudflare Workers, offre gratuite)
 
-Décision du 13/11/2026, validée par Laurent. Cloudflare publie le dépôt GitHub à chaque envoi sur la branche main.
+Décision du 13/11/2026, validée par Laurent. Le projet Cloudflare est un Worker avec fichiers statiques (et non un projet Pages), relié au dépôt GitHub : chaque envoi sur la branche main déclenche `npx wrangler deploy`. Adresse : https://carte-rock-londres.laurent-rieppi.workers.dev/
 
-- Commande de build : `npm ci && python3 scripts/construire.py`. Dossier publié : `app`.
-- functions/_middleware.js protège tout le site par un mot de passe (cookie signé, six mois, huit essais par quart d'heure). Les tuiles, polices, pictogrammes et bibliothèques, qui sont des données publiques, restent hors protection (app/_routes.json) pour ne pas consommer le quota de fonctions.
-- functions/api/carnet.js tient le carnet de terrain : un journal d'opérations (visite, annulation, note) qui ne fait que s'allonger. Le téléphone garde les opérations en attente quand il n'a pas de réseau et les renvoie ensuite.
-- Réglages à faire dans le tableau de bord Cloudflare, jamais dans le dépôt : secrets MOT_DE_PASSE et SECRET_SESSION, espace KV lié sous le nom CARNET.
-- Limites vérifiées le 13/11/2026 dans la documentation Cloudflare : 20 000 fichiers par site, 25 Mio par fichier (d'où les tuiles individuelles plutôt qu'un fichier unique), 100 000 appels de fonctions par jour, 1 000 écritures KV par jour.
-- Pas de fichier wrangler.toml : il prendrait le pas sur les réglages du tableau de bord.
+- wrangler.jsonc est la source de vérité du déploiement : dossier publié app/, script src/worker.js, commande d'assemblage `node scripts/construire.mjs` lancée avant chaque déploiement.
+- src/worker.js protège tout le site par un mot de passe (cookie signé, six mois, huit essais par quart d'heure) et tient le carnet de terrain sur /api/carnet : un journal d'opérations (visite, annulation, note) qui ne fait que s'allonger. Le téléphone garde les opérations en attente quand il n'a pas de réseau et les renvoie ensuite.
+- Les tuiles, polices, pictogrammes et bibliothèques, qui sont des données publiques, sont servis sans passer par le Worker (run_worker_first) pour ne pas consommer le quota.
+- Secrets à régler dans le tableau de bord Cloudflare (Settings, Variables and Secrets), jamais dans le dépôt : MOT_DE_PASSE et SECRET_SESSION. Sans eux le site répond "Configuration incomplète" et reste fermé.
+- L'espace KV CARNET est déclaré sans identifiant : wrangler le crée au premier déploiement.
+- Limites vérifiées le 13/11/2026 dans la documentation Cloudflare : 20 000 fichiers par site, 25 Mio par fichier (d'où les tuiles individuelles plutôt qu'un fichier unique), 100 000 appels par jour, 1 000 écritures KV par jour.
+- Incident du 13/11/2026 : le premier déploiement, fait avant que le dépôt ne contienne wrangler.jsonc, a publié app/ sans protection pendant quelques dizaines de minutes. Les données des lieux n'y figuraient pas (le fichier n'était pas encore assemblé) et aucun fichier personnel n'a été servi.
 - scripts/recuperer_carnet.py reverse le carnet dans les fiches (statut "visite", champ "notes").
-- Les médias ne passeront pas par git : leur hébergement privé reste à décider à l'étape 3.
+- Les médias ne passeront pas par git : leur hébergement privé reste à décider à l'étape 4.
 
 ## Commandes
 
     python3 scripts/import_lieux.py          # fiches et rapport, depuis les CSV du Mac
     npm install                              # bibliothèques de la carte
-    python3 scripts/construire.py            # assemble app/data et app/vendor
-    npx wrangler pages dev app --kv CARNET --binding MOT_DE_PASSE=essai --binding SECRET_SESSION=essai   # essai en local avec la protection
+    node scripts/construire.mjs              # assemble app/data et app/vendor
+    npx wrangler dev                         # essai en local avec la protection (secrets d'essai dans .dev.vars, hors git)
     python3 scripts/serveur.py 8000          # essai en local sans protection ni carnet
     scripts/fond_de_carte.sh                 # refait le fond de carte (rarement) : demande les outils pmtiles (Go) et pmtiles (pip)
     python3 scripts/recuperer_carnet.py carnet.json

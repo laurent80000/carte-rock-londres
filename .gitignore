@@ -14,3 +14,4 @@ node_modules/
 app/vendor/
 app/data/
 .wrangler/
+.dev.vars
