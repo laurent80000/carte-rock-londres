@@ -1,0 +1,44 @@
+{
+  "id": "lord-nelson",
+  "nom": "Lord Nelson",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "pub",
+  "adresse": "100 Holloway Road",
+  "quartier": "Holloway",
+  "zone": "Nord et Nord-Est",
+  "coordonnees": {
+    "lat": 51.54998,
+    "lon": -0.108434,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "Ian Dury",
+    "Dr Feelgood"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "transformé",
+  "publication": "prive",
+  "historique_court": "Pub du pub rock dans les années 70.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "107",
+      "faits": "Pub du pub rock dans les années 70.",
+      "etat_selon_source": "transformé",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

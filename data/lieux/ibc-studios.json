@@ -1,0 +1,46 @@
+{
+  "id": "ibc-studios",
+  "nom": "IBC Studios",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "studio",
+  "adresse": "35 Portland Place",
+  "quartier": "Marylebone",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.520184,
+    "lon": -0.145465,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "The Who",
+    "The Kinks",
+    "Jimmy Page",
+    "The Rolling Stones"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "transformé",
+  "publication": "prive",
+  "historique_court": "\"My Generation\" des Who et \"You Really Got Me\" des Kinks, avec Jimmy Page en musicien de studio.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "68",
+      "faits": "\"My Generation\" des Who et \"You Really Got Me\" des Kinks, avec Jimmy Page en musicien de studio.",
+      "etat_selon_source": "transformé",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

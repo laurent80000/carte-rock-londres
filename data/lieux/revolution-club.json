@@ -1,0 +1,44 @@
+{
+  "id": "revolution-club",
+  "nom": "Revolution Club",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "14-16 Bruton Place",
+  "quartier": "Mayfair",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.511358,
+    "lon": -0.144384,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "Cream",
+    "Eric Clapton"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Discothèque où joue souvent Cream à la fin des années 60.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "76",
+      "faits": "Discothèque où joue souvent Cream à la fin des années 60.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

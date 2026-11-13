@@ -1,0 +1,44 @@
+{
+  "id": "93-castelnau",
+  "nom": "93 Castelnau",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "domicile",
+  "adresse": "93 Castelnau",
+  "quartier": "Barnes",
+  "zone": "Sud-Ouest",
+  "coordonnees": {
+    "lat": 51.481437,
+    "lon": -0.23708,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "Sandy Denny",
+    "Fairport Convention"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Maison où Sandy Denny fait la chute qui lui coûte la vie en avril 1978.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "162",
+      "faits": "Maison où Sandy Denny fait la chute qui lui coûte la vie en avril 1978.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

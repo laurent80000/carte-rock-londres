@@ -1,0 +1,44 @@
+{
+  "id": "overhill-road",
+  "nom": "Overhill Road",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "memorial",
+  "adresse": "Overhill Road",
+  "quartier": "Dulwich",
+  "zone": "Sud-Est",
+  "coordonnees": {
+    "lat": 51.447493,
+    "lon": -0.065817,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "AC/DC",
+    "Bon Scott"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Rue où Bon Scott d'AC/DC est retrouvé mort dans une voiture en février 1980.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "176",
+      "faits": "Rue où Bon Scott d'AC/DC est retrouvé mort dans une voiture en février 1980.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

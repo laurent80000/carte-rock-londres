@@ -1,0 +1,43 @@
+{
+  "id": "shakespeare-s-head",
+  "nom": "Shakespeare's Head",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "pub",
+  "adresse": "29 Great Marlborough Street",
+  "quartier": "Soho",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.513683,
+    "lon": -0.139564,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "The Kinks"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Pub le plus couru du quartier de Carnaby dans les années 60, fréquenté par Dave Davies.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "34",
+      "faits": "Pub le plus couru du quartier de Carnaby dans les années 60, fréquenté par Dave Davies.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

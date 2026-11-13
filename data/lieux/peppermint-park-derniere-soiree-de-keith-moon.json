@@ -1,0 +1,44 @@
+{
+  "id": "peppermint-park-derniere-soiree-de-keith-moon",
+  "nom": "Peppermint Park (dernière soirée de Keith Moon)",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "autre",
+  "adresse": "Upper St Martin's Lane",
+  "quartier": "Covent Garden",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.512152,
+    "lon": -0.1271,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Keith Moon",
+    "Paul McCartney"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "transformé",
+  "publication": "prive",
+  "historique_court": "Keith Moon y passe la dernière soirée de sa vie le 7 septembre 1978, à une fête organisée par Paul McCartney. Nom du lieu absent du livre, à vérifier.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "66",
+      "faits": "Keith Moon y passe la dernière soirée de sa vie le 7 septembre 1978, à une fête organisée par Paul McCartney. Nom du lieu absent du livre, à vérifier.",
+      "etat_selon_source": "transformé",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

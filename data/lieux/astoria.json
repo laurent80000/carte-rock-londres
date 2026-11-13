@@ -1,0 +1,46 @@
+{
+  "id": "astoria",
+  "nom": "Astoria",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "165 Charing Cross Road",
+  "quartier": "Soho",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.510087,
+    "lon": -0.128431,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "U2",
+    "Oasis",
+    "Prince",
+    "David Bowie"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Ancienne fabrique de cornichons devenue grande salle de concert du West End : U2, Oasis, Prince, Bowie.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "40",
+      "faits": "Ancienne fabrique de cornichons devenue grande salle de concert du West End : U2, Oasis, Prince, Bowie.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

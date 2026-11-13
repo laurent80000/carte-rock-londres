@@ -1,0 +1,44 @@
+{
+  "id": "pye-studios",
+  "nom": "Pye Studios",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "studio",
+  "adresse": "40 Bryanston Street",
+  "quartier": "Marble Arch",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.514175,
+    "lon": -0.157873,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "The Kinks",
+    "The Who"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Première séance officielle des Kinks en janvier 1964 ; \"I Can't Explain\" des Who.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "72",
+      "faits": "Première séance officielle des Kinks en janvier 1964 ; \"I Can't Explain\" des Who.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

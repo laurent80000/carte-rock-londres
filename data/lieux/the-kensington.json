@@ -1,0 +1,45 @@
+{
+  "id": "the-kensington",
+  "nom": "The Kensington",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "pub",
+  "adresse": "Russell Gardens",
+  "quartier": "Kensington",
+  "zone": "Ouest",
+  "coordonnees": {
+    "lat": 51.500219,
+    "lon": -0.21116,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Brinsley Schwarz",
+    "Ian Dury",
+    "Eddie and the Hot Rods"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Pub du pub rock dans les années 70.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "129",
+      "faits": "Pub du pub rock dans les années 70.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

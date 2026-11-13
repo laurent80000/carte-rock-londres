@@ -19,7 +19,16 @@
   "publication": "prive",
   "historique_court": "",
   "historique_long": "",
-  "sources": [],
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "93",
+      "faits": "Studios où les Beatles enregistrent presque toute leur œuvre ; pochette d'Abbey Road le 8 août 1969. Pink Floyd y enregistre The Dark Side of the Moon.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
   "medias": {
     "couverture": null,
     "selection": []

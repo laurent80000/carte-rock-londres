@@ -1,0 +1,45 @@
+{
+  "id": "water-rats-pindar-of-wakefield",
+  "nom": "Water Rats (Pindar of Wakefield)",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "pub",
+  "adresse": "328 Grays Inn Road",
+  "quartier": "King's Cross",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.528133,
+    "lon": -0.119072,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Oasis",
+    "Bob Dylan",
+    "The Pogues"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Premier concert d'Oasis en tête d'affiche à Londres en 1994 ; Bob Dylan y joue en décembre 1962, les Pogues y font leurs débuts en 1982.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "55",
+      "faits": "Premier concert d'Oasis en tête d'affiche à Londres en 1994 ; Bob Dylan y joue en décembre 1962, les Pogues y font leurs débuts en 1982.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

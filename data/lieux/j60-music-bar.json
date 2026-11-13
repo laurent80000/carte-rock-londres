@@ -1,0 +1,46 @@
+{
+  "id": "j60-music-bar",
+  "nom": "J60 Music Bar",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "boutique",
+  "adresse": "445-457 High Street North",
+  "quartier": "Manor Park",
+  "zone": "Nord et Nord-Est",
+  "coordonnees": {
+    "lat": 51.540134,
+    "lon": 0.050863,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Small Faces",
+    "Steve Marriott",
+    "Ronnie Lane",
+    "Kenney Jones"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Magasin de musique où Steve Marriott rencontre Ronnie Lane et Kenney Jones en 1965 : naissance des Small Faces.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "118",
+      "faits": "Magasin de musique où Steve Marriott rencontre Ronnie Lane et Kenney Jones en 1965 : naissance des Small Faces.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

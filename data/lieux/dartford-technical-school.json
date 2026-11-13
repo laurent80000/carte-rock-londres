@@ -1,0 +1,43 @@
+{
+  "id": "dartford-technical-school",
+  "nom": "Dartford Technical School",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "ecole",
+  "adresse": "Miskin Road",
+  "quartier": "Dartford",
+  "zone": "Sud-Est",
+  "coordonnees": {
+    "lat": 51.478285,
+    "lon": 0.216686,
+    "origine": "geocodage",
+    "precision": "quartier",
+    "validees": false
+  },
+  "artistes": [
+    "Keith Richards"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "transformé",
+  "publication": "prive",
+  "historique_court": "École technique de Keith Richards à la fin des années 50.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "181",
+      "faits": "École technique de Keith Richards à la fin des années 50.",
+      "etat_selon_source": "transformé",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

@@ -19,7 +19,16 @@
   "publication": "prive",
   "historique_court": "",
   "historique_long": "",
-  "sources": [],
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "133",
+      "faits": "Bowie y fait mourir Ziggy Stardust le 3 juillet 1973 ; George Harrison y rencontre Eric Clapton fin 1964.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
   "medias": {
     "couverture": null,
     "selection": []

@@ -1,0 +1,43 @@
+{
+  "id": "tennyson-house",
+  "nom": "Tennyson House",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "domicile",
+  "adresse": "15 Montpelier Row",
+  "quartier": "Twickenham",
+  "zone": "Sud-Ouest",
+  "coordonnees": {
+    "lat": 51.450641,
+    "lon": -0.317161,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Pete Townshend"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Ancienne maison du poète Tennyson, propriété de Pete Townshend.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "166",
+      "faits": "Ancienne maison du poète Tennyson, propriété de Pete Townshend.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

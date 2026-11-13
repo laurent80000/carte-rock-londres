@@ -1,0 +1,43 @@
+{
+  "id": "maison-d-eric-clapton-chelsea",
+  "nom": "Maison d'Eric Clapton (Chelsea)",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "domicile",
+  "adresse": "36a Old Church Street",
+  "quartier": "Chelsea",
+  "zone": "Sud-Ouest",
+  "coordonnees": {
+    "lat": 51.484222,
+    "lon": -0.1717,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "Eric Clapton"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Maison de Chelsea où Clapton revient vivre en 1992.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "152",
+      "faits": "Maison de Chelsea où Clapton revient vivre en 1992.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

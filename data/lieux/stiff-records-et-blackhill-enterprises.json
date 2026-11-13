@@ -1,0 +1,46 @@
+{
+  "id": "stiff-records-et-blackhill-enterprises",
+  "nom": "Stiff Records et Blackhill Enterprises",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "autre",
+  "adresse": "32 Alexander Street",
+  "quartier": "Westbourne Park",
+  "zone": "Ouest",
+  "coordonnees": {
+    "lat": 51.517241,
+    "lon": -0.192347,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "Stiff Records",
+    "Pink Floyd",
+    "Elvis Costello",
+    "Ian Dury"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Bureaux du label Stiff en 1977 et de Blackhill, premiers managers de Pink Floyd et organisateurs des concerts gratuits.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "122",
+      "faits": "Bureaux du label Stiff en 1977 et de Blackhill, premiers managers de Pink Floyd et organisateurs des concerts gratuits.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

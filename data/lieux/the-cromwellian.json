@@ -1,0 +1,45 @@
+{
+  "id": "the-cromwellian",
+  "nom": "The Cromwellian",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "3 Cromwell Road",
+  "quartier": "South Kensington",
+  "zone": "Sud-Ouest",
+  "coordonnees": {
+    "lat": 51.495487,
+    "lon": -0.173941,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "The Who",
+    "The Beatles",
+    "Kit Lambert"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "transformé",
+  "publication": "prive",
+  "historique_court": "Club et casino sur trois étages, fréquenté par les Beatles en 1967 ; Kit Lambert y jouait pour payer le matériel cassé des Who.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "145",
+      "faits": "Club et casino sur trois étages, fréquenté par les Beatles en 1967 ; Kit Lambert y jouait pour payer le matériel cassé des Who.",
+      "etat_selon_source": "transformé",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

@@ -1,0 +1,44 @@
+{
+  "id": "the-roebuck",
+  "nom": "The Roebuck",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "pub",
+  "adresse": "354 King's Road",
+  "quartier": "Chelsea",
+  "zone": "Sud-Ouest",
+  "coordonnees": {
+    "lat": 51.484543,
+    "lon": -0.176057,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "Sex Pistols",
+    "Johnny Rotten"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "transformé",
+  "publication": "prive",
+  "historique_court": "Pub où Johnny Rotten passe son audition devant le juke-box. Adresse absente du livre, à vérifier.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "146",
+      "faits": "Pub où Johnny Rotten passe son audition devant le juke-box. Adresse absente du livre, à vérifier.",
+      "etat_selon_source": "transformé",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

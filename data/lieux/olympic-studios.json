@@ -19,7 +19,16 @@
   "publication": "prive",
   "historique_court": "",
   "historique_long": "",
-  "sources": [],
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "162",
+      "faits": "\"Jumpin' Jack Flash\", Let It Bleed, premier et quatrième albums de Led Zeppelin, début d'Electric Ladyland.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
   "medias": {
     "couverture": null,
     "selection": []

@@ -1,0 +1,43 @@
+{
+  "id": "notre-dame-hall",
+  "nom": "Notre Dame Hall",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "5 Leicester Place",
+  "quartier": "Leicester Square",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.511381,
+    "lon": -0.129938,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "Sex Pistols"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Salle sous l'église Notre-Dame de France où les Sex Pistols jouent au milieu des années 70.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "50",
+      "faits": "Salle sous l'église Notre-Dame de France où les Sex Pistols jouent au milieu des années 70.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

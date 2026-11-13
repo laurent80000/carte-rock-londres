@@ -19,7 +19,16 @@
   "publication": "prive",
   "historique_court": "",
   "historique_long": "",
-  "sources": [],
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "37",
+      "faits": "Brian Epstein y organise des concerts rock le dimanche de 1966 à 1967 : Hendrix, Cream, Pink Floyd, les Who.",
+      "etat_selon_source": "transformé",
+      "releve": "wooldridge_2002"
+    }
+  ],
   "medias": {
     "couverture": null,
     "selection": []

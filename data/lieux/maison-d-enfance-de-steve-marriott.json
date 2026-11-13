@@ -1,0 +1,44 @@
+{
+  "id": "maison-d-enfance-de-steve-marriott",
+  "nom": "Maison d'enfance de Steve Marriott",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "domicile",
+  "adresse": "26 Strone Road",
+  "quartier": "Manor Park",
+  "zone": "Nord et Nord-Est",
+  "coordonnees": {
+    "lat": 51.544264,
+    "lon": 0.041552,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Steve Marriott",
+    "Small Faces"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Steve Marriott y grandit ; le parc voisin aurait inspiré \"Itchycoo Park\".",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "118",
+      "faits": "Steve Marriott y grandit ; le parc voisin aurait inspiré \"Itchycoo Park\".",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

@@ -1,0 +1,44 @@
+{
+  "id": "embassy-hotel",
+  "nom": "Embassy Hotel",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "autre",
+  "adresse": "150 Bayswater Road",
+  "quartier": "Bayswater",
+  "zone": "Ouest",
+  "coordonnees": {
+    "lat": 51.510529,
+    "lon": -0.183368,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Manic Street Preachers",
+    "Richey Edwards"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Hôtel d'où Richey Edwards des Manic Street Preachers disparaît le 1er février 1995.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "122",
+      "faits": "Hôtel d'où Richey Edwards des Manic Street Preachers disparaît le 1er février 1995.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

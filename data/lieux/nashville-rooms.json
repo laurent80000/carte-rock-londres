@@ -1,0 +1,47 @@
+{
+  "id": "nashville-rooms",
+  "nom": "Nashville Rooms",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "171 North End Road",
+  "quartier": "West Kensington",
+  "zone": "Ouest",
+  "coordonnees": {
+    "lat": 51.49073,
+    "lon": -0.206444,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "Sex Pistols",
+    "The 101ers",
+    "Elvis Costello",
+    "The Damned",
+    "The Stranglers"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "transformé",
+  "publication": "prive",
+  "historique_court": "Salle de pub du premier punk : les Sex Pistols en première partie des 101ers, débuts d'Elvis Costello sous ce nom en 1977.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "129",
+      "faits": "Salle de pub du premier punk : les Sex Pistols en première partie des 101ers, débuts d'Elvis Costello sous ce nom en 1977.",
+      "etat_selon_source": "transformé",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

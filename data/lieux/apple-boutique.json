@@ -1,0 +1,43 @@
+{
+  "id": "apple-boutique",
+  "nom": "Apple Boutique",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "boutique",
+  "adresse": "94 Baker Street",
+  "quartier": "Marylebone",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.520453,
+    "lon": -0.156462,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "The Beatles"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Boutique des Beatles, ouverte de décembre 1967 à juillet 1968, d'abord couverte d'une immense fresque.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "69",
+      "faits": "Boutique des Beatles, ouverte de décembre 1967 à juillet 1968, d'abord couverte d'une immense fresque.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

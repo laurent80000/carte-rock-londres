@@ -1,0 +1,44 @@
+{
+  "id": "maison-de-david-gilmour",
+  "nom": "Maison de David Gilmour",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "domicile",
+  "adresse": "Maida Avenue",
+  "quartier": "Little Venice",
+  "zone": "Ouest",
+  "coordonnees": {
+    "lat": 51.522343,
+    "lon": -0.180751,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "David Gilmour",
+    "Pink Floyd"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Maison de David Gilmour au bord du canal en 2002.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "122",
+      "faits": "Maison de David Gilmour au bord du canal en 2002.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

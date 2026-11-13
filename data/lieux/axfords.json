@@ -1,0 +1,43 @@
+{
+  "id": "axfords",
+  "nom": "Axfords",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "pochette",
+  "adresse": "306 Vauxhall Bridge Road",
+  "quartier": "Pimlico",
+  "zone": "Sud-Ouest",
+  "coordonnees": {
+    "lat": 51.48992,
+    "lon": -0.13227,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Ian Dury"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Boutique devant laquelle Ian Dury pose avec son fils pour la pochette de New Boots and Panties!!.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "155",
+      "faits": "Boutique devant laquelle Ian Dury pose avec son fils pour la pochette de New Boots and Panties!!.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

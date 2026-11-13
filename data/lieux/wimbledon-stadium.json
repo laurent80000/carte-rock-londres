@@ -1,0 +1,44 @@
+{
+  "id": "wimbledon-stadium",
+  "nom": "Wimbledon Stadium",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "autre",
+  "adresse": "Plough Lane",
+  "quartier": "Wimbledon",
+  "zone": "Sud-Ouest",
+  "coordonnees": {
+    "lat": 51.430769,
+    "lon": -0.185057,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Queen",
+    "Sham 69"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Queen y tourne en 1978 le clip de \"Bicycle Race\" ; Jimmy Pursey de Sham 69 y travaillait.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "158",
+      "faits": "Queen y tourne en 1978 le clip de \"Bicycle Race\" ; Jimmy Pursey de Sham 69 y travaillait.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

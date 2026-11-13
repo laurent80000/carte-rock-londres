@@ -1,0 +1,48 @@
+{
+  "id": "hope-anchor",
+  "nom": "Hope & Anchor",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "pub",
+  "adresse": "207 Upper Street",
+  "quartier": "Islington",
+  "zone": "Nord et Nord-Est",
+  "coordonnees": {
+    "lat": 51.543247,
+    "lon": -0.103439,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "The Clash",
+    "The Stranglers",
+    "Sex Pistols",
+    "U2",
+    "Joy Division",
+    "Dr Feelgood"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Pub du pub rock puis du punk. Premiers concerts londoniens de U2 et des Dexys Midnight Runners en 1979.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "105",
+      "faits": "Pub du pub rock puis du punk. Premiers concerts londoniens de U2 et des Dexys Midnight Runners en 1979.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

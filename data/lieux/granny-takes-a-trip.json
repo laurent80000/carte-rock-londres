@@ -1,0 +1,46 @@
+{
+  "id": "granny-takes-a-trip",
+  "nom": "Granny Takes a Trip",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "boutique",
+  "adresse": "488 King's Road",
+  "quartier": "Chelsea",
+  "zone": "Sud-Ouest",
+  "coordonnees": {
+    "lat": 51.482226,
+    "lon": -0.180147,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "Mick Jagger",
+    "Pink Floyd",
+    "T. Rex",
+    "The Faces"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Boutique psychédélique de la fin des années 60.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "151",
+      "faits": "Boutique psychédélique de la fin des années 60.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

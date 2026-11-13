@@ -1,0 +1,43 @@
+{
+  "id": "twickenham-film-studios",
+  "nom": "Twickenham Film Studios",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "studio",
+  "adresse": "The Barons",
+  "quartier": "Twickenham",
+  "zone": "Sud-Ouest",
+  "coordonnees": {
+    "lat": 51.45561,
+    "lon": -0.318038,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "The Beatles"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Studios d'A Hard Day's Night, de Help! et d'une partie de Let It Be.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "168",
+      "faits": "Studios d'A Hard Day's Night, de Help! et d'une partie de Let It Be.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

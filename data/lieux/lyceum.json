@@ -1,0 +1,47 @@
+{
+  "id": "lyceum",
+  "nom": "Lyceum",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "Wellington Street",
+  "quartier": "Strand",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.512372,
+    "lon": -0.120872,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Bob Marley",
+    "John Lennon",
+    "The Kinks",
+    "Elvis Costello",
+    "Ian Dury"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Dernier concert de John Lennon en Angleterre en décembre 1969 ; Bob Marley y enregistre Live! en juillet 1975.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "50",
+      "faits": "Dernier concert de John Lennon en Angleterre en décembre 1969 ; Bob Marley y enregistre Live! en juillet 1975.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

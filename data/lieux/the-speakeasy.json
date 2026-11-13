@@ -1,0 +1,49 @@
+{
+  "id": "the-speakeasy",
+  "nom": "The Speakeasy",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "48 Margaret Street",
+  "quartier": "Fitzrovia",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.51647,
+    "lon": -0.141684,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "Jimi Hendrix",
+    "The Beatles",
+    "Eric Clapton",
+    "Deep Purple",
+    "Thin Lizzy",
+    "David Bowie",
+    "Freddie Mercury"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Club d'après-concert des musiciens à partir de 1967 : Hendrix, Clapton, les Beatles. Premier concert de Deep Purple en 1969 ; Bowie y rencontre Angie Barnett.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "63",
+      "faits": "Club d'après-concert des musiciens à partir de 1967 : Hendrix, Clapton, les Beatles. Premier concert de Deep Purple en 1969 ; Bowie y rencontre Angie Barnett.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

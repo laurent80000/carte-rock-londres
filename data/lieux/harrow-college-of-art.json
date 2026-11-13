@@ -1,0 +1,45 @@
+{
+  "id": "harrow-college-of-art",
+  "nom": "Harrow College of Art",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "ecole",
+  "adresse": "High Street, Harrow",
+  "quartier": "Harrow",
+  "zone": "Nord-Ouest",
+  "coordonnees": {
+    "lat": 51.573268,
+    "lon": -0.336845,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Charlie Watts",
+    "Malcolm McLaren",
+    "Vivienne Westwood"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "transformé",
+  "publication": "prive",
+  "historique_court": "École d'art de Charlie Watts, puis de Malcolm McLaren, qui y rencontre Vivienne Westwood.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "100",
+      "faits": "École d'art de Charlie Watts, puis de Malcolm McLaren, qui y rencontre Vivienne Westwood.",
+      "etat_selon_source": "transformé",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

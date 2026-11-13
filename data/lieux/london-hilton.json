@@ -1,0 +1,45 @@
+{
+  "id": "london-hilton",
+  "nom": "London Hilton",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "autre",
+  "adresse": "22 Park Lane",
+  "quartier": "Mayfair",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.505593,
+    "lon": -0.149825,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "The Rolling Stones",
+    "Syd Barrett",
+    "Elvis Costello"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Les Stones y rencontrent Allen Klein en 1965 ; Elvis Costello y est arrêté en jouant devant l'hôtel en 1977.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "73",
+      "faits": "Les Stones y rencontrent Allen Klein en 1965 ; Elvis Costello y est arrêté en jouant devant l'hôtel en 1977.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

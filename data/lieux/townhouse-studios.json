@@ -19,7 +19,16 @@
   "publication": "prive",
   "historique_court": "",
   "historique_long": "",
-  "sources": [],
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "136",
+      "faits": "Studio de Setting Sons des Jam et des premières séances de \"Games Without Frontiers\" de Peter Gabriel en 1979.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
   "medias": {
     "couverture": null,
     "selection": []

@@ -1,0 +1,44 @@
+{
+  "id": "bureaux-de-kit-lambert",
+  "nom": "Bureaux de Kit Lambert",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "autre",
+  "adresse": "84 Eaton Place",
+  "quartier": "Belgravia",
+  "zone": "Sud-Ouest",
+  "coordonnees": {
+    "lat": 51.496667,
+    "lon": -0.153379,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "The Who",
+    "Pete Townshend"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Bureaux des managers des Who en 1965 ; Pete Townshend y écrit \"My Generation\" dans l'appartement du dessus.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "142",
+      "faits": "Bureaux des managers des Who en 1965 ; Pete Townshend y écrit \"My Generation\" dans l'appartement du dessus.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

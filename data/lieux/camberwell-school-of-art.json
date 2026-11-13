@@ -1,0 +1,43 @@
+{
+  "id": "camberwell-school-of-art",
+  "nom": "Camberwell School of Art",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "ecole",
+  "adresse": "Peckham Road",
+  "quartier": "Camberwell",
+  "zone": "Sud-Est",
+  "coordonnees": {
+    "lat": 51.473496,
+    "lon": -0.086556,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Syd Barrett"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "École d'art de Syd Barrett à partir de 1964.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "174",
+      "faits": "École d'art de Syd Barrett à partir de 1964.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

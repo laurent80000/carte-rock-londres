@@ -1,0 +1,47 @@
+{
+  "id": "acton-county-grammar-school",
+  "nom": "Acton County Grammar School",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "ecole",
+  "adresse": "Gunnersbury Lane",
+  "quartier": "Acton",
+  "zone": "Ouest",
+  "coordonnees": {
+    "lat": 51.503298,
+    "lon": -0.280227,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "The Who",
+    "Roger Daltrey",
+    "Pete Townshend",
+    "John Entwistle",
+    "Ian Gillan"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "transformé",
+  "publication": "prive",
+  "historique_court": "École de Roger Daltrey, Pete Townshend et John Entwistle.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "136",
+      "faits": "École de Roger Daltrey, Pete Townshend et John Entwistle.",
+      "etat_selon_source": "transformé",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

@@ -1,0 +1,44 @@
+{
+  "id": "redcliffe-gardens",
+  "nom": "Redcliffe Gardens",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "memorial",
+  "adresse": "Redcliffe Gardens",
+  "quartier": "West Brompton",
+  "zone": "Sud-Ouest",
+  "coordonnees": {
+    "lat": 51.488805,
+    "lon": -0.189723,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "The Beatles",
+    "Tara Browne"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Lieu de l'accident mortel de Tara Browne en décembre 1966, qui inspire \"A Day in the Life\".",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "153",
+      "faits": "Lieu de l'accident mortel de Tara Browne en décembre 1966, qui inspire \"A Day in the Life\".",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

@@ -1,0 +1,44 @@
+{
+  "id": "radio-london",
+  "nom": "Radio London",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "studio",
+  "adresse": "17 Curzon Street",
+  "quartier": "Mayfair",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.506769,
+    "lon": -0.148563,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "The Beatles",
+    "Ringo Starr"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Ringo Starr y enregistre l'adieu des Beatles à la radio pirate en juillet 1967.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "75",
+      "faits": "Ringo Starr y enregistre l'adieu des Beatles à la radio pirate en juillet 1967.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

@@ -1,0 +1,44 @@
+{
+  "id": "roxy-cinema-de-brixton",
+  "nom": "Roxy (cinéma de Brixton)",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "autre",
+  "adresse": "Brixton",
+  "quartier": "Brixton",
+  "zone": "Sud-Ouest",
+  "coordonnees": {
+    "lat": 51.46261,
+    "lon": -0.114705,
+    "origine": "geocodage",
+    "precision": "quartier",
+    "validees": false
+  },
+  "artistes": [
+    "Roxy Music",
+    "Bryan Ferry"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Cinéma disparu qui donne son nom à Roxy Music. Adresse absente du livre.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "156",
+      "faits": "Cinéma disparu qui donne son nom à Roxy Music. Adresse absente du livre.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

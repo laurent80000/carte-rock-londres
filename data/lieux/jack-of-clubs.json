@@ -1,0 +1,43 @@
+{
+  "id": "jack-of-clubs",
+  "nom": "Jack of Clubs",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "10 Brewer Street",
+  "quartier": "Soho",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.512456,
+    "lon": -0.133839,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "David Bowie"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Premier concert professionnel de David Jones, futur Bowie, avec les King Bees, fin 1964.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "36",
+      "faits": "Premier concert professionnel de David Jones, futur Bowie, avec les King Bees, fin 1964.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

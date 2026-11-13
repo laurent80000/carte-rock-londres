@@ -1,0 +1,44 @@
+{
+  "id": "emi-house",
+  "nom": "EMI House",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "autre",
+  "adresse": "20 Manchester Square",
+  "quartier": "Marylebone",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.516971,
+    "lon": -0.153652,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "The Beatles",
+    "Blur"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Escalier de la pochette de Please Please Me, photographié par Angus McBean en 1963. Bâtiment quitté par EMI en 1995.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "70",
+      "faits": "Escalier de la pochette de Please Please Me, photographié par Angus McBean en 1963. Bâtiment quitté par EMI en 1995.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

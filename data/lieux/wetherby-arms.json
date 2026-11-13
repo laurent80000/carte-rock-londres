@@ -1,0 +1,44 @@
+{
+  "id": "wetherby-arms",
+  "nom": "Wetherby Arms",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "pub",
+  "adresse": "500 King's Road",
+  "quartier": "Chelsea",
+  "zone": "Sud-Ouest",
+  "coordonnees": {
+    "lat": 51.481995,
+    "lon": -0.180858,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "The Rolling Stones",
+    "Bill Wyman"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Salle de répétition des Stones où Bill Wyman passe son audition en décembre 1962.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "149",
+      "faits": "Salle de répétition des Stones où Bill Wyman passe son audition en décembre 1962.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

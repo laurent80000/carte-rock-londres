@@ -19,7 +19,16 @@
   "publication": "prive",
   "historique_court": "",
   "historique_long": "",
-  "sources": [],
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "24",
+      "faits": "Ouvert le 13 mars 1964. Résidence des Who à partir de novembre 1964, premier concert londonien de Led Zeppelin en octobre 1968, après-midis Spontaneous Underground avec Pink Floyd en 1966.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
   "medias": {
     "couverture": null,
     "selection": []

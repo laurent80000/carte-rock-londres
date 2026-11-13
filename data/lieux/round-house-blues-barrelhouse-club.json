@@ -1,0 +1,44 @@
+{
+  "id": "round-house-blues-barrelhouse-club",
+  "nom": "Round House (Blues & Barrelhouse Club)",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "pub",
+  "adresse": "83-85 Wardour Street",
+  "quartier": "Soho",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.515108,
+    "lon": -0.135246,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Muddy Waters",
+    "Alexis Korner"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Pub au coin de Brewer Street dont la salle de l'étage accueille dès 1954 l'un des premiers clubs de blues de Londres, avec Muddy Waters.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "29",
+      "faits": "Pub au coin de Brewer Street dont la salle de l'étage accueille dès 1954 l'un des premiers clubs de blues de Londres, avec Muddy Waters.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

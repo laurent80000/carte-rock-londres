@@ -1,0 +1,43 @@
+{
+  "id": "george-iv",
+  "nom": "George IV",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "pub",
+  "adresse": "Streatham Hill",
+  "quartier": "Brixton",
+  "zone": "Sud-Ouest",
+  "coordonnees": {
+    "lat": 51.440637,
+    "lon": -0.122249,
+    "origine": "geocodage",
+    "precision": "quartier",
+    "validees": false
+  },
+  "artistes": [
+    "Status Quo"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Pub où répète Status Quo à ses débuts.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "156",
+      "faits": "Pub où répète Status Quo à ses débuts.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

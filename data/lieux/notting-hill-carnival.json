@@ -1,0 +1,43 @@
+{
+  "id": "notting-hill-carnival",
+  "nom": "Notting Hill Carnival",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "rue",
+  "adresse": "Ladbroke Grove",
+  "quartier": "Notting Hill",
+  "zone": "Ouest",
+  "coordonnees": {
+    "lat": 51.514073,
+    "lon": -0.207591,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "The Clash"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Les échauffourées du carnaval 1976 inspirent \"White Riot\", premier single des Clash.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "124",
+      "faits": "Les échauffourées du carnaval 1976 inspirent \"White Riot\", premier single des Clash.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

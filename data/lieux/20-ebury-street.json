@@ -1,0 +1,44 @@
+{
+  "id": "20-ebury-street",
+  "nom": "20 Ebury Street",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "domicile",
+  "adresse": "20 Ebury Street",
+  "quartier": "Belgravia",
+  "zone": "Sud-Ouest",
+  "coordonnees": {
+    "lat": 51.494596,
+    "lon": -0.148661,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Pete Townshend",
+    "The Who"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Pete Townshend y écrit une grande partie de Tommy en 1967-1968.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "154",
+      "faits": "Pete Townshend y écrit une grande partie de Tommy en 1967-1968.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

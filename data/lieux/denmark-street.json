@@ -19,7 +19,16 @@
   "publication": "prive",
   "historique_court": "",
   "historique_long": "",
-  "sources": [],
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "44",
+      "faits": "Mills Music au 20 (premier emploi d'Elton John en 1963), La Giaconda au 9a (Small Faces, Bowie, Bolan), local des Sex Pistols au 6-8, Regent Sound au 4 (premier enregistrement des Stones en janvier 1964).",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
   "medias": {
     "couverture": null,
     "selection": []

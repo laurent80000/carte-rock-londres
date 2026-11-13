@@ -1,0 +1,44 @@
+{
+  "id": "maison-d-enfance-de-keith-moon",
+  "nom": "Maison d'enfance de Keith Moon",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "domicile",
+  "adresse": "134 Chaplin Road",
+  "quartier": "Wembley",
+  "zone": "Nord-Ouest",
+  "coordonnees": {
+    "lat": 51.549725,
+    "lon": -0.310219,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Keith Moon",
+    "The Who"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Keith Moon y grandit.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "100",
+      "faits": "Keith Moon y grandit.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

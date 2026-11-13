@@ -1,0 +1,47 @@
+{
+  "id": "rainbow-theatre-finsbury-park-astoria",
+  "nom": "Rainbow Theatre (Finsbury Park Astoria)",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "232 Seven Sisters Road",
+  "quartier": "Finsbury Park",
+  "zone": "Nord et Nord-Est",
+  "coordonnees": {
+    "lat": 51.562753,
+    "lon": -0.108067,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "Jimi Hendrix",
+    "The Beatles",
+    "Pink Floyd",
+    "Eric Clapton",
+    "The Clash"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "transformé",
+  "publication": "prive",
+  "historique_court": "Hendrix y brûle sa guitare pour la première fois en mars 1967 ; concert de retour d'Eric Clapton en janvier 1973.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "109",
+      "faits": "Hendrix y brûle sa guitare pour la première fois en mars 1967 ; concert de retour d'Eric Clapton en janvier 1973.",
+      "etat_selon_source": "transformé",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

@@ -1,0 +1,47 @@
+{
+  "id": "the-roxy",
+  "nom": "The Roxy",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "41-43 Neal Street",
+  "quartier": "Covent Garden",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.513549,
+    "lon": -0.124499,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "The Clash",
+    "The Damned",
+    "The Jam",
+    "Siouxsie and the Banshees",
+    "Adam and the Ants"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Club punk ouvert le 1er janvier 1977 avec les Clash, fermé le 23 avril 1977. Adresse précise absente du livre, à vérifier.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "46",
+      "faits": "Club punk ouvert le 1er janvier 1977 avec les Clash, fermé le 23 avril 1977. Adresse précise absente du livre, à vérifier.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

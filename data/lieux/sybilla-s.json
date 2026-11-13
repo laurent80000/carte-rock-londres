@@ -1,0 +1,44 @@
+{
+  "id": "sybilla-s",
+  "nom": "Sybilla's",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "9 Swallow Street",
+  "quartier": "Mayfair",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.509429,
+    "lon": -0.137594,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "The Beatles",
+    "George Harrison"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "transformé",
+  "publication": "prive",
+  "historique_court": "Club en partie financé par George Harrison, inauguré en juin 1966 en présence des quatre Beatles.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "80",
+      "faits": "Club en partie financé par George Harrison, inauguré en juin 1966 en présence des quatre Beatles.",
+      "etat_selon_source": "transformé",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

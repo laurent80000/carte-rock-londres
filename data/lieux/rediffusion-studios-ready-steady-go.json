@@ -1,0 +1,44 @@
+{
+  "id": "rediffusion-studios-ready-steady-go",
+  "nom": "Rediffusion Studios (Ready Steady Go!)",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "studio",
+  "adresse": "4-12 Kingsway",
+  "quartier": "Holborn",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.517026,
+    "lon": -0.120051,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Rod Stewart",
+    "Ronnie Wood"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "transformé",
+  "publication": "prive",
+  "historique_court": "Studios de l'émission Ready Steady Go! de 1963 à 1965 ; Rod Stewart y passe pour la première fois à la télévision en 1964.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "54",
+      "faits": "Studios de l'émission Ready Steady Go! de 1963 à 1965 ; Rod Stewart y passe pour la première fois à la télévision en 1964.",
+      "etat_selon_source": "transformé",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

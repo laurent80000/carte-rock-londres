@@ -1,0 +1,45 @@
+{
+  "id": "royal-academy-of-music",
+  "nom": "Royal Academy of Music",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "ecole",
+  "adresse": "Marylebone Road",
+  "quartier": "Marylebone",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.521529,
+    "lon": -0.160467,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Elton John",
+    "John Cale",
+    "Annie Lennox"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Conservatoire fréquenté par Elton John, John Cale et Annie Lennox.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "68",
+      "faits": "Conservatoire fréquenté par Elton John, John Cale et Annie Lennox.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

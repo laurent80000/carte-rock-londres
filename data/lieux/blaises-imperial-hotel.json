@@ -1,0 +1,45 @@
+{
+  "id": "blaises-imperial-hotel",
+  "nom": "Blaises (Imperial Hotel)",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "121 Queen's Gate",
+  "quartier": "South Kensington",
+  "zone": "Sud-Ouest",
+  "coordonnees": {
+    "lat": 51.499714,
+    "lon": -0.180024,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Jimi Hendrix",
+    "The Beatles",
+    "The Byrds"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Club au sous-sol d'un hôtel, où Hendrix joue avec les dents à l'automne 1966. Bâtiment démoli en 1992.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "145",
+      "faits": "Club au sous-sol d'un hôtel, où Hendrix joue avec les dents à l'automne 1966. Bâtiment démoli en 1992.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

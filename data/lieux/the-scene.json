@@ -1,0 +1,44 @@
+{
+  "id": "the-scene",
+  "nom": "The Scene",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "Ham Yard, 41 Great Windmill Street",
+  "quartier": "Soho",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.514065,
+    "lon": -0.135049,
+    "origine": "geocodage",
+    "precision": "quartier",
+    "validees": false
+  },
+  "artistes": [
+    "The Who",
+    "The Animals"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Le grand club mod du centre de Londres. Premier concert londonien des Animals en décembre 1963, passages des High Numbers, futurs Who.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "37",
+      "faits": "Le grand club mod du centre de Londres. Premier concert londonien des Animals en décembre 1963, passages des High Numbers, futurs Who.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

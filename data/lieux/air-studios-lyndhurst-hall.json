@@ -1,0 +1,45 @@
+{
+  "id": "air-studios-lyndhurst-hall",
+  "nom": "AIR Studios (Lyndhurst Hall)",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "studio",
+  "adresse": "Lyndhurst Road",
+  "quartier": "Hampstead",
+  "zone": "Nord-Ouest",
+  "coordonnees": {
+    "lat": 51.552136,
+    "lon": -0.174012,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "George Martin",
+    "Elton John",
+    "Dire Straits"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Ancienne église transformée en studios par George Martin au début des années 90. Adresse précise absente du livre.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "97",
+      "faits": "Ancienne église transformée en studios par George Martin au début des années 90. Adresse précise absente du livre.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

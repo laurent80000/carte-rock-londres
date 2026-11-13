@@ -1,0 +1,44 @@
+{
+  "id": "lansdowne-studios",
+  "nom": "Lansdowne Studios",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "studio",
+  "adresse": "Lansdowne Road",
+  "quartier": "Holland Park",
+  "zone": "Ouest",
+  "coordonnees": {
+    "lat": 51.508542,
+    "lon": -0.206311,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Sex Pistols",
+    "The Faces"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "\"Anarchy in the UK\" des Sex Pistols en octobre 1976, premier album des Faces.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "127",
+      "faits": "\"Anarchy in the UK\" des Sex Pistols en octobre 1976, premier album des Faces.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

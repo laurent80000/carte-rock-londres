@@ -1,0 +1,44 @@
+{
+  "id": "oldfield-hotel",
+  "nom": "Oldfield Hotel",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "pub",
+  "adresse": "Oldfield Lane",
+  "quartier": "Greenford",
+  "zone": "Ouest",
+  "coordonnees": {
+    "lat": 51.537668,
+    "lon": -0.348712,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "The Who",
+    "Keith Moon"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Pub où Keith Moon monte sur scène pendant un concert des Who en 1964 et décroche la place de batteur.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "138",
+      "faits": "Pub où Keith Moon monte sur scène pendant un concert des Who en 1964 et décroche la place de batteur.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

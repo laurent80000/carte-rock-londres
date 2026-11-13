@@ -1,0 +1,46 @@
+{
+  "id": "scotch-of-st-james",
+  "nom": "Scotch of St James",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "13 Mason's Yard",
+  "quartier": "St James's",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.507764,
+    "lon": -0.137004,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "The Beatles",
+    "Jimi Hendrix",
+    "Stevie Wonder",
+    "Paul McCartney"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Club ouvert en 1965 au décor écossais. Premier bœuf londonien de Jimi Hendrix en septembre 1966 ; McCartney y rencontre Stevie Wonder.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "81",
+      "faits": "Club ouvert en 1965 au décor écossais. Premier bœuf londonien de Jimi Hendrix en septembre 1966 ; McCartney y rencontre Stevie Wonder.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

@@ -1,0 +1,45 @@
+{
+  "id": "edmonton-regal",
+  "nom": "Edmonton Regal",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "Edmonton",
+  "quartier": "Edmonton",
+  "zone": "Nord et Nord-Est",
+  "coordonnees": {
+    "lat": 51.6245,
+    "lon": -0.061402,
+    "origine": "geocodage",
+    "precision": "quartier",
+    "validees": false
+  },
+  "artistes": [
+    "Bill Haley",
+    "Jerry Lee Lewis",
+    "The Everly Brothers"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Cinéma-salle de concert des pionniers du rock'n'roll.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "119",
+      "faits": "Cinéma-salle de concert des pionniers du rock'n'roll.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

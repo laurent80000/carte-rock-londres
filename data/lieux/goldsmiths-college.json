@@ -1,0 +1,46 @@
+{
+  "id": "goldsmiths-college",
+  "nom": "Goldsmiths College",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "ecole",
+  "adresse": "Lewisham Way",
+  "quartier": "New Cross",
+  "zone": "Sud-Est",
+  "coordonnees": {
+    "lat": 51.474855,
+    "lon": -0.034924,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Blur",
+    "John Cale",
+    "Malcolm McLaren",
+    "Placebo"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "existant",
+  "publication": "prive",
+  "historique_court": "Les membres de Blur s'y rencontrent vers 1987 ; John Cale et Malcolm McLaren y ont étudié.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "174",
+      "faits": "Les membres de Blur s'y rencontrent vers 1987 ; John Cale et Malcolm McLaren y ont étudié.",
+      "etat_selon_source": "existant",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

@@ -1,0 +1,43 @@
+{
+  "id": "walthamstow-school-of-art",
+  "nom": "Walthamstow School of Art",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "ecole",
+  "adresse": "Walthamstow",
+  "quartier": "Walthamstow",
+  "zone": "Nord et Nord-Est",
+  "coordonnees": {
+    "lat": 51.581524,
+    "lon": -0.023759,
+    "origine": "geocodage",
+    "precision": "quartier",
+    "validees": false
+  },
+  "artistes": [
+    "Ian Dury"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "transformé",
+  "publication": "prive",
+  "historique_court": "École d'art d'Ian Dury à partir de 1959.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "118",
+      "faits": "École d'art d'Ian Dury à partir de 1959.",
+      "etat_selon_source": "transformé",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

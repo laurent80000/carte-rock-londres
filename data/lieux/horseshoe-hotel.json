@@ -1,0 +1,44 @@
+{
+  "id": "horseshoe-hotel",
+  "nom": "Horseshoe Hotel",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "pub",
+  "adresse": "264-267 Tottenham Court Road",
+  "quartier": "Fitzrovia",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.522302,
+    "lon": -0.135988,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Bert Jansch",
+    "John Renbourn"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Pub devenu club folk en 1967 sous la houlette de Bert Jansch et John Renbourn.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "58",
+      "faits": "Pub devenu club folk en 1967 sous la houlette de Bert Jansch et John Renbourn.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

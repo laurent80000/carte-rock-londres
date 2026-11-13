@@ -1,0 +1,45 @@
+{
+  "id": "tally-ho",
+  "nom": "Tally Ho",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "pub",
+  "adresse": "9 Fortess Road",
+  "quartier": "Kentish Town",
+  "zone": "Nord-Ouest",
+  "coordonnees": {
+    "lat": 51.552394,
+    "lon": -0.14134,
+    "origine": "geocodage",
+    "precision": "adresse",
+    "validees": false
+  },
+  "artistes": [
+    "Eggs Over Easy",
+    "Brinsley Schwarz",
+    "Dr Feelgood"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Premier pub du pub rock, en 1971 ; premier concert londonien de Dr Feelgood.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "88",
+      "faits": "Premier pub du pub rock, en 1971 ; premier concert londonien de Dr Feelgood.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}

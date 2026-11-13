@@ -1,0 +1,45 @@
+{
+  "id": "ufo-club-blarney-club",
+  "nom": "UFO Club (Blarney Club)",
+  "dossier_photo": null,
+  "origine_fiche": "livre:wooldridge_2002",
+  "nature": "permanent",
+  "type": "salle",
+  "adresse": "31 Tottenham Court Road",
+  "quartier": "Fitzrovia",
+  "zone": "Central",
+  "coordonnees": {
+    "lat": 51.522782,
+    "lon": -0.136439,
+    "origine": "geocodage",
+    "precision": "rue",
+    "validees": false
+  },
+  "artistes": [
+    "Pink Floyd",
+    "Soft Machine",
+    "Procol Harum"
+  ],
+  "periode": null,
+  "statut": "a_visiter",
+  "verification": "a_verifier",
+  "etat_selon_source": "disparu",
+  "publication": "prive",
+  "historique_court": "Premier club psychédélique de Grande-Bretagne, de décembre 1966 à octobre 1967, dont Pink Floyd devient presque le groupe maison. Bâtiment démoli.",
+  "historique_long": "",
+  "sources": [
+    {
+      "type": "livre",
+      "reference": "Max Wooldridge, Rock'n'Roll London (New Holland, 2002)",
+      "page": "56",
+      "faits": "Premier club psychédélique de Grande-Bretagne, de décembre 1966 à octobre 1967, dont Pink Floyd devient presque le groupe maison. Bâtiment démoli.",
+      "etat_selon_source": "disparu",
+      "releve": "wooldridge_2002"
+    }
+  ],
+  "medias": {
+    "couverture": null,
+    "selection": []
+  },
+  "notes": []
+}
