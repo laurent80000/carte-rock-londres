@@ -16,6 +16,8 @@
   },
   // Sans identifiant : l'espace KV est créé au premier déploiement.
   "kv_namespaces": [{ "binding": "CARNET" }],
+  // Sans nom : l'espace photos est créé au premier déploiement (R2 activé le 13/11/2026).
+  "r2_buckets": [{ "binding": "MEDIAS" }],
   "workers_dev": true,
   "preview_urls": false,
   // Garde les réglages faits dans le tableau de bord.

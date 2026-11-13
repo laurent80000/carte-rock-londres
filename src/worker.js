@@ -168,6 +168,10 @@ export default {
       return new Response('Configuration incomplète : MOT_DE_PASSE et SECRET_SESSION doivent être définis.', { status: 500 });
     }
     const url = new URL(request.url);
+    // État technique, sans aucune donnée : permet de vérifier un déploiement sans se connecter.
+    if (url.pathname === '/etat-technique') {
+      return json({ carnet: Boolean(env.CARNET), medias: Boolean(env.MEDIAS) });
+    }
 
     const cookie = (request.headers.get('Cookie') || '').match(/(?:^|;\s*)acces=(\d+)\.([0-9a-f]+)/);
     if (cookie && Number(cookie[1]) > Date.now() / 1000
