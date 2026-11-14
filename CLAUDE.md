@@ -97,6 +97,17 @@ Lancement simplifié (13/11/2026, à la demande de Laurent) : la première fois,
 
 Constat du 13/11/2026 : les aperçus du dossier font 360 x 480 pixels. Ils suffisent pour les vignettes mais restent flous en plein écran ; une meilleure qualité demandera les originaux ou un export de Photos en pleine taille.
 
+## Archives libres de droits (14/11/2026)
+
+data/archives.json liste, lieu par lieu, des photos d'archives sous licence libre trouvées sur Wikimedia Commons (29 archives, 14 lieux) : métadonnées seulement, jamais les images (les médias ne vont pas dans git). Chaque entrée porte l'identifiant du lieu, la page Commons, l'adresse de téléchargement, la miniature, l'auteur, la date, la licence et son lien, la légende prête à publier, le type de rapprochement ("autrefois" ou "concert"), un niveau de vérification (ok, non_controlee, a_verifier) et si l'archive est cochée d'office (vérifiées seulement).
+
+- construire.mjs copie ce fichier dans app/data/archives.json ; outils/medias.py le lit sur le site.
+- La page de sélection du Mac affiche, pour chaque lieu, les archives (miniatures prises sur Commons) au-dessus des photos de Laurent, y compris pour les lieux sans photo de lui. À l'envoi, l'outil télécharge chaque archive cochée (une seconde et demie entre deux téléchargements, patience en cas de réponse 429), la redimensionne, la réenregistre sans métadonnées, la met dans R2 sous lieux/<lieu>/<id>-a.jpg et -v.jpg, et inscrit ses crédits dans selection.json (clé "archives" de chaque lieu : légende, auteur, licence, liens, "modifications": "redimensionnée").
+- La fiche affiche une section "Archives" (vignettes avec l'année) ; la visionneuse montre la légende, le texte "Image redimensionnée pour l'affichage" et les liens vers la source et la licence.
+- Règles de choix : licences CC BY, CC BY-SA, CC0 ou domaine public avec auteur connu ; jamais de pochette, de photo de presse ni de revendication de domaine public sans auteur. Les archives "a_verifier" ne sont jamais cochées d'office, et l'outil demande confirmation avant de les retenir.
+- Le tri d'origine est dans l'Excel remis à Laurent (onglets Sélection, À lire avant d'uploader, Écartés, Lieux sans archive trouvée). Les lieux sans archive exploitable sur Commons (Roundhouse, Denmark Street, Heddon Street, Trident, etc.) pourraient être complétés par Geograph (photos sous CC BY-SA 2.0), dont l'accès n'est pas encore ouvert depuis la session de travail.
+- Wikimedia limite le rythme des téléchargements : depuis la session de travail (adresse partagée), les téléchargements d'images renvoient souvent 429 ; le test de bout en bout a donc été fait avec des images servies en local.
+
 ## Lieux tirés des livres
 
 Un relevé par ouvrage dans sources/livres/<ouvrage>.csv (colonnes : ouvrage, page, lieu, adresse, quartier, zone, type, artistes séparés par ;, fait, etat_2002, fiche_existante, lat, lon, precision). Le fait est une présentation courte du lieu, en deux ou trois lignes, reformulée et jamais recopiée : Laurent la réécrit ensuite à sa guise (consigne du 13/11/2026). Le texte intégral du livre reste hors du dépôt.

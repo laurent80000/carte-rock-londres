@@ -36,7 +36,10 @@ import subprocess
 import sys
 import tempfile
 import threading
+import time
+import urllib.error
 import urllib.parse
+import urllib.request
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -194,6 +197,36 @@ class Photos:
         return image.convert("RGB")
 
 
+def telecharger_archive(url):
+    """Télécharge une archive sur Wikimedia Commons, en patientant quand le site demande de ralentir."""
+    for essai in range(6):
+        time.sleep(1.5)
+        try:
+            requete = urllib.request.Request(url, headers={"User-Agent": "carte-rock-londres/1.0 (usage personnel; sélection d'archives)"})
+            with urllib.request.urlopen(requete, timeout=90) as r:
+                return r.read()
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                time.sleep(int(e.headers.get("Retry-After", "10") or 10) + 5 * essai)
+            else:
+                time.sleep(3)
+        except Exception:
+            time.sleep(3)
+    raise RuntimeError("Wikimedia Commons ne répond pas (trop de demandes ?), réessaie dans quelques minutes")
+
+
+def image_depuis_octets(octets):
+    image = Image.open(io.BytesIO(octets))
+    image.load()
+    image = ImageOps.exif_transpose(image)
+    if image.mode in ("RGBA", "LA", "P"):
+        image = image.convert("RGBA")
+        fond = Image.new("RGB", image.size, "white")
+        fond.paste(image, mask=image.split()[-1])
+        return fond
+    return image.convert("RGB")
+
+
 def jpeg(image, cote, qualite):
     """Réduit sans agrandir et enregistre sans aucune métadonnée."""
     copie = image.copy()
@@ -208,7 +241,14 @@ class Application:
     def __init__(self, site, photos, lieux_site, forcer):
         self.site = site
         self.photos = photos
-        self.lieux = [l for l in lieux_site if l["id"] in photos.par_lieu]
+        try:
+            catalogue = site.json("GET", "/data/archives.json").get("archives", [])
+        except RuntimeError:
+            catalogue = []
+        self.archives_par_lieu = {}
+        for a in catalogue:
+            self.archives_par_lieu.setdefault(a["lieu"], []).append(a)
+        self.lieux = [l for l in lieux_site if l["id"] in photos.par_lieu or l["id"] in self.archives_par_lieu]
         self.forcer = forcer
         self.verrou = threading.Lock()
         self.selection = site.json("GET", "/api/medias/selection")
@@ -217,19 +257,28 @@ class Application:
     def etat(self):
         lieux = []
         for l in self.lieux:
-            stock = self.photos.par_lieu[l["id"]]
+            stock = self.photos.par_lieu.get(l["id"], {})
             s = self.selection.get("lieux", {}).get(l["id"], {})
             lieux.append({
-                "id": l["id"], "nom": l["nom"], "dossier": l["dossier"],
+                "id": l["id"], "nom": l["nom"], "dossier": l.get("dossier"),
                 "nb_photos": sum(not p["video"] for p in stock.values()),
                 "nb_videos": sum(p["video"] for p in stock.values()),
+                "nb_archives": len(self.archives_par_lieu.get(l["id"], [])),
                 "choisies": [p["id"] for p in s.get("photos", [])],
+                "archives_choisies": [a["id"] for a in s.get("archives", [])],
                 "couverture": s.get("couverture"),
             })
         return {"lieux": lieux, "heic": HEIF}
 
     def liste(self, lieu):
-        return sorted(self.photos.par_lieu[lieu].values(), key=lambda p: (p["horodatage"], p["id"]))
+        return sorted(self.photos.par_lieu.get(lieu, {}).values(), key=lambda p: (p["horodatage"], p["id"]))
+
+    def archives(self, lieu):
+        """Archives proposées pour un lieu. Tant qu'aucun choix n'est enregistré, les archives vérifiées sont cochées."""
+        s = self.selection.get("lieux", {}).get(lieu)
+        deja = {a["id"] for a in (s or {}).get("archives", [])}
+        jamais = s is None or "archives" not in s
+        return [{**a, "choisie": a["preselection"] if jamais else a["id"] in deja} for a in self.archives_par_lieu.get(lieu, [])]
 
     def apercu(self, lieu, photo):
         p = self.photos.par_lieu[lieu][photo]
@@ -240,9 +289,9 @@ class Application:
             cache.write_bytes(octets)
         return cache.read_bytes()
 
-    def envoyer(self, lieu, ids, couverture):
-        """Prépare et envoie les photos retenues d'un lieu, retire celles qui ne le sont plus."""
-        stock = self.photos.par_lieu[lieu]
+    def envoyer(self, lieu, ids, couverture, archives_ids=()):
+        """Prépare et envoie les photos et archives retenues d'un lieu, retire celles qui ne le sont plus."""
+        stock = self.photos.par_lieu.get(lieu, {})
         ids = [i for i in ids if i in stock and not stock[i]["video"]]
         if couverture not in ids:
             couverture = ids[0] if ids else None
@@ -265,7 +314,35 @@ class Application:
                 retenues.append({"id": i, "date": p["date"], "largeur": la, "hauteur": ha, "largeur_v": lv, "hauteur_v": hv})
             except Exception as erreur:  # une photo illisible ne bloque pas les autres
                 rapport["erreurs"].append(f"{p['fichier']} : {erreur}")
-        gardees = {f"lieux/{lieu}/{r['id']}-{t}.jpg" for r in retenues for t in ("a", "v")}
+        catalogue = {a["id"]: a for a in self.archives_par_lieu.get(lieu, [])}
+        archives_retenues = []
+        for aid in archives_ids:
+            a = catalogue.get(aid)
+            if not a:
+                continue
+            cles = {t: f"lieux/{lieu}/{aid}-{t}.jpg" for t in ("a", "v")}
+            try:
+                if self.forcer or not all(c in self.en_ligne for c in cles.values()):
+                    image = image_depuis_octets(telecharger_archive(a["telechargement"]))
+                    affichage, (la, ha) = jpeg(image, AFFICHAGE, 84)
+                    vignette, (lv, hv) = jpeg(image, VIGNETTE, 78)
+                    self.site.envoyer_image(cles["a"], affichage)
+                    self.site.envoyer_image(cles["v"], vignette)
+                    self.en_ligne.update(cles.values())
+                    rapport["envoyees"] += 1
+                    dims = {"largeur": la, "hauteur": ha, "largeur_v": lv, "hauteur_v": hv}
+                else:
+                    rapport["deja_en_ligne"] += 1
+                    ancien = next((x for x in self.selection.get("lieux", {}).get(lieu, {}).get("archives", []) if x["id"] == aid), {})
+                    dims = {k: ancien.get(k) for k in ("largeur", "hauteur", "largeur_v", "hauteur_v")}
+                archives_retenues.append({
+                    "id": aid, "annee": a["annee"], "date": a["date"], "legende": a["legende"], "auteur": a["auteur"],
+                    "licence": a["licence"], "licence_url": a["licence_url"], "page": a["page"], "source": a["source"],
+                    "rapprochement": a["rapprochement"], "modifications": "redimensionnée", **dims,
+                })
+            except Exception as erreur:  # une archive en échec ne bloque pas les autres
+                rapport["erreurs"].append(f"{a['titre_commons']} : {erreur}")
+        gardees = {f"lieux/{lieu}/{r['id']}-{t}.jpg" for r in retenues + archives_retenues for t in ("a", "v")}
         for cle in sorted(c for c in self.en_ligne if c.startswith(f"lieux/{lieu}/") and c not in gardees):
             self.site.supprimer(cle)
             self.en_ligne.discard(cle)
@@ -273,8 +350,8 @@ class Application:
         rapport["retirees"] //= 2
         with self.verrou:
             selection = self.site.json("GET", "/api/medias/selection")
-            if retenues:
-                selection.setdefault("lieux", {})[lieu] = {"couverture": couverture, "photos": retenues}
+            if retenues or archives_retenues:
+                selection.setdefault("lieux", {})[lieu] = {"couverture": couverture, "photos": retenues, "archives": archives_retenues}
             else:
                 selection.setdefault("lieux", {}).pop(lieu, None)
             self.selection = self.site.json("PUT", "/api/medias/selection", selection)
@@ -309,6 +386,8 @@ def gestionnaire(app):
                     self.json(app.etat())
                 elif url.path == "/api/photos":
                     self.json(app.liste(q["lieu"]))
+                elif url.path == "/api/archives":
+                    self.json(app.archives(q["lieu"]))
                 elif url.path == "/apercu":
                     self.repondre(200, app.apercu(q["lieu"], q["photo"]), "image/jpeg", cache=True)
                 else:
@@ -321,7 +400,7 @@ def gestionnaire(app):
                 return self.json({"erreur": "inconnu"}, 404)
             try:
                 d = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
-                self.json(app.envoyer(d["lieu"], d["photos"], d.get("couverture")))
+                self.json(app.envoyer(d["lieu"], d["photos"], d.get("couverture"), d.get("archives", [])))
             except Exception as erreur:
                 self.json({"erreur": str(erreur)}, 500)
 
@@ -412,8 +491,19 @@ header{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}header h2{margi
 .bouton.second{background:var(--fond);color:var(--encre);border:1px solid var(--trait)}
 .bouton:disabled{opacity:.5;cursor:wait}
 .vide{color:var(--doux);margin-top:40px}
+h3{margin:26px 0 4px;font-size:16px}.aide{margin:0 0 6px;color:var(--doux);font-size:13px}
+.grille-arc{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:10px}
+.arc{position:relative;border:3px solid transparent;border-radius:10px;overflow:hidden;background:var(--surface);cursor:pointer;display:flex;flex-direction:column}
+.arc.choisie{border-color:var(--ok)}
+.arc img{width:100%;height:170px;object-fit:contain;background:#0001;display:block}
+.arc .coche{position:absolute;top:6px;left:6px;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;display:grid;place-items:center;font-size:15px}
+.arc.choisie .coche{background:var(--ok)}
+.arc .alerte{position:absolute;top:6px;right:6px;background:#b45309;color:#fff;border-radius:12px;padding:2px 9px;font-size:12px;font-weight:650}
+.arc .leg{padding:8px 10px 2px;font-size:13px}.arc .leg small{color:var(--doux)}
+.arc .leg a{color:var(--accent)}
+.arc .rem{margin:0;padding:0 10px 10px;font-size:12px;color:var(--doux)}
 </style></head><body>
-<nav><h1>Photos de la carte</h1><p>Clique sur une photo pour la retenir, sur l'étoile pour en faire la couverture.</p><div id="lieux"></div></nav>
+<nav><h1>Photos de la carte</h1><p>Clique sur une photo ou une archive pour la retenir, sur l'étoile pour faire d'une de tes photos la couverture.</p><div id="lieux"></div></nav>
 <main id="principal"><p class="vide">Choisis un lieu dans la liste.</p></main>
 <div class="barre" hidden id="barre"><span id="etat"></span>
 <button class="bouton second" id="aucune">Tout retirer</button><button class="bouton" id="envoyer">Enregistrer et envoyer</button></div>
@@ -421,41 +511,82 @@ header{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}header h2{margi
 const $ = (s) => document.querySelector(s);
 const esc = (t) => String(t ?? '').replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let donnees, lieu = null, photos = [], choisies = new Set(), couverture = null, modifie = false;
+let archives = [], archivesChoisies = new Set();
 const dateFr = (d) => new Date(d + 'T12:00:00').toLocaleDateString('fr-BE', {day:'numeric', month:'long', year:'numeric'});
+const pl = (n, mot) => `${n} ${mot}${n > 1 ? 's' : ''}`;
 
 async function charger() {
   donnees = await (await fetch('/api/etat')).json();
-  $('#lieux').innerHTML = donnees.lieux.map((l) => `<button data-lieu="${l.id}" class="${l.choisies.length ? 'fait' : ''} ${l.id === lieu?.id ? 'actif' : ''}">
-    ${esc(l.nom)}<small>${l.choisies.length ? l.choisies.length + ' retenue' + (l.choisies.length > 1 ? 's' : '') : l.nb_photos + ' photo' + (l.nb_photos > 1 ? 's' : '')}</small></button>`).join('');
+  $('#lieux').innerHTML = donnees.lieux.map((l) => {
+    const n = l.choisies.length + l.archives_choisies.length;
+    const stock = [l.nb_photos ? pl(l.nb_photos, 'photo') : '', l.nb_archives ? pl(l.nb_archives, 'archive') : ''].filter(Boolean).join(' · ');
+    return `<button data-lieu="${l.id}" class="${n ? 'fait' : ''} ${l.id === lieu?.id ? 'actif' : ''}">${esc(l.nom)}<small>${n ? pl(n, 'retenue') : stock}</small></button>`;
+  }).join('');
 }
 function compter() {
-  const n = choisies.size;
-  $('#etat').textContent = (n ? `${n} photo${n > 1 ? 's' : ''} retenue${n > 1 ? 's' : ''}` : 'Aucune photo retenue') + (modifie ? ' · modifications non envoyées' : '');
+  const n = choisies.size, a = archivesChoisies.size;
+  const t = [n ? pl(n, 'photo') : '', a ? pl(a, 'archive') : ''].filter(Boolean).join(' et ');
+  $('#etat').textContent = (t ? `${t} retenue${n + a > 1 ? 's' : ''}` : 'Rien de retenu') + (modifie ? ' · modifications non envoyées' : '');
 }
 function dessiner() {
   $('#principal').querySelectorAll('.photo').forEach((b) => {
     b.classList.toggle('choisie', choisies.has(b.dataset.photo));
     b.classList.toggle('couverture', b.dataset.photo === couverture);
   });
+  $('#principal').querySelectorAll('.arc').forEach((b) => b.classList.toggle('choisie', archivesChoisies.has(b.dataset.archive)));
   compter();
+}
+const RAPPROCHEMENT = {autrefois: "Le lieu autrefois", concert: "Ce qui s'y passait"};
+function carteArchive(a) {
+  const alerte = a.verification === 'a_verifier' ? 'À vérifier' : a.verification === 'non_controlee' ? 'Image non contrôlée' : '';
+  return `<div class="arc" data-archive="${esc(a.id)}">
+    <img src="${esc(a.miniature)}" referrerpolicy="no-referrer" loading="lazy" alt="">
+    <span class="coche">✓</span>${alerte ? `<span class="alerte">${alerte}</span>` : ''}
+    <div class="leg"><b>${esc(a.annee)}</b> · ${esc(a.auteur)}<br><small>${esc(a.licence)} · ${esc(RAPPROCHEMENT[a.rapprochement] || '')}</small><br>
+      <a href="${esc(a.page)}" target="_blank" rel="noopener">Voir sur Commons</a></div>
+    <p class="rem">${esc(a.remarque)}</p></div>`;
 }
 async function ouvrir(id) {
   if (modifie && !confirm('Les modifications de ce lieu ne sont pas envoyées. Les abandonner ?')) return;
   lieu = donnees.lieux.find((l) => l.id === id);
-  photos = await (await fetch('/api/photos?lieu=' + encodeURIComponent(id))).json();
+  [photos, archives] = await Promise.all([
+    fetch('/api/photos?lieu=' + encodeURIComponent(id)).then((r) => r.json()),
+    fetch('/api/archives?lieu=' + encodeURIComponent(id)).then((r) => r.json()),
+  ]);
   choisies = new Set(lieu.choisies); couverture = lieu.couverture; modifie = false;
+  archivesChoisies = new Set(archives.filter((a) => a.choisie).map((a) => a.id));
   document.querySelectorAll('nav button').forEach((b) => b.classList.toggle('actif', b.dataset.lieu === id));
   const videos = photos.filter((p) => p.video).length;
-  $('#principal').innerHTML = `<header><h2>${esc(lieu.nom)}</h2><span>${esc(lieu.dossier)} · ${lieu.nb_photos} photos${videos ? `, ${videos} vidéos en attente de leur original` : ''}</span></header>
-    <div class="grille">${photos.map((p) => `<button class="photo ${p.video ? 'video' : ''}" data-photo="${p.id}" ${p.video || !p.present ? 'disabled' : ''}>
+  let h = `<header><h2>${esc(lieu.nom)}</h2><span>${esc(lieu.dossier || 'Lieu sans dossier photo')} · ${pl(lieu.nb_photos, 'photo')}${videos ? `, ${pl(videos, 'vidéo')} en attente de leur original` : ''}</span></header>`;
+  if (archives.length) {
+    h += `<h3>Archives sous licence libre (Wikimedia Commons)</h3>
+      <p class="aide">Les archives vérifiées sont déjà cochées. À l'envoi, l'outil les télécharge, les redimensionne et les met en ligne avec leur auteur et leur licence.</p>
+      <div class="grille-arc">${archives.map(carteArchive).join('')}</div>`;
+  }
+  if (photos.length) {
+    h += `<h3>Tes photos</h3><div class="grille">${photos.map((p) => `<button class="photo ${p.video ? 'video' : ''}" data-photo="${p.id}" ${p.video || !p.present ? 'disabled' : ''}>
       ${p.present ? `<img loading="lazy" src="/apercu?lieu=${encodeURIComponent(id)}&photo=${encodeURIComponent(p.id)}" alt="">` : ''}
       <span class="coche">✓</span>${p.video ? '' : '<span class="etoile" data-etoile="1">★</span>'}
       <span class="date">${dateFr(p.date)} ${p.heure}${p.video ? ' · vidéo' : ''}${p.present ? '' : ' · fichier absent'}</span></button>`).join('')}</div>`;
+  } else {
+    h += '<p class="vide">Aucune photo de toi dans le dossier pour ce lieu.</p>';
+  }
+  $('#principal').innerHTML = h;
   $('#barre').hidden = false;
   dessiner();
 }
 $('#lieux').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) ouvrir(b.dataset.lieu); });
 $('#principal').addEventListener('click', (e) => {
+  if (e.target.closest('a')) return;
+  const arc = e.target.closest('.arc');
+  if (arc) {
+    const aid = arc.dataset.archive, a = archives.find((x) => x.id === aid);
+    if (!archivesChoisies.has(aid)) {
+      if (a.verification === 'a_verifier' && !confirm("Cette archive est à vérifier (date ou licence). La retenir quand même ?")) return;
+      archivesChoisies.add(aid);
+    } else archivesChoisies.delete(aid);
+    modifie = true; dessiner(); return;
+  }
   const b = e.target.closest('.photo'); if (!b || b.disabled) return;
   const id = b.dataset.photo;
   if (e.target.dataset.etoile) { couverture = id; choisies.add(id); }
@@ -463,12 +594,14 @@ $('#principal').addEventListener('click', (e) => {
   else choisies.add(id);
   modifie = true; dessiner();
 });
-$('#aucune').addEventListener('click', () => { choisies.clear(); couverture = null; modifie = true; dessiner(); });
+$('#aucune').addEventListener('click', () => { choisies.clear(); archivesChoisies.clear(); couverture = null; modifie = true; dessiner(); });
 $('#envoyer').addEventListener('click', async () => {
-  const bouton = $('#envoyer'); bouton.disabled = true; $('#etat').textContent = 'Préparation et envoi en cours…';
+  const bouton = $('#envoyer'); bouton.disabled = true;
+  $('#etat').textContent = archivesChoisies.size ? 'Préparation et envoi en cours (les archives se téléchargent une à une, quelques secondes chacune)…' : 'Préparation et envoi en cours…';
   const ordre = photos.map((p) => p.id).filter((id) => choisies.has(id));
+  const ordreArchives = archives.map((a) => a.id).filter((id) => archivesChoisies.has(id));
   try {
-    const r = await (await fetch('/api/envoyer', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({lieu: lieu.id, photos: ordre, couverture})})).json();
+    const r = await (await fetch('/api/envoyer', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({lieu: lieu.id, photos: ordre, couverture, archives: ordreArchives})})).json();
     if (r.erreur) throw new Error(r.erreur);
     modifie = false; await charger();
     lieu = donnees.lieux.find((l) => l.id === lieu.id); couverture = lieu.couverture; dessiner();

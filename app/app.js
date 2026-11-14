@@ -119,6 +119,9 @@ function photosDe(l) {
   // La couverture passe en premier.
   return [...s.photos].sort((a, b) => (b.id === s.couverture) - (a.id === s.couverture));
 }
+function archivesDe(l) {
+  return selectionPhotos.lieux?.[l.id]?.archives ?? [];
+}
 async function chargerSelection() {
   try {
     const r = await fetch('api/medias/selection', { cache: 'no-store' });
@@ -131,21 +134,34 @@ async function chargerSelection() {
 const visionneuse = document.createElement('div');
 visionneuse.className = 'visionneuse';
 visionneuse.hidden = true;
-visionneuse.innerHTML = '<div class="defile"></div><div class="legende"></div><button class="rond fermer-photo" aria-label="Fermer">&times;</button>';
+visionneuse.innerHTML = '<div class="defile"></div><div class="legende"><span class="compte"></span><p class="texte"></p><p class="liens"></p></div><button class="rond fermer-photo" aria-label="Fermer">&times;</button>';
 document.body.append(visionneuse);
-function ouvrirVisionneuse(l, depart) {
-  const photos = photosDe(l);
+// items : [{ src, texte, liens: [{ texte, url }] }]
+function ouvrirVisionneuse(items, depart) {
   const defile = visionneuse.querySelector('.defile');
-  defile.innerHTML = photos.map((p) => `<figure><img src="${urlMedia(l.id, p.id, 'a')}" alt="" loading="lazy"></figure>`).join('');
+  defile.innerHTML = items.map((it) => `<figure><img src="${esc(it.src)}" alt="" loading="lazy"></figure>`).join('');
   const legende = () => {
-    const i = Math.round(defile.scrollLeft / defile.clientWidth);
-    const p = photos[i];
-    visionneuse.querySelector('.legende').textContent = `${i + 1} / ${photos.length}${p?.date ? ` · ${dateLongue(p.date)}` : ''}`;
+    const i = Math.max(0, Math.min(items.length - 1, Math.round(defile.scrollLeft / defile.clientWidth)));
+    const it = items[i];
+    visionneuse.querySelector('.compte').textContent = `${i + 1} / ${items.length}`;
+    visionneuse.querySelector('.texte').textContent = it?.texte ?? '';
+    visionneuse.querySelector('.liens').innerHTML = (it?.liens ?? []).filter((x) => x.url)
+      .map((x) => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.texte)}</a>`).join(' · ');
   };
   defile.onscroll = legende;
   visionneuse.hidden = false;
   defile.scrollLeft = depart * defile.clientWidth;
   legende();
+}
+function itemsPhotos(l) {
+  return photosDe(l).map((p) => ({ src: urlMedia(l.id, p.id, 'a'), texte: p.date ? dateLongue(p.date) : '', liens: [] }));
+}
+function itemsArchives(l) {
+  return archivesDe(l).map((a) => ({
+    src: urlMedia(l.id, a.id, 'a'),
+    texte: `${a.legende} Image redimensionnée pour l'affichage.`,
+    liens: [{ texte: 'Source', url: a.page }, { texte: a.licence, url: a.licence_url }],
+  }));
 }
 visionneuse.querySelector('.fermer-photo').addEventListener('click', () => { visionneuse.hidden = true; });
 addEventListener('keydown', (e) => {
@@ -388,6 +404,13 @@ function htmlFiche(l) {
     h += '<div class="galerie-vide">Aucune photo pour l\'instant.</div>';
   }
 
+  const arch = archivesDe(l);
+  if (arch.length) {
+    h += `<h2>Archives</h2><div class="galerie">${arch.map((a, i) => `<button class="vignette" data-archive="${i}" aria-label="Agrandir l'archive de ${esc(a.annee)}">
+      <img src="${urlMedia(l.id, a.id, 'v')}" alt="" loading="lazy" width="${a.largeur_v ?? ''}" height="${a.hauteur_v ?? ''}"><span class="annee">${esc(a.annee)}</span></button>`).join('')}</div>
+      <p class="note">Images d'archives sous licence libre : auteur et licence dans la légende de chaque photo.</p>`;
+  }
+
   h += '<h2>Histoire</h2>';
   h += l.historique_court || l.historique_long
     ? [l.historique_court, l.historique_long].filter(Boolean).map((t) => `<p>${esc(t)}</p>`).join('')
@@ -571,7 +594,8 @@ $('#contenu').addEventListener('click', (e) => {
   if (!cible) return;
   const d = cible.dataset;
   if (d.lieu) { $('#recherche').blur(); ouvrirFiche(d.lieu); return; }
-  if (d.photo) { ouvrirVisionneuse(etat.lieux.find((x) => x.id === etat.lieuOuvert), Number(d.photo)); return; }
+  if (d.photo) { ouvrirVisionneuse(itemsPhotos(etat.lieux.find((x) => x.id === etat.lieuOuvert)), Number(d.photo)); return; }
+  if (d.archive) { ouvrirVisionneuse(itemsArchives(etat.lieux.find((x) => x.id === etat.lieuOuvert)), Number(d.archive)); return; }
   if (d.carnet) {
     const texte = $('#note')?.value.trim();
     if (d.carnet === 'note' && !texte) { $('#note').focus(); return; }

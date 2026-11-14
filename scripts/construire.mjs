@@ -68,6 +68,9 @@ if (!existsSync(join(RACINE, 'node_modules/maplibre-gl'))) {
 }
 mkdirSync(join(RACINE, 'app/vendor'), { recursive: true });
 for (const b of BIBLIOTHEQUES) copyFileSync(join(RACINE, 'node_modules', b), join(RACINE, 'app/vendor', basename(b)));
+// Sélection d'archives libres de droits (métadonnées seulement), lue par l'outil photos du Mac.
+copyFileSync(join(RACINE, 'data/archives.json'), join(RACINE, 'app/data/archives.json'));
+
 // Outils du Mac, publiés sans protection : du code seul, sans aucune donnée.
 mkdirSync(join(RACINE, 'app/outils'), { recursive: true });
 for (const f of ['medias.py', 'photos.sh']) copyFileSync(join(RACINE, 'outils', f), join(RACINE, 'app/outils', f));
