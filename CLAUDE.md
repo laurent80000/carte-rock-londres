@@ -44,6 +44,11 @@ Français, prose continue, sans listes à puces dans les historiques. Pas de tir
 - sources : liste d'objets (type livre, interview, article ou note personnelle, référence, page, url).
 - medias : couverture et sélection, remplis par l'outil de sélection.
 - notes : notes rapides prises sur place.
+- zone : Central, Nord-Ouest, Nord et Nord-Est, Ouest, Sud-Ouest, Sud-Est (fiches issues d'un livre).
+- origine_fiche : "livre:<ouvrage>" pour une fiche créée depuis un relevé de livre ; absente pour les lieux issus des photos. Ces fiches ont dossier_photo à null.
+- etat_selon_source : existant, transformé ou disparu, selon le livre en 2002. Affiché sur la fiche.
+- coordonnees.precision : adresse, rue (point au milieu de la rue), quartier (approximatif). Absent pour les lieux issus des photos.
+- visites_terrain : dates ajoutées par scripts/recuperer_carnet.py.
 - sources_site et import : blocs régénérés à chaque import, à ne pas modifier à la main.
 
 ## Décisions prises
@@ -70,6 +75,8 @@ L'application lit app/data/lieux.json, produit par scripts/construire.mjs à par
 
 Couleurs des points : vert pour un lieu visité, orange pour un lieu à visiter, violet pour un événement temporaire.
 
+app/outils/ est une copie de outils/, produite par construire.mjs et ignorée par git.
+
 ## Hébergement (Cloudflare Workers, offre gratuite)
 
 Décision du 13/11/2026, validée par Laurent. Le projet Cloudflare est un Worker avec fichiers statiques (et non un projet Pages), relié au dépôt GitHub : chaque envoi sur la branche main déclenche `npx wrangler deploy`. Adresse : https://carte-rock-londres.laurent-rieppi.workers.dev/
@@ -82,11 +89,11 @@ Décision du 13/11/2026, validée par Laurent. Le projet Cloudflare est un Worke
 - Limites vérifiées le 13/11/2026 dans la documentation Cloudflare : 20 000 fichiers par site, 25 Mio par fichier (d'où les tuiles individuelles plutôt qu'un fichier unique), 100 000 appels par jour, 1 000 écritures KV par jour.
 - Incident du 13/11/2026 : le premier déploiement, fait avant que le dépôt ne contienne wrangler.jsonc, a publié app/ sans protection pendant quelques dizaines de minutes. Les données des lieux n'y figuraient pas (le fichier n'était pas encore assemblé) et aucun fichier personnel n'a été servi.
 - scripts/recuperer_carnet.py reverse le carnet dans les fiches (statut "visite", champ "notes").
-- Photos : espace Cloudflare R2 lié au Worker sous le nom MEDIAS (décision du 13/11/2026, validée par Laurent ; offre gratuite de 10 Go). Servies par le Worker derrière le même mot de passe, sur /medias/lieux/<lieu>/<photo>-v.jpg (vignette, 480 px) et -a.jpg (affichage, 1600 px). La sélection (couverture et photos de chaque lieu) est dans selection.json, lue par la carte sur /api/medias/selection. La liaison R2 ne s'ajoute à wrangler.jsonc qu'une fois R2 activé sur le compte de Laurent.
+- Photos : espace Cloudflare R2 lié au Worker sous le nom MEDIAS (décision du 13/11/2026, validée par Laurent ; offre gratuite de 10 Go). Servies par le Worker derrière le même mot de passe, sur /medias/lieux/<lieu>/<photo>-v.jpg (vignette, 480 px) et -a.jpg (affichage, 1600 px). La sélection (couverture et photos de chaque lieu) est dans selection.json, lue par la carte sur /api/medias/selection. R2 est activé et relié au Worker depuis le 13/11/2026 (r2_buckets dans wrangler.jsonc, binding MEDIAS). GET /etat-technique renvoie {carnet, medias} pour vérifier les liaisons sans mot de passe.
 
 ## Photos (outils/medias.py, lancé sur le Mac)
 
-Lancement simplifié (13/11/2026, à la demande de Laurent) : la première fois, il colle dans le Terminal `curl -fsSL https://carte-rock-londres.laurent-rieppi.workers.dev/outils/photos.sh | bash` ; ensuite il double-clique sur "Photos carte rock" sur son Bureau. outils/photos.sh installe Pillow et pillow-heif dans un environnement Python propre au projet (~/Library/Application Support/carte-rock-londres), télécharge la dernière version de outils/medias.py et crée le raccourci. Ces deux fichiers sont publiés sans protection sur /outils/ (du code seul, aucune donnée). Le mot de passe est gardé dans le trousseau d'Apple après la première connexion réussie. Le script se connecte au site avec le mot de passe, lit ~/Pictures/Londres Rock/index.csv et les seuls fichiers de "01 Lieux rock" (vérification du chemin réel, rien n'est jamais écrit dans ce dossier), puis ouvre une page de sélection locale. Pour chaque lieu validé, il produit une vignette et une image d'affichage réenregistrées sans aucune métadonnée (ni GPS, ni date, ni appareil), les envoie, retire du site celles qui ne sont plus retenues et met à jour selection.json. Les aperçus de travail sont mis en cache dans ~/Library/Caches/carte-rock-londres. Les vidéos ne sont pas encore sélectionnables : leurs originaux sont sur iCloud.
+Lancement simplifié (13/11/2026, à la demande de Laurent) : la première fois, il colle dans le Terminal `curl -fsSL https://carte-rock-londres.laurent-rieppi.workers.dev/outils/photos.sh | bash` ; ensuite il double-clique sur "Photos carte rock" sur son Bureau. outils/photos.sh installe Pillow et pillow-heif dans un environnement Python propre au projet (~/Library/Application Support/carte-rock-londres), télécharge la dernière version de outils/medias.py et crée le raccourci. Ces deux fichiers sont publiés sans protection sur /outils/ (du code seul, aucune donnée). Si le port 8765 est pris, la page de sélection prend le suivant, jusqu'à 8814. Le mot de passe est gardé dans le trousseau d'Apple après la première connexion réussie. Le script se connecte au site avec le mot de passe, lit ~/Pictures/Londres Rock/index.csv et les seuls fichiers de "01 Lieux rock" (vérification du chemin réel, rien n'est jamais écrit dans ce dossier), puis ouvre une page de sélection locale. Pour chaque lieu validé, il produit une vignette et une image d'affichage réenregistrées sans aucune métadonnée (ni GPS, ni date, ni appareil), les envoie, retire du site celles qui ne sont plus retenues et met à jour selection.json. Les aperçus de travail sont mis en cache dans ~/Library/Caches/carte-rock-londres. Les vidéos ne sont pas encore sélectionnables : leurs originaux sont sur iCloud.
 
 Constat du 13/11/2026 : les aperçus du dossier font 360 x 480 pixels. Ils suffisent pour les vignettes mais restent flous en plein écran ; une meilleure qualité demandera les originaux ou un export de Photos en pleine taille.
 
@@ -96,7 +103,9 @@ Un relevé par ouvrage dans sources/livres/<ouvrage>.csv (colonnes : ouvrage, pa
 
 - scripts/geocoder_livre.py remplit lat, lon et precision avec Nominatim (OpenStreetMap), au plus une requête par seconde, réponses gardées dans sources/livres/geocodage_cache.json. Précision "adresse", "rue" (point au milieu de la rue, faute de numéro connu), "quartier" ou "introuvable".
 - scripts/import_livre.py crée une fiche "a_visiter", marquée "a_verifier", pour chaque lieu nouveau (origine_fiche "livre:<ouvrage>", etat_selon_source, coordonnées d'origine "geocodage" jamais validées d'office), et ajoute le livre aux sources des fiches déjà visitées. Il écrit rapports/a_visiter_<ouvrage>.md, la liste de visite par zone et quartier, qui signale les photos du dossier Londres Rock prises à moins de 45 m d'une adresse précise.
-- Premier relevé (13/11/2026) : Max Wooldridge, Rock'n'Roll London (2002), 331 adresses, dont 41 rattachées à des lieux déjà visités.
+- Premier relevé (13/11/2026) : Max Wooldridge, Rock'n'Roll London (2002), 331 adresses. 41 correspondent à des lieux déjà visités (livre ajouté à leurs sources) ; 290 fiches "à visiter" ont été créées.
+- Positions : 117 à l'adresse, 141 à la rue, 32 au quartier, aucune introuvable. Quinze positions mal placées par le géocodage ont été corrigées à la main dans wooldridge_2002.csv. Le géocodage ignore les lignes déjà géolocalisées, donc il ne les écrase pas ; relancer l'import les reprend.
+- La liste de visite est dans rapports/a_visiter_wooldridge_2002.md. import_lieux.py ne signale plus comme orphelines les fiches venues d'un livre.
 - Sur la carte, les lieux d'une même position sont légèrement écartés en cercle à l'affichage, sans toucher aux données.
 
 ## Commandes
