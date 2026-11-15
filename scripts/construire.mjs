@@ -39,6 +39,7 @@ for (const nom of readdirSync(dossier).filter((n) => n.endsWith('.json')).sort()
     medias: f.medias ?? { couverture: null, selection: [] },
     articles: articlesSite.map((a) => ({ type: a.type, date: a.date, titre: a.titre, url: a.url })),
     etat_selon_source: f.etat_selon_source ?? null,
+    a_ecouter: f.a_ecouter ?? [],
     decennie: f.periode?.decennie ?? null,
     precision: f.coordonnees.precision ?? null,
   };

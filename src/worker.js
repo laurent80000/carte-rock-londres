@@ -104,6 +104,42 @@ async function servirMedia(request, env, cle) {
   return new Response('body' in objet ? objet.body : null, { status: 'body' in objet ? 200 : 304, headers: entetes });
 }
 
+// Photos ajoutées sur place depuis le téléphone : rangées sous la clé "terrain" de chaque lieu,
+// à part de la sélection faite sur le Mac, qui ne les touche pas.
+const ID_LIEU = /^[a-z0-9-]{1,120}$/;
+const ID_TERRAIN = /^t[a-z0-9]{6,40}$/;
+async function gererTerrain(request, env) {
+  let lieu, id, photo;
+  if (request.method === 'POST') {
+    try { ({ lieu, photo } = await request.json()); } catch { return json({ erreur: 'JSON illisible' }, 400); }
+    id = photo?.id;
+  } else if (request.method === 'DELETE') {
+    const q = new URL(request.url).searchParams;
+    lieu = q.get('lieu'); id = q.get('id');
+  } else return json({ erreur: 'méthode non prévue' }, 405);
+  if (!ID_LIEU.test(lieu || '') || !ID_TERRAIN.test(id || '')) return json({ erreur: 'identifiant refusé' }, 400);
+
+  const objet = await env.MEDIAS.get('selection.json');
+  const selection = objet ? await objet.json() : { version: 1, lieux: {} };
+  const fiche = selection.lieux[lieu] ?? (selection.lieux[lieu] = {});
+  const terrain = (fiche.terrain ?? []).filter((p) => p.id !== id);
+  if (request.method === 'POST') {
+    const nombre = (v) => Math.max(0, Math.min(10000, Math.round(Number(v)) || 0));
+    terrain.push({
+      id, date: String(photo.date || new Date().toISOString()).slice(0, 30),
+      largeur_v: nombre(photo.largeur_v), hauteur_v: nombre(photo.hauteur_v),
+      largeur_a: nombre(photo.largeur_a), hauteur_a: nombre(photo.hauteur_a),
+    });
+  } else {
+    await env.MEDIAS.delete([`lieux/${lieu}/${id}-a.jpg`, `lieux/${lieu}/${id}-v.jpg`]);
+  }
+  if (terrain.length) fiche.terrain = terrain; else delete fiche.terrain;
+  if (!Object.keys(fiche).length) delete selection.lieux[lieu];
+  selection.maj = new Date().toISOString();
+  await env.MEDIAS.put('selection.json', JSON.stringify(selection), { httpMetadata: { contentType: 'application/json' } });
+  return json(selection);
+}
+
 async function gererMedias(request, env, chemin) {
   if (!env.MEDIAS) return json({ erreur: 'espace photos MEDIAS absent' }, 503);
   if (chemin === 'selection') {
@@ -131,6 +167,7 @@ async function gererMedias(request, env, chemin) {
     } while (suiteListe);
     return json({ cles });
   }
+  if (chemin === 'terrain') return gererTerrain(request, env);
   if (!CLE_MEDIA.test(chemin)) return json({ erreur: 'nom de fichier refusé' }, 400);
   if (request.method === 'PUT') {
     const taille = Number(request.headers.get('Content-Length'));

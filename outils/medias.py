@@ -342,7 +342,9 @@ class Application:
                 })
             except Exception as erreur:  # une archive en échec ne bloque pas les autres
                 rapport["erreurs"].append(f"{a['titre_commons']} : {erreur}")
-        gardees = {f"lieux/{lieu}/{r['id']}-{t}.jpg" for r in retenues + archives_retenues for t in ("a", "v")}
+        # Les photos ajoutées sur place depuis le téléphone ne dépendent pas de cet outil : on les laisse en ligne.
+        terrain = self.site.json("GET", "/api/medias/selection").get("lieux", {}).get(lieu, {}).get("terrain", [])
+        gardees = {f"lieux/{lieu}/{r['id']}-{t}.jpg" for r in retenues + archives_retenues + terrain for t in ("a", "v")}
         for cle in sorted(c for c in self.en_ligne if c.startswith(f"lieux/{lieu}/") and c not in gardees):
             self.site.supprimer(cle)
             self.en_ligne.discard(cle)
@@ -350,8 +352,12 @@ class Application:
         rapport["retirees"] //= 2
         with self.verrou:
             selection = self.site.json("GET", "/api/medias/selection")
-            if retenues or archives_retenues:
-                selection.setdefault("lieux", {})[lieu] = {"couverture": couverture, "photos": retenues, "archives": archives_retenues}
+            terrain = selection.get("lieux", {}).get(lieu, {}).get("terrain", [])
+            fiche = {"couverture": couverture, "photos": retenues, "archives": archives_retenues} if retenues or archives_retenues else {}
+            if terrain:
+                fiche["terrain"] = terrain
+            if fiche:
+                selection.setdefault("lieux", {})[lieu] = fiche
             else:
                 selection.setdefault("lieux", {}).pop(lieu, None)
             self.selection = self.site.json("PUT", "/api/medias/selection", selection)

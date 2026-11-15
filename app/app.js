@@ -114,15 +114,123 @@ function noter(lieu, type, texte) {
 }
 const dateHeure = (iso) => new Date(iso).toLocaleDateString('fr-BE', { day: 'numeric', month: 'long', year: 'numeric' });
 
+/* ---------------------------------------------------------------- musique */
+// Aucun compte ni service appelé : un titre ouvre simplement la recherche du service préféré.
+const SERVICES = [
+  { id: 'spotify', nom: 'Spotify', url: (q) => `https://open.spotify.com/search/${q}` },
+  { id: 'apple', nom: 'Apple Music', url: (q) => `https://music.apple.com/search?term=${q}` },
+  { id: 'tidal', nom: 'Tidal', url: (q) => `https://tidal.com/search?q=${q}` },
+  { id: 'qobuz', nom: 'Qobuz', url: (q) => `https://www.qobuz.com/search?q=${q}` },
+  { id: 'deezer', nom: 'Deezer', url: (q) => `https://www.deezer.com/search/${q}` },
+  { id: 'youtube', nom: 'YouTube', url: (q) => `https://www.youtube.com/results?search_query=${q}` },
+];
+const serviceChoisi = () => { try { return localStorage.getItem('service-musique'); } catch { return null; } };
+
 /* ---------------------------------------------------------------- photos */
 // Sélection faite sur le Mac (outils/medias.py) et rangée dans l'espace photos du site.
 let selectionPhotos = { lieux: {} };
 const urlMedia = (lieu, photo, taille) => `medias/lieux/${encodeURIComponent(lieu)}/${encodeURIComponent(photo)}-${taille}.jpg`;
+const srcPhoto = (l, p, taille) => (p.local ? p[`url_${taille}`] : urlMedia(l.id, p.id, taille));
+function photosTerrain(l) {
+  const enLigne = selectionPhotos.lieux?.[l.id]?.terrain ?? [];
+  const connues = new Set(enLigne.map((p) => p.id));
+  return [...enLigne, ...fileAttente.filter((p) => p.lieu === l.id && !connues.has(p.id))];
+}
 function photosDe(l) {
   const s = selectionPhotos.lieux?.[l.id];
-  if (!s?.photos?.length) return [];
-  // La couverture passe en premier.
-  return [...s.photos].sort((a, b) => (b.id === s.couverture) - (a.id === s.couverture));
+  // La couverture passe en premier, les photos prises sur place à la suite.
+  const choisies = [...(s?.photos ?? [])].sort((a, b) => (b.id === s.couverture) - (a.id === s.couverture));
+  return [...choisies, ...photosTerrain(l)];
+}
+
+/* Photos ajoutées sur place. Chaque image est réduite dans le téléphone (ce qui retire ses
+   métadonnées, position comprise), gardée dans une file locale, puis envoyée dès qu'il y a du réseau. */
+let fileAttente = [];
+const ouvrirBase = () => new Promise((ok, non) => {
+  const r = indexedDB.open('carte-rock', 1);
+  r.onupgradeneeded = () => r.result.createObjectStore('photos', { keyPath: 'id' });
+  r.onsuccess = () => ok(r.result);
+  r.onerror = () => non(r.error);
+});
+const transaction = async (mode, geste) => {
+  const b = await ouvrirBase();
+  return new Promise((ok, non) => {
+    const t = b.transaction('photos', mode);
+    const r = geste(t.objectStore('photos'));
+    t.oncomplete = () => ok(r?.result);
+    t.onerror = () => non(t.error);
+  });
+};
+const avecAdresses = (p) => ({ ...p, local: true, url_a: URL.createObjectURL(p.a), url_v: URL.createObjectURL(p.v) });
+async function lireFile() {
+  try { fileAttente = ((await transaction('readonly', (s) => s.getAll())) ?? []).map(avecAdresses); } catch { fileAttente = []; }
+}
+async function reduire(fichier, cote) {
+  let image;
+  try { image = await createImageBitmap(fichier, { imageOrientation: 'from-image' }); } catch {
+    image = await new Promise((ok, non) => { const i = new Image(); i.onload = () => ok(i); i.onerror = non; i.src = URL.createObjectURL(fichier); });
+  }
+  const sortie = {};
+  for (const [nom, max] of Object.entries(cote)) {
+    const k = Math.min(1, max / Math.max(image.width, image.height));
+    const toile = document.createElement('canvas');
+    toile.width = Math.round(image.width * k); toile.height = Math.round(image.height * k);
+    toile.getContext('2d').drawImage(image, 0, 0, toile.width, toile.height);
+    sortie[nom] = await new Promise((ok) => toile.toBlob(ok, 'image/jpeg', 0.85));
+    sortie[`largeur_${nom}`] = toile.width; sortie[`hauteur_${nom}`] = toile.height;
+    if (!sortie[nom]) throw new Error('image illisible');
+  }
+  return sortie;
+}
+async function ajouterPhotos(lieu, fichiers) {
+  let n = 0;
+  for (const f of fichiers) {
+    try {
+      const p = { id: `t${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`, lieu, date: new Date().toISOString(), ...(await reduire(f, { a: 1600, v: 480 })) };
+      await transaction('readwrite', (s) => s.put(p));
+      fileAttente.push(avecAdresses(p));
+      n++;
+    } catch { message(T.fiche.photoIllisible(f.name)); }
+  }
+  if (n) message(T.fiche.photosPreparees(n));
+  if (etat.lieuOuvert === lieu) ouvrirFiche(lieu, { centrer: false, garder: true });
+  envoyerPhotos();
+}
+let envoiEnCours = false;
+async function envoyerPhotos() {
+  if (envoiEnCours || !fileAttente.length) return;
+  envoiEnCours = true;
+  try {
+    for (const p of fileAttente.slice()) {
+      for (const t of ['a', 'v']) {
+        const r = await fetch(`api/medias/lieux/${p.lieu}/${p.id}-${t}.jpg`, { method: 'PUT', headers: { 'Content-Type': 'image/jpeg' }, body: p[t] });
+        if (r.status === 401) { location.reload(); return; }
+        if (!r.ok) throw new Error('envoi refusé');
+      }
+      const { id, date, largeur_v, hauteur_v, largeur_a, hauteur_a } = p;
+      const r = await fetch('api/medias/terrain', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ lieu: p.lieu, photo: { id, date, largeur_v, hauteur_v, largeur_a, hauteur_a } }) });
+      if (!r.ok) throw new Error('inscription refusée');
+      selectionPhotos = await r.json();
+      await transaction('readwrite', (s) => s.delete(p.id));
+      fileAttente = fileAttente.filter((x) => x.id !== p.id);
+    }
+  } catch { /* hors connexion : les photos restent dans la file */ } finally {
+    envoiEnCours = false;
+    if (etat.vue === 'fiche' && !$('#note')?.value) ouvrirFiche(etat.lieuOuvert, { centrer: false, garder: true });
+  }
+}
+async function retirerPhoto(lieu, id) {
+  if (fileAttente.some((p) => p.id === id)) {
+    await transaction('readwrite', (s) => s.delete(id));
+    fileAttente = fileAttente.filter((p) => p.id !== id);
+  } else {
+    try {
+      const r = await fetch(`api/medias/terrain?lieu=${encodeURIComponent(lieu)}&id=${encodeURIComponent(id)}`, { method: 'DELETE' });
+      if (!r.ok) throw new Error();
+      selectionPhotos = await r.json();
+    } catch { message(T.fiche.retraitImpossible); return; }
+  }
+  ouvrirFiche(lieu, { centrer: false, garder: true });
 }
 function archivesDe(l) {
   return selectionPhotos.lieux?.[l.id]?.archives ?? [];
@@ -159,7 +267,7 @@ function ouvrirVisionneuse(items, depart) {
   legende();
 }
 function itemsPhotos(l) {
-  return photosDe(l).map((p) => ({ src: urlMedia(l.id, p.id, 'a'), texte: p.date ? dateLongue(p.date) : '', liens: [] }));
+  return photosDe(l).map((p) => ({ src: srcPhoto(l, p, 'a'), texte: p.date ? dateLongue(p.date) : '', liens: [] }));
 }
 function itemsArchives(l) {
   return archivesDe(l).map((a) => ({
@@ -455,13 +563,6 @@ $('#poignee').addEventListener('pointerup', (e) => {
 function niveau(n) { panneau.classList.remove('mi', 'plein'); panneau.classList.add(n); placerActions(); }
 
 /* ----------------------------------------------------------------- fiche */
-function lienItineraire(l) {
-  const apple = /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent);
-  return apple
-    ? `https://maps.apple.com/?daddr=${l.lat},${l.lon}&dirflg=w`
-    : `https://www.google.com/maps/dir/?api=1&destination=${l.lat},${l.lon}&travelmode=walking`;
-}
-
 function texteEvenement(l) {
   const e = l.evenement;
   if (!e) return '';
@@ -488,7 +589,7 @@ function htmlFiche(l) {
   let h = `<article class="fiche" style="--epoque:${couleurEpoque(l)}">`;
   h += photos.length
     ? `<button class="couverture" data-photo="0" aria-label="${esc(T.fiche.agrandirPhoto(1))}">
-        <img src="${urlMedia(l.id, photos[0].id, 'a')}" alt="">${epoque ? `<span class="tampon-epoque">${esc(epoque)}</span>` : ''}</button>`
+        <img src="${srcPhoto(l, photos[0], 'a')}" alt="">${epoque ? `<span class="tampon-epoque">${esc(epoque)}</span>` : ''}</button>`
     : `<div class="couverture carton"><span class="sillons"></span>${epoque ? `<span class="tampon-epoque">${esc(epoque)}</span>` : ''}</div>`;
 
   h += `<h1>${esc(l.nom)}</h1>`;
@@ -521,11 +622,23 @@ function htmlFiche(l) {
     h += '</div>';
   }
 
-  h += `<div class="boutons">
-    <a class="bouton" href="${lienItineraire(l)}" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M9 20 3 17V4l6 3 6-3 6 3v13l-6-3z"/><path d="M9 7v13M15 4v13"/></svg>${esc(T.fiche.itineraire)}</a>
-    <button class="bouton second" data-zoom="${esc(l.id)}">${esc(T.fiche.voirDePres)}</button>
-  </div>`;
+  // Itinéraire à pied dans l'une ou l'autre application de cartes, au choix.
+  const plan = '<svg viewBox="0 0 24 24"><path d="M9 20 3 17V4l6 3 6-3 6 3v13l-6-3z"/><path d="M9 7v13M15 4v13"/></svg>';
+  h += `<p class="sous-titre">${esc(T.fiche.itineraire)}</p><div class="boutons">
+    <a class="bouton" href="https://maps.apple.com/?daddr=${l.lat},${l.lon}&dirflg=w" target="_blank" rel="noopener">${plan}${esc(T.fiche.plans)}</a>
+    <a class="bouton" href="https://www.google.com/maps/dir/?api=1&destination=${l.lat},${l.lon}&travelmode=walking" target="_blank" rel="noopener">${plan}${esc(T.fiche.googleMaps)}</a>
+  </div>
+  <div class="boutons"><button class="bouton second" data-zoom="${esc(l.id)}">${esc(T.fiche.voirDePres)}</button></div>`;
+
+  // Titres à écouter : chaque titre ouvre une recherche dans le service de musique choisi.
+  if (l.a_ecouter?.length) {
+    const service = SERVICES.find((s) => s.id === serviceChoisi()) ?? SERVICES[0];
+    h += `<h2>${esc(T.fiche.aEcouter)}</h2><ul class="titres">${l.a_ecouter.map((t) => `<li>
+      <a href="${esc(service.url(encodeURIComponent(`${t.artiste ?? ''} ${t.titre}`.trim())))}" target="_blank" rel="noopener"><span class="lecture" aria-hidden="true"></span>
+      <span><b>"${esc(t.titre)}"</b><small>${esc([t.artiste, t.album && `${t.album}${t.annee ? ` (${t.annee})` : ''}`].filter(Boolean).join(' · '))}</small></span></a></li>`).join('')}</ul>
+      <p class="note">${esc(T.fiche.ouvrirAvec)}</p>
+      <div class="groupe">${SERVICES.map((s) => `<button class="puce${s.id === service.id ? ' actif' : ''}" data-service="${s.id}">${esc(s.nom)}</button>`).join('')}</div>`;
+  }
 
   // Emplacement de la capsule audio : visible en mode privé tant qu'elle n'est pas enregistrée.
   if (etat.mode === 'prive') {
@@ -540,7 +653,7 @@ function htmlFiche(l) {
   h += `<h2>${esc(T.fiche.photos)}</h2>`;
   if (photos.length) {
     h += `<div class="galerie tirages">${photos.map((p, i) => `<button class="vignette" data-photo="${i}" aria-label="${esc(T.fiche.agrandirPhoto(i + 1))}">
-      <img src="${urlMedia(l.id, p.id, 'v')}" alt="" loading="lazy" width="${p.largeur_v ?? ''}" height="${p.hauteur_v ?? ''}"><span class="tampon-photo">${esc(T.fiche.tampon)}</span></button>`).join('')}</div>`;
+      <img src="${srcPhoto(l, p, 'v')}" alt="" loading="lazy" width="${p.largeur_v ?? ''}" height="${p.hauteur_v ?? ''}"><span class="tampon-photo">${esc(T.fiche.tampon)}</span></button>`).join('')}</div>`;
   } else if (l.nb_photos || l.nb_videos) {
     const stock = [l.nb_photos && pluriel(l.nb_photos, T.unites.photo), l.nb_videos && pluriel(l.nb_videos, T.unites.video)].filter(Boolean).join(T.unites.et);
     h += `<div class="galerie-vide">${esc(T.fiche.photosVides(stock))}</div>`;
@@ -592,6 +705,14 @@ function htmlFiche(l) {
     h += `<textarea id="note" rows="3" placeholder="${esc(T.fiche.notePlaceholder)}"></textarea>
       <div class="boutons"><button class="bouton second" data-carnet="note">${esc(T.fiche.ajouterNote)}</button></div>`;
     if (carnet.attente.length) h += `<p class="note">${esc(T.fiche.carnetAttente(carnet.attente.length))}</p>`;
+    const surPlace = photosTerrain(l);
+    if (surPlace.length) {
+      h += `<p class="sous-titre">${esc(T.fiche.photosSurPlace)}</p><div class="terrain">${surPlace.map((p) => `<figure>
+        <img src="${srcPhoto(l, p, 'v')}" alt="" loading="lazy"><figcaption>${p.local ? `${esc(T.fiche.photoEnAttente)} · ` : ''}<button class="lien" data-retirer-photo="${esc(p.id)}">${esc(T.fiche.retirerPhoto)}</button></figcaption></figure>`).join('')}</div>`;
+    }
+    h += `<input type="file" id="fichiers-photos" accept="image/*" multiple hidden>
+      <div class="boutons"><button class="bouton" data-ajouter-photos="1">${esc(T.fiche.ajouterPhotos)}</button></div>
+      <p class="note">${esc(T.fiche.photosAide)}</p>`;
     h += '</section>';
 
     const travail = [];
@@ -739,6 +860,13 @@ $('#contenu').addEventListener('click', (e) => {
   if (d.lieu) { $('#recherche').blur(); ouvrirFiche(d.lieu); return; }
   if (d.photo) { ouvrirVisionneuse(itemsPhotos(etat.lieux.find((x) => x.id === etat.lieuOuvert)), Number(d.photo)); return; }
   if (d.archive) { ouvrirVisionneuse(itemsArchives(etat.lieux.find((x) => x.id === etat.lieuOuvert)), Number(d.archive)); return; }
+  if (d.service) {
+    try { localStorage.setItem('service-musique', d.service); } catch { /* stockage indisponible */ }
+    ouvrirFiche(etat.lieuOuvert, { centrer: false, garder: true });
+    return;
+  }
+  if (d.ajouterPhotos) { $('#fichiers-photos').click(); return; }
+  if (d.retirerPhoto) { if (confirm(T.fiche.confirmerRetrait)) retirerPhoto(etat.lieuOuvert, d.retirerPhoto); return; }
   if (d.carnet) {
     const texte = $('#note')?.value.trim();
     if (d.carnet === 'note' && !texte) { $('#note').focus(); return; }
@@ -787,8 +915,14 @@ recalculerCarnet();
 if (etat.mode === 'prive') {
   synchroniserCarnet();
   chargerSelection();
-  addEventListener('online', synchroniserCarnet);
-  document.addEventListener('visibilitychange', () => { if (!document.hidden) synchroniserCarnet(); });
+  lireFile().then(envoyerPhotos);
+  $('#contenu').addEventListener('change', (e) => {
+    if (e.target.id !== 'fichiers-photos' || !e.target.files.length) return;
+    ajouterPhotos(etat.lieuOuvert, [...e.target.files]);
+    e.target.value = '';
+  });
+  addEventListener('online', () => { synchroniserCarnet(); envoyerPhotos(); });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) { synchroniserCarnet(); envoyerPhotos(); } });
 }
 
 const pret = () => {
