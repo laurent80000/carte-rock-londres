@@ -77,6 +77,19 @@ Couleurs des points : vert pour un lieu visité, orange pour un lieu à visiter,
 
 app/outils/ est une copie de outils/, produite par construire.mjs et ignorée par git.
 
+## Refonte graphique (branche refonte-graphique, 15/11/2026)
+
+Direction "carnet de route imprimé", validée par Laurent : papier crème, encre noire, rouge et moutarde, une couleur par décennie. La branche refonte-graphique part de l'étiquette avant-refonte. Elle n'est ni fusionnée dans main ni déployée : la mise en production attend l'accord de Laurent.
+
+- Polices sous licence OFL, servies avec le site (paquets @fontsource, copiés par construire.mjs dans app/vendor/polices, 128 Ko) : Anton pour les titres, Source Serif 4 pour le texte, Archivo Narrow pour les libellés, Courier Prime pour le carnet.
+- Fond de carte : même style Protomaps, recoloré en papier sépia dans app.js (flavor PAPIER). Plus de thème sombre. Seules les gares gardent un pictogramme, dessiné pour l'occasion.
+- Marqueurs dessinés au canvas dans app.js, sans fichier image : un disque dont le macaron prend la couleur de la décennie et porte un pictogramme par famille de lieu (scène, studio, maison, comptoir, image, mémoire, repère) ; disque plein pour un lieu visité, évidé pour un lieu à visiter ; ticket rouge pour un événement ; pile de disques pour un regroupement.
+- Décennies : scripts/proposer_decennies.py propose une décennie par lieu d'après les années citées dans ses textes (periode.decennie, origine "texte", validee false). 248 lieux ont une proposition, 111 n'en ont pas (couleur kraft). Une période validée ou d'origine "manuel" n'est jamais retouchée. Ces propositions attendent la validation de Laurent.
+- Tous les libellés de l'interface sont dans app/textes.fr.js, pour préparer une version anglaise.
+- Fiche : couverture (photo, ou carton tramé à la couleur de l'époque), talon de ticket (adresse, lieu, époque, carnet), récit avec lettrine, "Mes photos" en tirages avec tampon, archives en passe-partout sépia avec l'année, carnet de terrain en page lignée. L'emplacement de la capsule audio est dessiné (mode privé) mais rien n'est branché.
+- Aucun logo de groupe, aucune pochette, aucun rond du métro : tout est dessiné en CSS ou au canvas.
+- Idées notées, à ne pas réaliser sans feu vert : capsule audio d'environ 1 min 30 par lieu (voix de Laurent, stockage R2), parcours thématiques par artiste optimisés à pied et en métro (demande un niveau d'importance par lieu et les stations), frise par décennie, version anglaise, hors connexion, comptes et paiement.
+
 ## Hébergement (Cloudflare Workers, offre gratuite)
 
 Décision du 13/11/2026, validée par Laurent. Le projet Cloudflare est un Worker avec fichiers statiques (et non un projet Pages), relié au dépôt GitHub : chaque envoi sur la branche main déclenche `npx wrangler deploy`. Adresse : https://carte-rock-londres.laurent-rieppi.workers.dev/

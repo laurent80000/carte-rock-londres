@@ -20,7 +20,15 @@
     "Cass Elliot",
     "Harry Nilsson"
   ],
-  "periode": null,
+  "periode": {
+    "decennie": 1970,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      1974,
+      1978
+    ]
+  },
   "statut": "a_visiter",
   "verification": "a_verifier",
   "etat_selon_source": "existant",

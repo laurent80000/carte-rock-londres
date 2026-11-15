@@ -1,0 +1,63 @@
+// Tous les libellés de l'application, réunis ici pour préparer d'autres langues.
+// Une traduction sera un fichier jumeau (textes.en.js) exportant le même objet.
+export const T = {
+  types: {
+    studio: 'Studio', salle: 'Salle de concert', domicile: 'Domicile', pochette: "Pochette d'album", plaque: 'Plaque',
+    boutique: 'Boutique', pub: 'Pub', musee: 'Musée', exposition: 'Exposition', ecole: 'École', memorial: 'Mémorial',
+    fresque: 'Fresque', rue: 'Rue', autre: 'Autre lieu',
+  },
+  categories: { visite: 'Visité', a_visiter: 'À visiter', evenement: 'Événement' },
+  evenementVisite: 'Événement visité',
+  verifications: { a_verifier: 'À vérifier', a_identifier: 'À identifier' },
+  articles: {
+    'recit de visite': 'Récit de visite', 'recit de concert': 'Récit de concert', "recit d'evenement": "Récit d'événement",
+    interview: 'Interview', "chronique d'album": "Chronique d'album", 'article anniversaire': 'Article anniversaire',
+    'page Studio Experience': 'Studio Experience', annonce: 'Annonce', rencontre: 'Rencontre', dossier: 'Dossier',
+  },
+  decennies: { 1950: 'Années 50', 1960: 'Années 60', 1970: 'Années 70', 1980: 'Années 80', 1990: '1990 et après' },
+  decennieInconnue: 'Époque à préciser',
+  familles: {
+    scene: 'Scènes', studio: 'Studios', maison: 'Domiciles et écoles', comptoir: 'Pubs et boutiques',
+    image: 'Pochettes et fresques', memoire: 'Mémoire', repere: 'Autres repères',
+  },
+  talon: { adresse: 'Adresse', epoque: 'Époque', genre: 'Lieu', etat: 'Carnet', distance: 'À pied' },
+  fiche: {
+    itineraire: 'Itinéraire', voirDePres: 'Voir de près',
+    photos: 'Mes photos', photosVides: (stock) => `${stock} dans le dossier de ce lieu. La sélection reste à faire.`,
+    aucunePhoto: "Aucune photo pour l'instant.",
+    agrandirPhoto: (i) => `Agrandir la photo ${i}`, agrandirArchive: (a) => `Agrandir l'archive de ${a}`,
+    tampon: 'Photo L. R.',
+    archives: 'Archives', archivesNote: "Images d'archives sous licence libre : auteur et licence dans la légende de chaque photo.",
+    histoire: 'Histoire', histoireVide: 'Historique à rédiger.',
+    audio: 'À écouter', audioVide: 'Capsule audio à enregistrer : ta voix racontera ce lieu ici.',
+    site: 'Sur laurentrieppi.com', sources: 'Sources', page: (p) => `page ${p}`,
+    visites: (n) => (n > 1 ? 'Mes visites' : 'Ma visite'),
+    carnet: 'Carnet de terrain', visiteLe: (d) => `Visité le ${d}.`, annuler: 'Annuler', marquer: 'Marquer comme visité',
+    enAttente: "en attente d'envoi", notePlaceholder: 'Une note rapide sur ce lieu', ajouterNote: 'Ajouter la note',
+    carnetAttente: (n) => `${n} ${n > 1 ? 'éléments' : 'élément'} du carnet en attente d'envoi.`,
+    travail: 'Notes de travail', aControler: 'À contrôler', faits: 'Faits à reprendre de mes articles',
+    positionNonValidee: "Position du point non validée : elle vient de l'endroit où les photos ont été prises.",
+    decennieProposee: (d) => `Époque proposée d'après les textes (${d}), à valider.`,
+    decennieManquante: "Aucune époque n'est encore attribuée à ce lieu.",
+    recouper: (r) => `Source à recouper : ${r}`,
+    disparu: 'Disparu en 2002 selon le guide', transforme: 'Transformé en 2002 selon le guide',
+    precisionRue: 'Point placé dans la rue, numéro à situer', precisionQuartier: 'Position approximative',
+    du: (a, b) => `Du ${a} au ${b}`, termine: ', terminé', evenementDe: (a) => `Événement de ${a}`, evenementTemporaire: 'Événement temporaire',
+  },
+  visionneuse: { redimensionnee: "Image redimensionnée pour l'affichage.", source: 'Source', fermer: 'Fermer' },
+  liste: {
+    aucun: 'Aucun lieu ne correspond.', resultats: (n) => `${n} ${n > 1 ? 'résultats' : 'résultat'}`,
+    partout: 'Chercher dans tous les lieux', proches: 'Les plus proches de moi',
+  },
+  filtres: {
+    titre: 'Filtres', type: 'Type de lieu', artiste: 'Artiste ou groupe', quartier: 'Quartier', effacer: 'Tout effacer',
+    voir: (n) => `Voir ${n} ${n > 1 ? 'lieux' : 'lieu'}`, legende: 'Lire la carte',
+    legendeTexte: "Le macaron du disque prend la couleur de l'époque. Un macaron crème signale un lieu qu'il reste à visiter, un ticket rouge un événement temporaire.",
+  },
+  position: {
+    indisponible: "La géolocalisation n'est pas disponible sur cet appareil.",
+    refusee: "L'accès à la position a été refusé. Il se rétablit dans les réglages du navigateur.",
+    introuvable: 'Position introuvable pour le moment.', horsLondres: 'Tu es en dehors de Londres : la carte reste sur la ville.',
+  },
+  unites: { photo: 'photo', video: 'vidéo', et: ' et ', a: (d) => `à ${d}` },
+};

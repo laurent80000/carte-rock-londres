@@ -24,7 +24,15 @@
     "David Bowie",
     "Freddie Mercury"
   ],
-  "periode": null,
+  "periode": {
+    "decennie": 1960,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      1967,
+      1969
+    ]
+  },
   "statut": "a_visiter",
   "verification": "a_verifier",
   "etat_selon_source": "disparu",

@@ -16,7 +16,14 @@
     "validees": false
   },
   "artistes": [],
-  "periode": null,
+  "periode": {
+    "decennie": 1990,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      2002
+    ]
+  },
   "statut": "a_visiter",
   "verification": "a_verifier",
   "etat_selon_source": "existant",

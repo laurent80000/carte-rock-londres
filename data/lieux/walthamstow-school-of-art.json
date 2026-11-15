@@ -18,7 +18,14 @@
   "artistes": [
     "Ian Dury"
   ],
-  "periode": null,
+  "periode": {
+    "decennie": 1950,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      1959
+    ]
+  },
   "statut": "a_visiter",
   "verification": "a_verifier",
   "etat_selon_source": "transformé",

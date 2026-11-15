@@ -15,7 +15,14 @@
   "artistes": [
     "The Who"
   ],
-  "periode": null,
+  "periode": {
+    "decennie": 1990,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      2025
+    ]
+  },
   "statut": "visite",
   "verification": "confirme_visuellement",
   "publication": "prive",

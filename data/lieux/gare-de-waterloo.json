@@ -19,7 +19,14 @@
     "The Kinks",
     "Bill Haley"
   ],
-  "periode": null,
+  "periode": {
+    "decennie": 1950,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      1957
+    ]
+  },
   "statut": "a_visiter",
   "verification": "a_verifier",
   "etat_selon_source": "existant",

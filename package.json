@@ -7,6 +7,10 @@
     "vendor": "node scripts/vendor.mjs"
   },
   "dependencies": {
+    "@fontsource/anton": "5.3.0",
+    "@fontsource/archivo-narrow": "5.3.0",
+    "@fontsource/courier-prime": "5.3.0",
+    "@fontsource/source-serif-4": "5.3.1",
     "@protomaps/basemaps": "5.7.2",
     "maplibre-gl": "6.18.0",
     "pmtiles": "4.5.0"

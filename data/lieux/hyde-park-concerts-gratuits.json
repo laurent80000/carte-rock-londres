@@ -20,7 +20,15 @@
     "Pink Floyd",
     "T. Rex"
   ],
-  "periode": null,
+  "periode": {
+    "decennie": 1960,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      1968,
+      1969
+    ]
+  },
   "statut": "a_visiter",
   "verification": "a_verifier",
   "etat_selon_source": "existant",

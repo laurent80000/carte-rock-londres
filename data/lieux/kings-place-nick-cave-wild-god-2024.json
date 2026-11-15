@@ -15,7 +15,14 @@
   "artistes": [
     "Nick Cave"
   ],
-  "periode": null,
+  "periode": {
+    "decennie": 1990,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      2024
+    ]
+  },
   "statut": "visite",
   "verification": "confirme_visuellement",
   "publication": "prive",

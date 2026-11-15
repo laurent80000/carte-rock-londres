@@ -15,7 +15,14 @@
   "artistes": [
     "Jimmy Page"
   ],
-  "periode": null,
+  "periode": {
+    "decennie": 1970,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      1974
+    ]
+  },
   "statut": "visite",
   "verification": "confirme_visuellement",
   "publication": "prive",

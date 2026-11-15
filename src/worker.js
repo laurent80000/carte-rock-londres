@@ -27,14 +27,22 @@ function page(erreur = '') {
 <meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow">
 <title>Carte rock de Londres</title>
 <style>
-  body{margin:0;min-height:100dvh;display:grid;place-items:center;background:#17161a;color:#f4f1ea;font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-  form{width:min(88vw,340px)} h1{font-size:24px;margin:0 0 6px} p{margin:0 0 22px;color:#a9a4b2}
-  input,button{width:100%;height:50px;border-radius:12px;font:inherit;box-sizing:border-box}
-  input{padding:0 14px;border:1px solid #36333c;background:#222026;color:inherit;margin-bottom:10px}
-  button{border:0;background:#f4f1ea;color:#17161a;font-weight:650}
-  .erreur{color:#ff5a6e;margin:14px 0 0}
+  @font-face{font-family:Anton;src:url(/vendor/polices/anton-latin-400-normal.woff2) format("woff2");font-display:swap}
+  @font-face{font-family:"Archivo Narrow";font-weight:700;src:url(/vendor/polices/archivo-narrow-latin-700-normal.woff2) format("woff2");font-display:swap}
+  @font-face{font-family:"Source Serif 4";src:url(/vendor/polices/source-serif-4-latin-400-normal.woff2) format("woff2");font-display:swap}
+  body{margin:0;min-height:100dvh;display:grid;place-items:center;background:#15120f;color:#15120f;font:17px/1.45 "Source Serif 4",Georgia,serif;
+    background-image:radial-gradient(circle at 1px 1px,rgba(243,234,215,.09) 1.2px,transparent 1.5px);background-size:10px 10px}
+  form{position:relative;width:min(88vw,360px);padding:26px 24px 24px;background:#f3ead7;border-radius:8px;box-shadow:6px 6px 0 #c8102e}
+  form::before{content:"";position:absolute;right:22px;top:-26px;width:52px;height:52px;border-radius:50%;
+    background:radial-gradient(circle,#f3ead7 0 7%,#d9a21b 8% 36%,#15120f 38%);box-shadow:0 0 0 3px #f3ead7}
+  h1{margin:0 0 4px;font:400 34px/1.02 Anton,"Arial Narrow",Impact,sans-serif;text-transform:uppercase;letter-spacing:.01em}
+  p{margin:0 0 20px;color:#6b5a40;font-style:italic}
+  input,button{width:100%;height:50px;border-radius:6px;font:inherit;box-sizing:border-box}
+  input{padding:0 14px;border:2px solid #15120f;background:#fbf5e6;color:inherit;margin-bottom:10px}
+  button{border:0;background:#15120f;color:#f3ead7;font:700 15px "Archivo Narrow","Arial Narrow",Arial,sans-serif;text-transform:uppercase;letter-spacing:.08em;cursor:pointer}
+  .erreur{color:#c8102e;margin:14px 0 0;font-style:normal;font-weight:600}
 </style></head><body><form method="post" action="/connexion">
-<h1>Carte rock de Londres</h1><p>Accès privé.</p>
+<h1>Carte rock<br>de Londres</h1><p>Carnet de route de Laurent Rieppi. Accès privé.</p>
 <input type="password" name="mot_de_passe" placeholder="Mot de passe" autocomplete="current-password" autofocus required>
 <button>Entrer</button>${erreur ? `<p class="erreur">${erreur}</p>` : ''}
 </form></body></html>`;

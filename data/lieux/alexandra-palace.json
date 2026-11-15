@@ -13,7 +13,14 @@
     "validees": false
   },
   "artistes": [],
-  "periode": null,
+  "periode": {
+    "decennie": 1960,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      1967
+    ]
+  },
   "statut": "visite",
   "verification": "non_renseigne",
   "publication": "prive",

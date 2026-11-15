@@ -39,6 +39,7 @@ for (const nom of readdirSync(dossier).filter((n) => n.endsWith('.json')).sort()
     medias: f.medias ?? { couverture: null, selection: [] },
     articles: articlesSite.map((a) => ({ type: a.type, date: a.date, titre: a.titre, url: a.url })),
     etat_selon_source: f.etat_selon_source ?? null,
+    decennie: f.periode?.decennie ?? null,
     precision: f.coordonnees.precision ?? null,
   };
   if (enPublic) {
@@ -47,6 +48,7 @@ for (const nom of readdirSync(dossier).filter((n) => n.endsWith('.json')).sort()
     Object.assign(lieu, {
       dossier: f.dossier_photo ?? null,
       verification: f.verification ?? null,
+      decennie_validee: f.periode?.validee ?? false,
       coordonnees_validees: f.coordonnees.validees ?? false,
       publication: f.publication ?? null,
       sources: f.sources ?? [],
@@ -62,7 +64,7 @@ for (const nom of readdirSync(dossier).filter((n) => n.endsWith('.json')).sort()
 mkdirSync(join(RACINE, 'app/data'), { recursive: true });
 writeFileSync(join(RACINE, 'app/data/lieux.json'), JSON.stringify({ mode: enPublic ? 'public' : 'prive', lieux }));
 
-if (!existsSync(join(RACINE, 'node_modules/maplibre-gl'))) {
+if (!existsSync(join(RACINE, 'node_modules/maplibre-gl')) || !existsSync(join(RACINE, 'node_modules/@fontsource/anton'))) {
   console.log('Bibliothèques absentes : installation.');
   execSync('npm ci', { cwd: RACINE, stdio: 'inherit' });
 }
@@ -74,4 +76,16 @@ copyFileSync(join(RACINE, 'data/archives.json'), join(RACINE, 'app/data/archives
 // Outils du Mac, publiés sans protection : du code seul, sans aucune donnée.
 mkdirSync(join(RACINE, 'app/outils'), { recursive: true });
 for (const f of ['medias.py', 'photos.sh']) copyFileSync(join(RACINE, 'outils', f), join(RACINE, 'app/outils', f));
+// Polices de l'interface (licence OFL), copiées depuis les paquets @fontsource.
+const POLICES = [
+  'anton/files/anton-latin-400-normal.woff2',
+  'source-serif-4/files/source-serif-4-latin-400-normal.woff2',
+  'source-serif-4/files/source-serif-4-latin-400-italic.woff2',
+  'source-serif-4/files/source-serif-4-latin-600-normal.woff2',
+  'courier-prime/files/courier-prime-latin-400-normal.woff2',
+  'archivo-narrow/files/archivo-narrow-latin-500-normal.woff2',
+  'archivo-narrow/files/archivo-narrow-latin-700-normal.woff2',
+];
+mkdirSync(join(RACINE, 'app/vendor/polices'), { recursive: true });
+for (const f of POLICES) copyFileSync(join(RACINE, 'node_modules/@fontsource', f), join(RACINE, 'app/vendor/polices', basename(f)));
 console.log(`${lieux.length} lieux écrits dans app/data/lieux.json (${enPublic ? 'public' : 'privé'}).`);

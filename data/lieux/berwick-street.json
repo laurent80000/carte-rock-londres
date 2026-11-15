@@ -15,7 +15,15 @@
   "artistes": [
     "Oasis"
   ],
-  "periode": null,
+  "periode": {
+    "decennie": 1990,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      1995,
+      2012
+    ]
+  },
   "statut": "visite",
   "verification": "confirme_visuellement",
   "publication": "prive",

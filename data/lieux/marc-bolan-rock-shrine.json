@@ -15,7 +15,14 @@
   "artistes": [
     "Marc Bolan"
   ],
-  "periode": null,
+  "periode": {
+    "decennie": 1970,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      1977
+    ]
+  },
   "statut": "visite",
   "verification": "a_verifier",
   "publication": "prive",

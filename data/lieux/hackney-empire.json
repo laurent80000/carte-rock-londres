@@ -15,7 +15,14 @@
   "artistes": [
     "The Rolling Stones"
   ],
-  "periode": null,
+  "periode": {
+    "decennie": 1960,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      1960
+    ]
+  },
   "statut": "visite",
   "verification": "confirme_visuellement",
   "publication": "prive",

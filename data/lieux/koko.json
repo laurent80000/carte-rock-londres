@@ -13,7 +13,14 @@
     "validees": false
   },
   "artistes": [],
-  "periode": null,
+  "periode": {
+    "decennie": 1980,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      1980
+    ]
+  },
   "statut": "visite",
   "verification": "confirme_visuellement",
   "publication": "prive",

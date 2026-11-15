@@ -15,7 +15,15 @@
   "artistes": [
     "Jimi Hendrix"
   ],
-  "periode": null,
+  "periode": {
+    "decennie": 1960,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      1966,
+      1968
+    ]
+  },
   "statut": "visite",
   "verification": "non_renseigne",
   "publication": "prive",

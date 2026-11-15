@@ -1,4 +1,5 @@
 import * as maplibregl from './vendor/maplibre-gl.mjs';
+import { T } from './textes.fr.js';
 
 /* ------------------------------------------------------------ utilitaires */
 const $ = (s, racine = document) => racine.querySelector(s);
@@ -7,18 +8,22 @@ const sansAccent = (t) => String(t ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '
 const css = (nom) => getComputedStyle(document.documentElement).getPropertyValue(nom).trim();
 const pluriel = (n, mot, mots = mot + 's') => `${n} ${n > 1 ? mots : mot}`;
 
-const TYPES = {
-  studio: 'Studio', salle: 'Salle de concert', domicile: 'Domicile', pochette: "Pochette d'album", plaque: 'Plaque',
-  boutique: 'Boutique', pub: 'Pub', musee: 'Musée', exposition: 'Exposition', ecole: 'École', memorial: 'Mémorial',
-  fresque: 'Fresque', rue: 'Rue', autre: 'Autre lieu',
+const TYPES = T.types;
+const CATEGORIES = T.categories;
+const VERIFICATIONS = T.verifications;
+const ARTICLES = T.articles;
+
+// Familles de lieux : un pictogramme par famille sur le marqueur.
+const FAMILLES = {
+  salle: 'scene', studio: 'studio', domicile: 'maison', ecole: 'maison', pub: 'comptoir', boutique: 'comptoir',
+  pochette: 'image', fresque: 'image', rue: 'image', memorial: 'memoire', plaque: 'memoire', musee: 'memoire',
+  exposition: 'memoire', autre: 'repere',
 };
-const CATEGORIES = { visite: 'Visité', a_visiter: 'À visiter', evenement: 'Événement' };
-const VERIFICATIONS = { a_verifier: 'À vérifier', a_identifier: 'À identifier' };
-const ARTICLES = {
-  'recit de visite': 'Récit de visite', 'recit de concert': 'Récit de concert', "recit d'evenement": "Récit d'événement",
-  interview: 'Interview', "chronique d'album": "Chronique d'album", 'article anniversaire': 'Article anniversaire',
-  'page Studio Experience': 'Studio Experience', annonce: 'Annonce', rencontre: 'Rencontre', dossier: 'Dossier',
-};
+// Une couleur par époque, toujours doublée de son nom écrit dans la fiche.
+const DECENNIES = { 1950: '#2f6b4f', 1960: '#1f5fd0', 1970: '#e0457b', 1980: '#7b3fe4', 1990: '#8e9299' };
+const KRAFT = '#8a7658', ENCRE = '#15120f', CREME = '#f3ead7', ROUGE = '#c8102e';
+const couleurEpoque = (l) => DECENNIES[l.decennie] ?? KRAFT;
+const nomEpoque = (l) => T.decennies[l.decennie] ?? T.decennieInconnue;
 
 const dateLongue = (d) => new Date(d + 'T12:00:00').toLocaleDateString('fr-BE', { day: 'numeric', month: 'long', year: 'numeric' });
 const dateCourte = (d) => new Date(d + 'T12:00:00').toLocaleDateString('fr-BE', { day: 'numeric', month: 'long' });
@@ -159,8 +164,8 @@ function itemsPhotos(l) {
 function itemsArchives(l) {
   return archivesDe(l).map((a) => ({
     src: urlMedia(l.id, a.id, 'a'),
-    texte: `${a.legende} Image redimensionnée pour l'affichage.`,
-    liens: [{ texte: 'Source', url: a.page }, { texte: a.licence, url: a.licence_url }],
+    texte: `${a.legende} ${T.visionneuse.redimensionnee}`,
+    liens: [{ texte: T.visionneuse.source, url: a.page }, { texte: a.licence, url: a.licence_url }],
   }));
 }
 visionneuse.querySelector('.fermer-photo').addEventListener('click', () => { visionneuse.hidden = true; });
@@ -173,29 +178,137 @@ addEventListener('keydown', (e) => {
 });
 
 /* ----------------------------------------------------------------- carte */
-const sombre = matchMedia('(prefers-color-scheme: dark)').matches;
-const theme = sombre ? 'dark' : 'light';
 const base = new URL('.', location.href).href;
+
+// Fond de carte "plan imprimé" : les couleurs du style Protomaps sont remplacées par des tons
+// de papier, et les commerces disparaissent pour que seuls les lieux du carnet ressortent.
+const PAPIER = {
+  ...basemaps.namedFlavor('light'),
+  background: '#efe6d2', earth: '#efe6d2',
+  park_a: '#dcdcae', park_b: '#d3d5a2', wood_a: '#d3d5a2', wood_b: '#cbcf9a', scrub_a: '#dcdcae', scrub_b: '#d3d5a2',
+  hospital: '#eadfcd', industrial: '#e8dec9', school: '#eae0c9', pedestrian: '#eadfc8', sand: '#eadfc0', beach: '#eadfc0',
+  aerodrome: '#e6dcc6', runway: '#d9cdb3', zoo: '#dcdcae', military: '#e6dcc6', glacier: '#efe6d2',
+  water: '#a9bdc1', pier: '#e2d6bc', buildings: '#e2d5ba',
+  tunnel_other_casing: '#d8cbb0', tunnel_minor_casing: '#d8cbb0', tunnel_link_casing: '#d8cbb0', tunnel_major_casing: '#d8cbb0', tunnel_highway_casing: '#d8cbb0',
+  tunnel_other: '#e8dec8', tunnel_minor: '#e8dec8', tunnel_link: '#e8dec8', tunnel_major: '#e8dec8', tunnel_highway: '#e8dec8',
+  minor_service_casing: '#d2c4a6', minor_casing: '#d2c4a6', link_casing: '#c9b994', major_casing_late: '#c2b089', highway_casing_late: '#b59a63',
+  other: '#f3ecdc', minor_service: '#f8f2e4', minor_a: '#f8f2e4', minor_b: '#fbf7ec', link: '#fbf7ec',
+  major_casing_early: '#c2b089', major: '#fffaf0', highway_casing_early: '#b59a63', highway: '#f2d9a4',
+  railway: '#b3a383', boundaries: '#b3a383',
+  bridges_other_casing: '#c9b994', bridges_minor_casing: '#c9b994', bridges_link_casing: '#c9b994', bridges_major_casing: '#bca97f', bridges_highway_casing: '#b59a63',
+  bridges_other: '#f3ecdc', bridges_minor: '#fbf7ec', bridges_link: '#fbf7ec', bridges_major: '#fffaf0', bridges_highway: '#f2d9a4',
+  roads_label_minor: '#7a6748', roads_label_minor_halo: '#efe6d2', roads_label_major: '#5e4d33', roads_label_major_halo: '#efe6d2',
+  ocean_label: '#5f7f86', subplace_label: '#8a7658', subplace_label_halo: '#efe6d2', city_label: '#3a2f20', city_label_halo: '#efe6d2',
+  state_label: '#a8977a', state_label_halo: '#efe6d2', country_label: '#8a7658', address_label: '#a8977a', address_label_halo: '#efe6d2',
+  pois: { blue: '#6b5a40', green: '#6b6a3a', lapis: '#6b5a40', pink: '#6b5a40', red: '#6b5a40', slategray: '#6b5a40', tangerine: '#6b5a40', turquoise: '#5f7f86' },
+  landcover: { grassland: '#e2dfb8', barren: '#eadfc0', urban_area: '#eae0cb', farmland: '#e4e0bb', glacier: '#efe6d2', scrub: '#dcdcae', forest: '#d3d5a2' },
+};
+const couchesFond = basemaps.layers('protomaps', PAPIER, { lang: 'en' })
+  .filter((c) => !['roads_shields', 'roads_oneway'].includes(c.id))
+  .map((c) => (c.id !== 'pois' ? c : {
+    ...c,
+    // Parmi les points d'intérêt, on ne garde que les gares, utiles pour se repérer.
+    filter: ['all', c.filter, ['==', ['get', 'kind'], 'station']],
+    layout: { ...c.layout, 'icon-image': 'gare' },
+  }));
 
 const carte = new maplibregl.Map({
   container: 'carte',
   style: {
     version: 8,
     glyphs: `${base}polices/{fontstack}/{range}.pbf`,
-    sprite: `${base}pictos/${theme}`,
     sources: {
       protomaps: {
         type: 'vector', tiles: [`${base}tuiles/{z}/{x}/{y}.pbf`], maxzoom: 15, bounds: [-0.56, 51.26, 0.36, 51.72],
         attribution: '<a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap</a> · <a href="https://protomaps.com" target="_blank" rel="noopener">Protomaps</a>',
       },
     },
-    layers: basemaps.layers('protomaps', basemaps.namedFlavor(theme), { lang: 'en' }),
+    layers: couchesFond,
   },
   center: [-0.142, 51.512], zoom: 11.3, minZoom: 9, maxZoom: 19,
   maxBounds: [[-0.95, 51.08], [0.75, 51.9]],
   attributionControl: { compact: true },
   dragRotate: false, pitchWithRotate: false, touchPitch: false,
 });
+
+/* -------------------------------------------------------------- marqueurs */
+// Les marqueurs sont dessinés par le code, à la demande : aucun fichier d'image à charger.
+// Un lieu est une étiquette de vinyle dont le macaron porte la couleur de l'époque ;
+// le macaron reste crème tant que le lieu est à visiter. Un événement est un ticket.
+const PICTOS = {
+  scene(c) { c.beginPath(); c.arc(0, -0.38, 0.34, 0, 7); c.fill(); c.beginPath(); c.moveTo(-0.14, 0); c.lineTo(0.14, 0); c.lineTo(0.08, 0.82); c.lineTo(-0.08, 0.82); c.closePath(); c.fill(); },
+  studio(c) { c.lineWidth = 0.2; for (const x of [-0.42, 0.42]) { c.beginPath(); c.arc(x, -0.1, 0.3, 0, 7); c.stroke(); } c.beginPath(); c.moveTo(-0.42, 0.42); c.lineTo(0.42, 0.42); c.stroke(); },
+  maison(c) { c.beginPath(); c.moveTo(-0.78, -0.02); c.lineTo(0, -0.74); c.lineTo(0.78, -0.02); c.closePath(); c.fill(); c.fillRect(-0.5, -0.04, 1, 0.74); },
+  comptoir(c) { c.beginPath(); c.moveTo(-0.5, -0.68); c.lineTo(0.36, -0.68); c.lineTo(0.26, 0.72); c.lineTo(-0.4, 0.72); c.closePath(); c.fill(); c.lineWidth = 0.17; c.beginPath(); c.arc(0.38, -0.05, 0.3, -1.3, 1.3); c.stroke(); },
+  image(c) { c.lineWidth = 0.2; c.strokeRect(-0.62, -0.62, 1.24, 1.24); c.beginPath(); c.arc(0, 0, 0.26, 0, 7); c.fill(); },
+  memoire(c) { c.beginPath(); for (let i = 0; i < 10; i++) { const r = i % 2 ? 0.36 : 0.86, a = -Math.PI / 2 + (i * Math.PI) / 5; c.lineTo(r * Math.cos(a), r * Math.sin(a)); } c.closePath(); c.fill(); },
+  repere(c) { c.beginPath(); c.ellipse(-0.24, 0.48, 0.32, 0.25, -0.3, 0, 7); c.fill(); c.lineWidth = 0.17; c.beginPath(); c.moveTo(0.02, 0.46); c.lineTo(0.02, -0.72); c.lineTo(0.52, -0.5); c.stroke(); },
+};
+function toile(cote) {
+  const t = document.createElement('canvas');
+  t.width = t.height = cote * 2;
+  const c = t.getContext('2d');
+  c.scale(2, 2);
+  return [t, c];
+}
+function dessinerDisque(famille, couleur, vu) {
+  const S = 44, [t, c] = toile(S), m = S / 2;
+  c.beginPath(); c.arc(m, m + 1.5, 19.5, 0, 7); c.fillStyle = 'rgba(21,18,15,.28)'; c.fill();
+  c.beginPath(); c.arc(m, m, 19.5, 0, 7); c.fillStyle = ENCRE; c.fill();
+  c.lineWidth = 1.6; c.strokeStyle = CREME; c.stroke();
+  c.lineWidth = 0.7; c.strokeStyle = 'rgba(243,234,215,.22)';
+  for (const r of [16.6, 14.4]) { c.beginPath(); c.arc(m, m, r, 0, 7); c.stroke(); }
+  c.beginPath(); c.arc(m, m, 11.6, 0, 7); c.fillStyle = vu ? couleur : CREME; c.fill();
+  if (!vu) { c.lineWidth = 2.4; c.strokeStyle = couleur; c.stroke(); }
+  c.save(); c.translate(m, m); c.scale(7, 7);
+  c.fillStyle = c.strokeStyle = vu ? CREME : ENCRE; c.lineCap = c.lineJoin = 'round';
+  PICTOS[famille]?.(c);
+  c.restore();
+  return t;
+}
+function dessinerTicket() {
+  const S = 44, [t, c] = toile(S);
+  c.translate(S / 2, S / 2); c.rotate(-0.14);
+  const l = 38, h = 24, r = 3;
+  const forme = () => { c.beginPath(); c.roundRect(-l / 2, -h / 2, l, h, r); };
+  c.save(); c.translate(0, 1.5); forme(); c.fillStyle = 'rgba(21,18,15,.28)'; c.fill(); c.restore();
+  forme(); c.fillStyle = ROUGE; c.fill(); c.lineWidth = 1.6; c.strokeStyle = CREME; c.stroke();
+  c.fillStyle = CREME;
+  for (const y of [-h / 2, h / 2]) { c.beginPath(); c.arc(8, y, 3, 0, 7); c.fill(); }
+  c.setLineDash([2, 2.4]); c.lineWidth = 1; c.beginPath(); c.moveTo(8, -h / 2 + 4); c.lineTo(8, h / 2 - 4); c.stroke(); c.setLineDash([]);
+  c.save(); c.translate(-6, 0); c.scale(7.5, 7.5); PICTOS.memoire(c); c.restore();
+  return t;
+}
+function dessinerPile() {
+  const S = 52, [t, c] = toile(S), m = S / 2;
+  for (const [dx, dy, a] of [[5, 5, 0.45], [2.5, 2.5, 0.7]]) {
+    c.beginPath(); c.arc(m + dx, m + dy, 19, 0, 7); c.fillStyle = `rgba(21,18,15,${a})`; c.fill(); c.lineWidth = 1.2; c.strokeStyle = CREME; c.stroke();
+  }
+  c.beginPath(); c.arc(m - 2, m - 2, 19, 0, 7); c.fillStyle = ENCRE; c.fill(); c.lineWidth = 1.6; c.strokeStyle = CREME; c.stroke();
+  c.lineWidth = 0.7; c.strokeStyle = 'rgba(243,234,215,.25)';
+  c.beginPath(); c.arc(m - 2, m - 2, 16, 0, 7); c.stroke();
+  return t;
+}
+function dessinerGare() {
+  const S = 18, [t, c] = toile(S);
+  c.fillStyle = '#6b5a40'; c.beginPath(); c.roundRect(2, 2, 14, 14, 3); c.fill();
+  c.fillStyle = CREME; c.beginPath(); c.roundRect(5.5, 4.5, 7, 7, 1.5); c.fill();
+  c.fillRect(5, 13, 2, 1.4); c.fillRect(11, 13, 2, 1.4);
+  c.fillStyle = '#6b5a40'; c.fillRect(6.5, 9.2, 1.5, 1.2); c.fillRect(10, 9.2, 1.5, 1.2);
+  return t;
+}
+carte.on('styleimagemissing', (e) => {
+  const [genre, famille, epoque, vu] = e.id.split('|');
+  let t = null;
+  if (e.id === 'gare') t = dessinerGare();
+  else if (e.id === 'pile') t = dessinerPile();
+  else if (e.id === 'ticket') t = dessinerTicket();
+  else if (genre === 'disque') t = dessinerDisque(famille, DECENNIES[epoque] ?? KRAFT, vu === '1');
+  if (!t || carte.hasImage(e.id)) return;
+  const c = t.getContext('2d');
+  carte.addImage(e.id, c.getImageData(0, 0, t.width, t.height), { pixelRatio: 2 });
+});
+const icone = (l) => (l.nature === 'evenement' ? 'ticket' : `disque|${FAMILLES[l.type] ?? 'repere'}|${l.decennie ?? 0}|${visite(l) ? 1 : 0}`);
 carte.touchZoomRotate.disableRotation();
 window.carteRock = carte;
 
@@ -218,44 +331,41 @@ function geojson(lieux) {
         lon += (rayon * Math.cos(angle)) / Math.cos((lat * Math.PI) / 180);
       }
       features.push({ type: 'Feature', geometry: { type: 'Point', coordinates: [lon, lat] },
-        properties: { id: l.id, nom: l.nom, categorie: categorie(l) } });
+        properties: { id: l.id, nom: l.nom, categorie: categorie(l), icone: icone(l) } });
     });
   }
   return { type: 'FeatureCollection', features };
 }
 
 function installerCouches() {
-  const couleur = ['match', ['get', 'categorie'], 'visite', css('--visite'), 'a_visiter', css('--a-visiter'), css('--evenement')];
-  const bord = sombre ? '#17161a' : '#ffffff';
-  carte.addSource('lieux', { type: 'geojson', data: geojson(lieuxFiltres()), cluster: true, clusterRadius: 36, clusterMaxZoom: 13 });
+  carte.addSource('lieux', { type: 'geojson', data: geojson(lieuxFiltres()), cluster: true, clusterRadius: 40, clusterMaxZoom: 13 });
   carte.addSource('position', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
 
-  carte.addLayer({ id: 'grappes', type: 'circle', source: 'lieux', filter: ['has', 'point_count'], paint: {
-    'circle-color': css('--encre'), 'circle-stroke-color': bord, 'circle-stroke-width': 2.5,
-    'circle-radius': ['step', ['get', 'point_count'], 15, 5, 18, 15, 22, 40, 26],
-  } });
-  carte.addLayer({ id: 'grappes-nombre', type: 'symbol', source: 'lieux', filter: ['has', 'point_count'],
-    layout: { 'text-field': ['get', 'point_count_abbreviated'], 'text-font': ['Noto Sans Medium'], 'text-size': 13, 'text-allow-overlap': true },
-    paint: { 'text-color': css('--fond') } });
+  // Le nom de la couche "grappes" est gardé : les clics s'y rattachent.
+  carte.addLayer({ id: 'grappes', type: 'symbol', source: 'lieux', filter: ['has', 'point_count'],
+    layout: { 'icon-image': 'pile', 'icon-allow-overlap': true, 'icon-ignore-placement': true,
+      'icon-size': ['step', ['get', 'point_count'], 0.8, 5, 0.92, 15, 1.06, 40, 1.22],
+      'text-field': ['get', 'point_count_abbreviated'], 'text-font': ['Noto Sans Medium'], 'text-size': 13,
+      'text-offset': [-0.15, -0.12], 'text-allow-overlap': true, 'text-ignore-placement': true },
+    paint: { 'text-color': CREME } });
   carte.addLayer({ id: 'lieu-choisi', type: 'circle', source: 'lieux', filter: ['==', ['get', 'id'], ''], paint: {
-    'circle-radius': 17, 'circle-color': couleur, 'circle-opacity': 0.25, 'circle-stroke-color': couleur, 'circle-stroke-width': 2,
+    'circle-radius': 25, 'circle-color': ROUGE, 'circle-opacity': 0.14, 'circle-stroke-color': ROUGE, 'circle-stroke-width': 3,
   } });
-  carte.addLayer({ id: 'lieux', type: 'circle', source: 'lieux', filter: ['!', ['has', 'point_count']], paint: {
-    'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, 6.5, 15, 9], 'circle-color': couleur,
-    'circle-stroke-color': bord, 'circle-stroke-width': 2.5,
-  } });
-  carte.addLayer({ id: 'lieux-noms', type: 'symbol', source: 'lieux', minzoom: 13.2, filter: ['!', ['has', 'point_count']],
+  carte.addLayer({ id: 'lieux', type: 'symbol', source: 'lieux', filter: ['!', ['has', 'point_count']],
+    layout: { 'icon-image': ['get', 'icone'], 'icon-allow-overlap': true, 'icon-ignore-placement': true,
+      'icon-size': ['interpolate', ['linear'], ['zoom'], 10, 0.62, 14, 0.82, 17, 1] } });
+  carte.addLayer({ id: 'lieux-noms', type: 'symbol', source: 'lieux', minzoom: 13.6, filter: ['!', ['has', 'point_count']],
     layout: { 'text-field': ['get', 'nom'], 'text-font': ['Noto Sans Medium'], 'text-size': 12.5, 'text-max-width': 9,
-      'text-variable-anchor': ['top', 'bottom', 'left', 'right'], 'text-radial-offset': 1.05, 'text-optional': true },
-    paint: { 'text-color': css('--encre'), 'text-halo-color': bord, 'text-halo-width': 1.6 } });
+      'text-variable-anchor': ['top', 'bottom', 'left', 'right'], 'text-radial-offset': 1.55, 'text-optional': true },
+    paint: { 'text-color': ENCRE, 'text-halo-color': '#f6efdf', 'text-halo-width': 1.8 } });
   // Zone de toucher plus large que le point, pour le doigt.
   carte.addLayer({ id: 'lieux-zone', type: 'circle', source: 'lieux', filter: ['!', ['has', 'point_count']],
     paint: { 'circle-radius': 22, 'circle-opacity': 0 } });
 
   carte.addLayer({ id: 'position-halo', type: 'circle', source: 'position', paint: {
-    'circle-radius': 16, 'circle-color': '#2f7df6', 'circle-opacity': 0.18 } });
+    'circle-radius': 17, 'circle-color': '#d9a21b', 'circle-opacity': 0.3 } });
   carte.addLayer({ id: 'position-point', type: 'circle', source: 'position', paint: {
-    'circle-radius': 7, 'circle-color': '#2f7df6', 'circle-stroke-color': '#ffffff', 'circle-stroke-width': 2.5 } });
+    'circle-radius': 7, 'circle-color': '#d9a21b', 'circle-stroke-color': ENCRE, 'circle-stroke-width': 2.5 } });
 
   carte.on('click', 'lieux-zone', (e) => {
     const plusProche = e.features
@@ -352,72 +462,100 @@ function lienItineraire(l) {
     : `https://www.google.com/maps/dir/?api=1&destination=${l.lat},${l.lon}&travelmode=walking`;
 }
 
-function etiquetteEvenement(l) {
+function texteEvenement(l) {
   const e = l.evenement;
   if (!e) return '';
-  let texte;
   if (e.date_debut && e.date_fin) {
     const memeAnnee = e.date_debut.slice(0, 4) === e.date_fin.slice(0, 4);
-    texte = `Du ${memeAnnee ? dateCourte(e.date_debut) : dateLongue(e.date_debut)} au ${dateLongue(e.date_fin)}`;
-    if (new Date(e.date_fin + 'T23:59:59') < new Date()) texte += ', terminé';
-  } else {
-    texte = e.annee ? `Événement de ${e.annee}` : 'Événement temporaire';
+    let texte = T.fiche.du(memeAnnee ? dateCourte(e.date_debut) : dateLongue(e.date_debut), dateLongue(e.date_fin));
+    if (new Date(e.date_fin + 'T23:59:59') < new Date()) texte += T.fiche.termine;
+    return texte;
   }
-  return `<span class="etiquette">${esc(texte)}</span>`;
+  return e.annee ? T.fiche.evenementDe(e.annee) : T.fiche.evenementTemporaire;
 }
+
+// Petit disque (ou ticket) repris dans les listes et le talon, aux couleurs de l'époque du lieu.
+const pastille = (l) => `<i class="point ${categorie(l)}" style="--epoque:${couleurEpoque(l)}"></i>`;
 
 function htmlFiche(l) {
   const cat = categorie(l);
-  const lignes = [l.adresse, l.quartier, l.evenement?.lieu_hote].filter(Boolean).map(esc);
-  if (etat.position) lignes.push(`à ${distanceLisible(distance(etat.position, l))}`);
-  const statut = l.nature === 'evenement' ? (visite(l) ? 'Événement visité' : 'Événement') : CATEGORIES[cat];
+  const statut = l.nature === 'evenement' ? (visite(l) ? T.evenementVisite : CATEGORIES.evenement) : CATEGORIES[cat];
+  const photos = photosDe(l);
+  const arch = archivesDe(l);
+  const epoque = l.decennie ? nomEpoque(l) : '';
 
-  let h = `<h1>${esc(l.nom)}</h1>`;
-  if (lignes.length) h += `<div class="lieu-adresse">${lignes.join(' · ')}</div>`;
-  h += '<div class="etiquettes">';
-  h += `<span class="etiquette"><i class="point ${cat}"></i>${statut}</span>`;
-  h += `<span class="etiquette">${esc(TYPES[l.type] ?? l.type)}</span>`;
-  h += etiquetteEvenement(l);
-  if (VERIFICATIONS[l.verification]) h += `<span class="etiquette alerte">${VERIFICATIONS[l.verification]}</span>`;
-  if (l.etat_selon_source === 'disparu') h += '<span class="etiquette alerte">Disparu en 2002 selon le guide</span>';
-  if (l.etat_selon_source === 'transformé') h += '<span class="etiquette">Transformé en 2002 selon le guide</span>';
-  if (l.precision === 'rue') h += '<span class="etiquette">Point placé dans la rue, numéro à situer</span>';
-  if (l.precision === 'quartier') h += '<span class="etiquette alerte">Position approximative</span>';
-  for (const a of l.artistes) h += `<button class="etiquette artiste" data-artiste="${esc(a)}">${esc(a)}</button>`;
-  h += '</div>';
+  // Couverture : la photo choisie, sinon un carton aux couleurs de l'époque.
+  let h = `<article class="fiche" style="--epoque:${couleurEpoque(l)}">`;
+  h += photos.length
+    ? `<button class="couverture" data-photo="0" aria-label="${esc(T.fiche.agrandirPhoto(1))}">
+        <img src="${urlMedia(l.id, photos[0].id, 'a')}" alt="">${epoque ? `<span class="tampon-epoque">${esc(epoque)}</span>` : ''}</button>`
+    : `<div class="couverture carton"><span class="sillons"></span>${epoque ? `<span class="tampon-epoque">${esc(epoque)}</span>` : ''}</div>`;
+
+  h += `<h1>${esc(l.nom)}</h1>`;
+
+  // Talon de ticket : l'essentiel du lieu en quatre cases.
+  const adresse = [l.adresse, l.quartier, l.evenement?.lieu_hote].filter(Boolean).map(esc).join(', ');
+  const cases = [];
+  if (adresse) cases.push([T.talon.adresse, adresse, 'large']);
+  cases.push([T.talon.genre, esc(TYPES[l.type] ?? l.type)]);
+  if (epoque) cases.push([T.talon.epoque, esc(epoque)]);
+  cases.push([T.talon.etat, `${pastille(l)}${esc(statut)}`]);
+  if (etat.position) cases.push([T.talon.distance, esc(distanceLisible(distance(etat.position, l)))]);
+  let colonne = 0;
+  h += `<dl class="talon">${cases.map(([k, v, c]) => {
+    const classe = c === 'large' ? (colonne = 0, 'large') : (colonne++ % 2 ? 'droite' : '');
+    return `<div class="${classe}"><dt>${esc(k)}</dt><dd>${v}</dd></div>`;
+  }).join('')}</dl>`;
+
+  const tampons = [];
+  if (l.evenement) tampons.push([texteEvenement(l), '']);
+  if (VERIFICATIONS[l.verification]) tampons.push([VERIFICATIONS[l.verification], 'alerte']);
+  if (l.etat_selon_source === 'disparu') tampons.push([T.fiche.disparu, 'alerte']);
+  if (l.etat_selon_source === 'transformé') tampons.push([T.fiche.transforme, '']);
+  if (l.precision === 'rue') tampons.push([T.fiche.precisionRue, '']);
+  if (l.precision === 'quartier') tampons.push([T.fiche.precisionQuartier, 'alerte']);
+  if (tampons.length || l.artistes.length) {
+    h += '<div class="etiquettes">';
+    for (const a of l.artistes) h += `<button class="etiquette artiste" data-artiste="${esc(a)}">${esc(a)}</button>`;
+    for (const [t, c] of tampons) h += `<span class="etiquette ${c}">${esc(t)}</span>`;
+    h += '</div>';
+  }
 
   h += `<div class="boutons">
     <a class="bouton" href="${lienItineraire(l)}" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M9 20 3 17V4l6 3 6-3 6 3v13l-6-3z"/><path d="M9 7v13M15 4v13"/></svg>Itinéraire</a>
-    <button class="bouton second" data-zoom="${esc(l.id)}">Voir de près</button>
+      <svg viewBox="0 0 24 24"><path d="M9 20 3 17V4l6 3 6-3 6 3v13l-6-3z"/><path d="M9 7v13M15 4v13"/></svg>${esc(T.fiche.itineraire)}</a>
+    <button class="bouton second" data-zoom="${esc(l.id)}">${esc(T.fiche.voirDePres)}</button>
   </div>`;
 
-  h += '<h2>Photos et vidéos</h2>';
-  const photos = photosDe(l);
-  if (photos.length) {
-    h += `<div class="galerie">${photos.map((p, i) => `<button class="vignette" data-photo="${i}" aria-label="Agrandir la photo ${i + 1}">
-      <img src="${urlMedia(l.id, p.id, 'v')}" alt="" loading="lazy" width="${p.largeur_v ?? ''}" height="${p.hauteur_v ?? ''}"></button>`).join('')}</div>`;
-  } else if (l.nb_photos || l.nb_videos) {
-    const stock = [l.nb_photos && pluriel(l.nb_photos, 'photo'), l.nb_videos && pluriel(l.nb_videos, 'vidéo')].filter(Boolean).join(' et ');
-    h += `<div class="galerie-vide">${stock} dans le dossier de ce lieu.<br>La sélection reste à faire.</div>`;
-  } else {
-    h += '<div class="galerie-vide">Aucune photo pour l\'instant.</div>';
+  // Emplacement de la capsule audio : visible en mode privé tant qu'elle n'est pas enregistrée.
+  if (etat.mode === 'prive') {
+    h += `<div class="capsule vide"><span class="lecture" aria-hidden="true"></span><div><b>${esc(T.fiche.audio)}</b><small>${esc(T.fiche.audioVide)}</small></div></div>`;
   }
 
-  const arch = archivesDe(l);
-  if (arch.length) {
-    h += `<h2>Archives</h2><div class="galerie">${arch.map((a, i) => `<button class="vignette" data-archive="${i}" aria-label="Agrandir l'archive de ${esc(a.annee)}">
-      <img src="${urlMedia(l.id, a.id, 'v')}" alt="" loading="lazy" width="${a.largeur_v ?? ''}" height="${a.hauteur_v ?? ''}"><span class="annee">${esc(a.annee)}</span></button>`).join('')}</div>
-      <p class="note">Images d'archives sous licence libre : auteur et licence dans la légende de chaque photo.</p>`;
-  }
-
-  h += '<h2>Histoire</h2>';
+  h += `<h2>${esc(T.fiche.histoire)}</h2>`;
   h += l.historique_court || l.historique_long
-    ? [l.historique_court, l.historique_long].filter(Boolean).map((t) => `<p>${esc(t)}</p>`).join('')
-    : '<p class="vide">Historique à rédiger.</p>';
+    ? `<div class="recit">${[l.historique_court, l.historique_long].filter(Boolean).map((t) => `<p>${esc(t)}</p>`).join('')}</div>`
+    : `<p class="vide">${esc(T.fiche.histoireVide)}</p>`;
+
+  h += `<h2>${esc(T.fiche.photos)}</h2>`;
+  if (photos.length) {
+    h += `<div class="galerie tirages">${photos.map((p, i) => `<button class="vignette" data-photo="${i}" aria-label="${esc(T.fiche.agrandirPhoto(i + 1))}">
+      <img src="${urlMedia(l.id, p.id, 'v')}" alt="" loading="lazy" width="${p.largeur_v ?? ''}" height="${p.hauteur_v ?? ''}"><span class="tampon-photo">${esc(T.fiche.tampon)}</span></button>`).join('')}</div>`;
+  } else if (l.nb_photos || l.nb_videos) {
+    const stock = [l.nb_photos && pluriel(l.nb_photos, T.unites.photo), l.nb_videos && pluriel(l.nb_videos, T.unites.video)].filter(Boolean).join(T.unites.et);
+    h += `<div class="galerie-vide">${esc(T.fiche.photosVides(stock))}</div>`;
+  } else {
+    h += `<div class="galerie-vide">${esc(T.fiche.aucunePhoto)}</div>`;
+  }
+
+  if (arch.length) {
+    h += `<h2>${esc(T.fiche.archives)}</h2><div class="galerie archives">${arch.map((a, i) => `<button class="vignette" data-archive="${i}" aria-label="${esc(T.fiche.agrandirArchive(a.annee))}">
+      <img src="${urlMedia(l.id, a.id, 'v')}" alt="" loading="lazy" width="${a.largeur_v ?? ''}" height="${a.hauteur_v ?? ''}"><span class="annee">${esc(a.annee)}</span></button>`).join('')}</div>
+      <p class="note">${esc(T.fiche.archivesNote)}</p>`;
+  }
 
   if (l.articles.length) {
-    h += '<h2>Sur laurentrieppi.com</h2><ul class="liens">';
+    h += `<h2>${esc(T.fiche.site)}</h2><ul class="liens">`;
     for (const a of l.articles) {
       h += `<li><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.titre)}</a>
         <small>${esc(ARTICLES[a.type] ?? a.type)} · ${dateLongue(a.date)}</small></li>`;
@@ -426,46 +564,49 @@ function htmlFiche(l) {
   }
 
   if (l.sources?.length) {
-    h += '<h2>Sources</h2><ul class="liens">';
+    h += `<h2>${esc(T.fiche.sources)}</h2><ul class="liens">`;
     for (const s of l.sources) {
       const ref = esc(s.reference ?? s.url ?? '');
       h += `<li>${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${ref}</a>` : `<b>${ref}</b>`}
-        ${s.page ? `<small>page ${esc(s.page)}</small>` : ''}${s.faits && s.faits !== l.historique_court ? `<small>${esc(s.faits)}</small>` : ''}</li>`;
+        ${s.page ? `<small>${esc(T.fiche.page(s.page))}</small>` : ''}${s.faits && s.faits !== l.historique_court ? `<small>${esc(s.faits)}</small>` : ''}</li>`;
     }
     h += '</ul>';
   }
 
   if (l.jours_de_visite?.length) {
-    h += `<h2>${l.jours_de_visite.length > 1 ? 'Mes visites' : 'Ma visite'}</h2><p>${l.jours_de_visite.map(dateLongue).join(' · ')}</p>`;
+    h += `<h2>${esc(T.fiche.visites(l.jours_de_visite.length))}</h2><p class="dates">${l.jours_de_visite.map(dateLongue).join(' · ')}</p>`;
   }
 
   if (etat.mode === 'prive') {
     const notes = carnet.notes.get(l.id) ?? [];
     const enAttente = new Set(carnet.attente.map((o) => o.id));
-    h += '<h2>Carnet de terrain</h2>';
+    h += `<section class="carnet"><h2>${esc(T.fiche.carnet)}</h2>`;
     if (l.statut !== 'visite') {
       h += carnet.visites.has(l.id)
-        ? `<p>Visité le ${dateHeure(carnet.visites.get(l.id))}. <button class="lien" data-carnet="annuler_visite">Annuler</button></p>`
-        : '<div class="boutons"><button class="bouton" data-carnet="visite">Marquer comme visité</button></div>';
+        ? `<p>${esc(T.fiche.visiteLe(dateHeure(carnet.visites.get(l.id))))} <button class="lien" data-carnet="annuler_visite">${esc(T.fiche.annuler)}</button></p>`
+        : `<div class="boutons"><button class="bouton" data-carnet="visite">${esc(T.fiche.marquer)}</button></div>`;
     }
     if (notes.length) {
-      h += `<ul class="liens">${notes.map((n) => `<li>${esc(n.texte)}<small>${dateHeure(n.date)}${enAttente.has(n.id) ? ' · en attente d\'envoi' : ''}</small></li>`).join('')}</ul>`;
+      h += `<ul class="liens notes">${notes.map((n) => `<li>${esc(n.texte)}<small>${dateHeure(n.date)}${enAttente.has(n.id) ? ` · ${esc(T.fiche.enAttente)}` : ''}</small></li>`).join('')}</ul>`;
     }
-    h += `<textarea id="note" rows="3" placeholder="Une note rapide sur ce lieu"></textarea>
-      <div class="boutons"><button class="bouton second" data-carnet="note">Ajouter la note</button></div>`;
-    if (carnet.attente.length) h += `<p class="note">${pluriel(carnet.attente.length, 'élément')} du carnet en attente d'envoi.</p>`;
+    h += `<textarea id="note" rows="3" placeholder="${esc(T.fiche.notePlaceholder)}"></textarea>
+      <div class="boutons"><button class="bouton second" data-carnet="note">${esc(T.fiche.ajouterNote)}</button></div>`;
+    if (carnet.attente.length) h += `<p class="note">${esc(T.fiche.carnetAttente(carnet.attente.length))}</p>`;
+    h += '</section>';
 
     const travail = [];
-    if (!l.coordonnees_validees) travail.push('Position du point non validée : elle vient de l\'endroit où les photos ont été prises.');
-    for (const s of l.sources ?? []) if (s.recoupement) travail.push(`Source à recouper : ${s.recoupement}`);
+    if (!l.coordonnees_validees) travail.push(T.fiche.positionNonValidee);
+    if (!l.decennie) travail.push(T.fiche.decennieManquante);
+    else if (!l.decennie_validee) travail.push(T.fiche.decennieProposee(nomEpoque(l)));
+    for (const s of l.sources ?? []) if (s.recoupement) travail.push(T.fiche.recouper(s.recoupement));
     for (const v of l.a_verifier ?? []) travail.push(v);
     if (travail.length || l.faits_a_reprendre?.length) {
-      h += '<h2>Notes de travail</h2>';
-      if (travail.length) h += `<details open><summary>À contrôler</summary><ul>${travail.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></details>`;
-      if (l.faits_a_reprendre?.length) h += `<details><summary>Faits à reprendre de mes articles</summary><ul>${l.faits_a_reprendre.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></details>`;
+      h += `<h2>${esc(T.fiche.travail)}</h2>`;
+      if (travail.length) h += `<details open><summary>${esc(T.fiche.aControler)}</summary><ul>${travail.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></details>`;
+      if (l.faits_a_reprendre?.length) h += `<details><summary>${esc(T.fiche.faits)}</summary><ul>${l.faits_a_reprendre.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></details>`;
     }
   }
-  return h;
+  return `${h}</article>`;
 }
 
 function ouvrirFiche(id, { centrer = true, garder = false } = {}) {
@@ -484,13 +625,13 @@ function ouvrirFiche(id, { centrer = true, garder = false } = {}) {
 }
 
 /* ---------------------------------------------------------------- listes */
-function htmlListe(titre, lieux, { avecDistance = false, vide = 'Aucun lieu ne correspond.' } = {}) {
+function htmlListe(titre, lieux, { avecDistance = false, vide = T.liste.aucun } = {}) {
   let h = `<h1>${esc(titre)}</h1>`;
   if (!lieux.length) return `${h}<p class="vide">${esc(vide)}</p>`;
   h += '<ul class="resultats">';
   for (const l of lieux) {
     const sous = [TYPES[l.type], l.quartier, l.artistes.slice(0, 2).join(', ')].filter(Boolean).join(' · ');
-    h += `<li><button data-lieu="${esc(l.id)}"><i class="point ${categorie(l)}"></i>
+    h += `<li><button data-lieu="${esc(l.id)}">${pastille(l)}
       <span><b>${esc(l.nom)}</b><small>${esc(sous)}</small></span>
       ${avecDistance && etat.position ? `<span class="distance">${distanceLisible(distance(etat.position, l))}</span>` : ''}</button></li>`;
   }
@@ -500,9 +641,9 @@ function htmlListe(titre, lieux, { avecDistance = false, vide = 'Aucun lieu ne c
 function montrerRecherche() {
   const resultats = rafraichir();
   if (!etat.requete) { if (etat.vue === 'recherche') fermer(); return; }
-  let h = htmlListe(pluriel(resultats.length, 'résultat'), resultats, { avecDistance: true });
+  let h = htmlListe(T.liste.resultats(resultats.length), resultats, { avecDistance: true });
   if (!resultats.length && (nbFiltres() || etat.categorie !== 'tous')) {
-    h += '<div class="boutons"><button class="bouton second" data-action="sans-filtres">Chercher dans tous les lieux</button></div>';
+    h += `<div class="boutons"><button class="bouton second" data-action="sans-filtres">${esc(T.liste.partout)}</button></div>`;
   }
   montrer('recherche', h, 'plein');
 }
@@ -512,7 +653,7 @@ function montrerProches() {
   const tries = lieuxFiltres()
     .map((l) => ({ l, d: distance(etat.position, l) }))
     .sort((a, b) => a.d - b.d).slice(0, 20).map((x) => x.l);
-  montrer('proches', htmlListe('Les plus proches de moi', tries, { avecDistance: true }), 'mi');
+  montrer('proches', htmlListe(T.liste.proches, tries, { avecDistance: true }), 'mi');
 }
 
 /* --------------------------------------------------------------- filtres */
@@ -531,13 +672,15 @@ function montrerFiltres() {
   const puces = (liste, attribut, actif, nom = (v) => v) => liste.map(([v, n]) =>
     `<button class="puce ${actif(v) ? 'actif' : ''}" data-${attribut}="${esc(v)}">${esc(nom(v))} <small>${n}</small></button>`).join('');
   const n = lieuxFiltres().length;
-  const h = `<h1>Filtres</h1>
-    <h2>Type de lieu</h2><div class="groupe">${puces(types, 'type', (v) => etat.types.has(v), (v) => TYPES[v] ?? v)}</div>
-    <h2>Artiste ou groupe</h2><div class="groupe">${puces(artistes, 'artiste-filtre', (v) => etat.artiste === v)}</div>
-    <h2>Quartier</h2><div class="groupe">${puces(quartiers, 'quartier', (v) => etat.quartier === v)}</div>
+  const legende = Object.entries(DECENNIES).map(([d, c]) => `<span><i class="point visite" style="--epoque:${c}"></i>${esc(T.decennies[d])}</span>`).join('');
+  const h = `<h1>${esc(T.filtres.titre)}</h1>
+    <h2>${esc(T.filtres.type)}</h2><div class="groupe">${puces(types, 'type', (v) => etat.types.has(v), (v) => TYPES[v] ?? v)}</div>
+    <h2>${esc(T.filtres.artiste)}</h2><div class="groupe">${puces(artistes, 'artiste-filtre', (v) => etat.artiste === v)}</div>
+    <h2>${esc(T.filtres.quartier)}</h2><div class="groupe">${puces(quartiers, 'quartier', (v) => etat.quartier === v)}</div>
+    <h2>${esc(T.filtres.legende)}</h2><div class="legende-carte">${legende}</div><p class="note">${esc(T.filtres.legendeTexte)}</p>
     <div class="pied-filtres">
-      <button class="bouton second" data-action="reinitialiser">Tout effacer</button>
-      <button class="bouton" data-action="voir">Voir ${pluriel(n, 'lieu', 'lieux')}</button>
+      <button class="bouton second" data-action="reinitialiser">${esc(T.filtres.effacer)}</button>
+      <button class="bouton" data-action="voir">${esc(T.filtres.voir(n))}</button>
     </div>`;
   const haut = $('#contenu').scrollTop;
   montrer('filtres', h, 'plein');
@@ -547,7 +690,7 @@ function montrerFiltres() {
 /* -------------------------------------------------------------- position */
 let suivi = null;
 function demanderPosition(ensuite) {
-  if (!navigator.geolocation) { message("La géolocalisation n'est pas disponible sur cet appareil."); return; }
+  if (!navigator.geolocation) { message(T.position.indisponible); return; }
   if (suivi !== null) { if (etat.position) ensuite?.(); return; }
   let premier = true;
   suivi = navigator.geolocation.watchPosition((p) => {
@@ -558,13 +701,13 @@ function demanderPosition(ensuite) {
   }, (err) => {
     navigator.geolocation.clearWatch(suivi);
     suivi = null;
-    message(err.code === 1 ? "L'accès à la position a été refusé. Il se rétablit dans les réglages du navigateur." : 'Position introuvable pour le moment.');
+    message(err.code === 1 ? T.position.refusee : T.position.introuvable);
   }, { enableHighAccuracy: true, maximumAge: 10000, timeout: 20000 });
 }
 function allerAMaPosition() {
   const p = etat.position;
   if (!p) return;
-  if (p.lon < -0.95 || p.lon > 0.75 || p.lat < 51.08 || p.lat > 51.9) { message('Tu es en dehors de Londres : la carte reste sur la ville.'); return; }
+  if (p.lon < -0.95 || p.lon > 0.75 || p.lat < 51.08 || p.lat > 51.9) { message(T.position.horsLondres); return; }
   carte.easeTo({ center: [p.lon, p.lat], zoom: Math.max(carte.getZoom(), 15), padding: { top: 110, bottom: margeBasse(), left: 0, right: 0 } });
 }
 

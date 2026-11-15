@@ -13,7 +13,18 @@
     "validees": false
   },
   "artistes": [],
-  "periode": null,
+  "periode": {
+    "decennie": 1970,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      1970,
+      1974,
+      1981,
+      1984,
+      2011
+    ]
+  },
   "statut": "visite",
   "verification": "confirme_visuellement",
   "publication": "prive",

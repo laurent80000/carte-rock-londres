@@ -19,7 +19,14 @@
     "Johnny Rotten",
     "Sid Vicious"
   ],
-  "periode": null,
+  "periode": {
+    "decennie": 1970,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      1975
+    ]
+  },
   "statut": "a_visiter",
   "verification": "a_verifier",
   "etat_selon_source": "existant",

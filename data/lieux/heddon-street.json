@@ -15,7 +15,14 @@
   "artistes": [
     "David Bowie"
   ],
-  "periode": null,
+  "periode": {
+    "decennie": 1970,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      1972
+    ]
+  },
   "statut": "visite",
   "verification": "non_renseigne",
   "publication": "prive",

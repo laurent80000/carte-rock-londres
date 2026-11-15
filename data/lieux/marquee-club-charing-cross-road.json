@@ -19,7 +19,15 @@
     "Kiss",
     "Oasis"
   ],
-  "periode": null,
+  "periode": {
+    "decennie": 1980,
+    "origine": "texte",
+    "validee": false,
+    "annees_citees": [
+      1988,
+      1996
+    ]
+  },
   "statut": "a_visiter",
   "verification": "a_verifier",
   "etat_selon_source": "transformé",
