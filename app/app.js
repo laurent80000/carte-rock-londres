@@ -667,6 +667,15 @@ function htmlFiche(l) {
       <p class="note">${esc(T.fiche.archivesNote)}</p>`;
   }
 
+  // Images et vidéos hébergées ailleurs : de simples liens, rien n'est copié ni affiché ici.
+  const ailleurs = (l.a_voir_ailleurs ?? []).filter((a) => /^https:\/\//.test(a.url));
+  if (ailleurs.length) {
+    h += `<h2>${esc(T.fiche.ailleurs)}</h2><ul class="liens">${ailleurs.map((a) => `<li>
+      <a href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">${esc(a.legende)}</a>
+      <small>${esc(a.source || new URL(a.url).hostname.replace(/^www\./, ''))} ↗</small></li>`).join('')}</ul>
+      <p class="note">${esc(T.fiche.ailleursNote)}</p>`;
+  }
+
   if (l.articles.length) {
     h += `<h2>${esc(T.fiche.site)}</h2><ul class="liens">`;
     for (const a of l.articles) {

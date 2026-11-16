@@ -73,13 +73,13 @@ Site statique sans étape de compilation : index.html, style.css, app.js. MapLib
 
 L'application lit app/data/lieux.json, produit par scripts/construire.mjs à partir des fiches. En mode privé, la fiche montre aussi le carnet de terrain et les notes de travail. L'option --public ne garde que les fiches dont la publication vaut "public" et retire les champs de travail.
 
-Couleurs des points : vert pour un lieu visité, orange pour un lieu à visiter, violet pour un événement temporaire.
+Points de la carte : voir la refonte graphique ci-dessous (disques colorés par décennie).
 
 app/outils/ est une copie de outils/, produite par construire.mjs et ignorée par git.
 
-## Refonte graphique (branche refonte-graphique, 15/11/2026)
+## Refonte graphique (en ligne depuis le 15/11/2026)
 
-Direction "carnet de route imprimé", validée par Laurent : papier crème, encre noire, rouge et moutarde, une couleur par décennie. La branche refonte-graphique part de l'étiquette avant-refonte. Elle n'est ni fusionnée dans main ni déployée : la mise en production attend l'accord de Laurent.
+Direction "carnet de route imprimé", validée par Laurent : papier crème, encre noire, rouge et moutarde, une couleur par décennie. Fusionnée dans main et mise en ligne le 15/11/2026 avec l'accord de Laurent. L'état d'avant est gardé sur la branche sauvegarde-avant-refonte. Le travail se fait de nouveau sur main.
 
 - Polices sous licence OFL, servies avec le site (paquets @fontsource, copiés par construire.mjs dans app/vendor/polices, 128 Ko) : Anton pour les titres, Source Serif 4 pour le texte, Archivo Narrow pour les libellés, Courier Prime pour le carnet.
 - Fond de carte : même style Protomaps, recoloré en papier sépia dans app.js (flavor PAPIER). Plus de thème sombre. Seules les gares gardent un pictogramme, dessiné pour l'occasion.
@@ -90,6 +90,7 @@ Direction "carnet de route imprimé", validée par Laurent : papier crème, encr
 - Aucun logo de groupe, aucune pochette, aucun rond du métro : tout est dessiné en CSS ou au canvas.
 - Photos ajoutées sur place (demande de Laurent, 15/11/2026) : dans le carnet de terrain, "Ajouter des photos" ouvre l'appareil photo, la photothèque ou les fichiers du téléphone. Chaque image est réduite dans le téléphone (1600 px et 480 px, ce qui retire toutes ses métadonnées), gardée dans une file locale (IndexedDB) et envoyée dès qu'il y a du réseau. Elle est rangée dans R2 sous lieux/<lieu>/t<identifiant>-a.jpg et -v.jpg, et inscrite sous la clé "terrain" du lieu dans selection.json par POST /api/medias/terrain (DELETE pour la retirer). outils/medias.py ne retire ni ne réécrit jamais ces photos. L'original reste dans le téléphone.
 - "À écouter" (demande de Laurent, 15/11/2026) : champ a_ecouter d'une fiche, liste d'objets {titre, artiste, album, annee}. Chaque titre ouvre une recherche dans le service choisi (Spotify, Apple Music, Tidal, Qobuz, Deezer, YouTube), choix retenu dans le téléphone. Aucun compte, aucun service appelé, aucun logo. Les titres sont fournis par Laurent, jamais inventés. La capsule audio s'appelle désormais "Le récit en voix".
+- "À voir ailleurs" (16/11/2026, accord de Laurent) : champ a_voir_ailleurs d'une fiche, liste d'objets {legende, url, source}. De simples liens vers la source légitime d'une image ou d'une vidéo (photographe, agence, musée, archive officielle), jamais vers une copie pirate. Rien n'est copié ni affiché dans la fiche : pas d'image d'un autre site intégrée. Les liens sont fournis par Laurent ; seules les adresses https sont affichées.
 - Itinéraire : deux boutons, Plans (Apple) et Google Maps, à pied.
 - Idées notées, à ne pas réaliser sans feu vert : capsule audio d'environ 1 min 30 par lieu (voix de Laurent, stockage R2), parcours thématiques par artiste optimisés à pied et en métro (demande un niveau d'importance par lieu et les stations), frise par décennie, version anglaise, hors connexion, comptes et paiement.
 

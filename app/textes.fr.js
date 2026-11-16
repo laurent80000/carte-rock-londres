@@ -33,6 +33,7 @@ export const T = {
     photosAide: "Appareil photo, photothèque ou fichiers. Les images sont réduites et envoyées sans leurs données de position.",
     archives: 'Archives', archivesNote: "Images d'archives sous licence libre : auteur et licence dans la légende de chaque photo.",
     histoire: 'Histoire', histoireVide: 'Historique à rédiger.',
+    ailleurs: 'À voir ailleurs', ailleursNote: "Ces liens ouvrent le site qui publie l'image ou la vidéo.",
     plans: 'Plans', googleMaps: 'Google Maps', aEcouter: 'À écouter', ouvrirAvec: 'Ouvrir les titres avec :',
     audio: 'Le récit en voix', audioVide: 'Capsule audio à enregistrer : ta voix racontera ce lieu ici.',
     site: 'Sur laurentrieppi.com', sources: 'Sources', page: (p) => `page ${p}`,
